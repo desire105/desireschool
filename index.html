@@ -1,0 +1,3757 @@
+    <!DOCTYPE html>
+    <html lang="en-US">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Soul Preschool Academy | Where Childhood Is Protected, Not Rushed</title>
+        <meta name="description" content="A tranquil, development-oriented preschool for children aged 2 to 6. Emotional safety, significant learning, and the essence of childhood are safeguarded.">
+        
+        <!-- Fonts -->
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Inter:wght@300;400;500;600&family=Nunito:wght@400;500;600;700&display=swap" rel="stylesheet">
+        
+        <!-- Icons -->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+        
+        <!-- GSAP -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+
+        <style>
+            /* ----- RESET & GLOBAL ----- */
+            * {
+                margin: 0;
+                padding: 0;
+                box-sizing: border-box;
+            }
+
+            body {
+                font-family: 'Inter', sans-serif;
+                background-color: #e5e5e5;
+                color: #22211F;
+                overflow-x: hidden;
+                line-height: 1.5;
+                -webkit-font-smoothing: antialiased;
+            }
+
+            html {
+                scroll-behavior: smooth;
+            }
+
+            /* ----- TYPOGRAPHY ----- */
+            .font-display {
+                font-family: 'Playfair Display', serif;
+            }
+
+            .font-kids {
+                font-family: 'Nunito', sans-serif;
+            }
+
+            .text-gradient {
+                background: linear-gradient(135deg, #5A6B5E 0%, #4a5a4e 100%);
+                -webkit-background-clip: text;
+                -webkit-text-fill-color: transparent;
+                background-clip: text;
+            }
+
+            /* ----- COLORS (custom properties) ----- */
+            :root {
+                --marble-ash: #e5e5e5;
+                --obsidian: #22211F;
+                --forest-green: #5A6B5E;
+                --forest-dark: #4a5a4e;
+                --white: #FFFFFF;
+                --gray-100: #F5F5F4;
+                --gray-200: #E7E5E4;
+                --gray-300: #D6D3D1;
+                --gray-600: #57534E;
+                --gray-500: #78716C;
+            }
+
+            /* ----- SCROLLBAR ----- */
+            ::-webkit-scrollbar { width: 10px; }
+            ::-webkit-scrollbar-track { background: #e5e5e5; }
+            ::-webkit-scrollbar-thumb { background: #5A6B5E; border-radius: 5px; }
+
+            /* ----- GLASS EFFECT ----- */
+            .glass {
+                background: #e5e5e5;
+                backdrop-filter: blur(12px);
+                -webkit-backdrop-filter: blur(12px);
+                border: 1px solid rgba(255, 255, 255, 0.2);
+            }
+
+            .glass-dark {
+                background: rgba(34, 33, 31, 0.9);
+                backdrop-filter: blur(12px);
+                -webkit-backdrop-filter: blur(12px);
+            }
+
+            /* ----- BLOB SHAPES ----- */
+            .blob {
+                border-radius: 40% 60% 70% 30% / 40% 50% 60% 50%;
+                animation: morph 8s ease-in-out infinite;
+            }
+            @keyframes morph {
+                0%, 100% { border-radius: 40% 60% 70% 30% / 40% 50% 60% 50%; }
+                34% { border-radius: 70% 30% 50% 50% / 30% 30% 70% 70%; }
+                67% { border-radius: 100% 60% 60% 100% / 100% 100% 60% 60%; }
+            }
+
+            /* ----- HOVER LIFT ----- */
+            .hover-lift {
+                transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.3s ease;
+            }
+            .hover-lift:hover {
+                transform: translateY(-8px);
+                box-shadow: 0 20px 40px rgba(34, 33, 31, 0.15);
+            }
+
+            /* ----- BUTTON SHINE ----- */
+            .btn-shine {
+                position: relative;
+                overflow: hidden;
+            }
+            .btn-shine::before {
+                content: '';
+                position: absolute;
+                top: 0;
+                left: -100%;
+                width: 100%;
+                height: 100%;
+                background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+                transition: left 0.5s;
+            }
+            .btn-shine:hover::before {
+                left: 100%;
+            }
+
+            /* ----- ACCORDION ----- */
+            .accordion-content {
+                max-height: 0;
+                overflow: hidden;
+                transition: max-height 0.4s ease-out, opacity 0.4s ease-out;
+                opacity: 0;
+            }
+            .accordion-content.active {
+                max-height: 500px;
+                opacity: 1;
+            }
+            .accordion-icon {
+                width: 2rem;
+                height: 2rem;
+                background-color: rgba(90, 107, 94, 0.1);
+                border-radius: 9999px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                color: #5A6B5E;
+                transition: transform 0.3s;
+            }
+            .accordion-icon.rotated {
+                transform: rotate(180deg);
+            }
+
+            /* ----- IMAGE ZOOM ----- */
+            .img-zoom {
+                overflow: hidden;
+            }
+            .img-zoom img {
+                transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+            }
+            .img-zoom:hover img {
+                transform: scale(1.1);
+            }
+
+            /* ----- STAGGER ANIMATION (initial state) ----- */
+            .stagger-item {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+
+            /* ----- REVEAL ON SCROLL (initial state) ----- */
+            .reveal-on-scroll {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+
+            /* ----- NAVIGATION ----- */
+            .navbar {
+                position: fixed;
+                width: 100%;
+                z-index: 50;
+                transition: all 0.3s;
+            }
+            .navbar.shadow {
+                box-shadow: 0 4px 20px rgba(34, 33, 31, 0.08);
+            }
+            .nav-container {
+                max-width: 1280px;
+                margin: 0 auto;
+                padding: 0 1rem;
+            }
+            @media (min-width: 640px) { .nav-container { padding: 0 1.5rem; } }
+            @media (min-width: 1024px) { .nav-container { padding: 0 2rem; } }
+            .nav-content {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                height: 5rem;
+            }
+            .logo {
+                display: flex;
+                align-items: center;
+                gap: 0.75rem;
+                cursor: pointer;
+            }
+            .logo-icon {
+                width: 3rem;
+                height: 3rem;
+                background-color: #5A6B5E;
+                border-radius: 9999px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                color: white;
+                font-family: 'Playfair Display', serif;
+                font-size: 1.5rem;
+                box-shadow: 0 10px 15px -3px rgba(0,0,0,0.1);
+            }
+            .logo-text {
+                display: none;
+            }
+            @media (min-width: 640px) {
+                .logo-text { display: block; }
+            }
+            .logo-title {
+                font-family: 'Playfair Display', serif;
+                font-size: 1.25rem;
+                font-weight: 700;
+                color: #22211F;
+                line-height: 1.2;
+            }
+            .logo-sub {
+                font-size: 0.75rem;
+                color: #5A6B5E;
+                font-weight: 500;
+                letter-spacing: 0.05em;
+            }
+            .desktop-menu {
+                display: none;
+            }
+            @media (min-width: 768px) {
+                .desktop-menu { display: flex; align-items: center; gap: 2rem; }
+            }
+            .nav-link {
+                position: relative;
+                color: #22211F;
+                font-weight: 500;
+                transition: color 0.2s;
+                text-decoration: none;
+            }
+            .nav-link:hover {
+                color: #5A6B5E;
+            }
+            .nav-link::after {
+                content: '';
+                position: absolute;
+                bottom: -4px;
+                left: 0;
+                width: 0;
+                height: 2px;
+                background: #5A6B5E;
+                transition: width 0.3s;
+            }
+            .nav-link:hover::after,
+            .nav-link.active::after {
+                width: 100%;
+            }
+            .desktop-cta {
+                display: none;
+                align-items: center;
+                gap: 1rem;
+            }
+            @media (min-width: 768px) {
+                .desktop-cta { display: flex; }
+            }
+            .phone-link {
+                color: #22211F;
+                text-decoration: none;
+                transition: color 0.2s;
+            }
+            .phone-link:hover {
+                color: #5A6B5E;
+            }
+            .enquire-btn {
+                background-color: #5A6B5E;
+                color: white;
+                padding: 0.75rem 1.5rem;
+                border-radius: 9999px;
+                font-weight: 600;
+                transition: all 0.2s;
+                box-shadow: 0 10px 15px -3px rgba(0,0,0,0.1);
+                text-decoration: none;
+            }
+            .enquire-btn:hover {
+                background-color: #4a5a4e;
+                transform: translateY(-2px);
+                box-shadow: 0 20px 25px -5px rgba(0,0,0,0.1);
+            }
+            .mobile-menu-btn {
+                display: block;
+                color: #22211F;
+                padding: 0.5rem;
+                background: none;
+                border: none;
+                font-size: 1.5rem;
+            }
+            @media (min-width: 768px) {
+                .mobile-menu-btn { display: none; }
+            }
+
+            /* ----- MOBILE MENU ----- */
+            .mobile-menu {
+                position: fixed;
+                inset: 0;
+                z-index: 50;
+                background: #e5e5e5;
+                transform: translateX(100%);
+                transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            }
+            .mobile-menu.active {
+                transform: translateX(0);
+            }
+            .mobile-menu-content {
+                padding: 1.5rem;
+            }
+            .mobile-menu-header {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                margin-bottom: 2rem;
+            }
+            .mobile-menu-brand {
+                font-family: 'Playfair Display', serif;
+                font-size: 1.5rem;
+                font-weight: 700;
+                color: #5A6B5E;
+            }
+            .close-menu {
+                color: #22211F;
+                padding: 0.5rem;
+                background: none;
+                border: none;
+                font-size: 1.5rem;
+            }
+            .mobile-links {
+                display: flex;
+                flex-direction: column;
+                gap: 1.5rem;
+                text-align: center;
+            }
+            .mobile-link {
+                display: block;
+                font-size: 1.5rem;
+                font-family: 'Playfair Display', serif;
+                color: #22211F;
+                text-decoration: none;
+                transition: color 0.2s;
+            }
+            .mobile-link:hover {
+                color: #5A6B5E;
+            }
+            .mobile-footer {
+                margin-top: 2rem;
+                padding-top: 2rem;
+                border-top: 1px solid rgba(34, 33, 31, 0.1);
+                text-align: center;
+            }
+            .mobile-phone {
+                color: #5A6B5E;
+                font-weight: 600;
+                font-size: 1.125rem;
+                text-decoration: none;
+            }
+
+            /* ----- ANNOUNCEMENT BAR ----- */
+            .announcement-bar {
+                background-color: rgba(90, 107, 94, 0.15);
+                color: #22211F;
+                padding: 0.5rem 1rem;
+                text-align: center;
+                font-size: 0.875rem;
+                font-weight: 500;
+                position: relative;
+                overflow: hidden;
+                transition: transform 0.3s ease, opacity 0.3s ease;
+            }
+            .announcement-bar.hide {
+                transform: translateY(-100%);
+                opacity: 0;
+                pointer-events: none;
+            }
+            .announcement-link {
+                color: #5A6B5E;
+                text-decoration: underline;
+                margin-left: 0.25rem;
+                transition: color 0.2s;
+            }
+            .announcement-link:hover {
+                color: #4a5a4e;
+            }
+            .shimmer {
+                position: absolute;
+                inset: 0;
+                background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+                transform: translateX(-100%);
+                animation: shimmer 2s infinite;
+            }
+            @keyframes shimmer {
+                100% { transform: translateX(100%); }
+            }
+
+            /* ----- HERO ----- */
+            .hero {
+                position: relative;
+                min-height: 100vh;
+                display: flex;
+                align-items: center;
+                padding-top: 5rem;
+                overflow: hidden;
+                background: linear-gradient(to bottom right, #e5e5e5, #d4d2d0, #e5e5e5);
+            }
+            .hero-bg {
+                position: absolute;
+                inset: 0;
+                overflow: hidden;
+            }
+            .blob-1 {
+                position: absolute;
+                top: -5rem;
+                right: -5rem;
+                width: 24rem;
+                height: 24rem;
+                background: rgba(90, 107, 94, 0.15);
+                border-radius: 40% 60% 70% 30% / 40% 50% 60% 50%;
+                animation: morph 8s infinite;
+            }
+            .blob-2 {
+                position: absolute;
+                bottom: 5rem;
+                left: -5rem;
+                width: 18rem;
+                height: 18rem;
+                background: rgba(90, 107, 94, 0.1);
+                border-radius: 40% 60% 70% 30% / 40% 50% 60% 50%;
+                animation: morph 8s infinite;
+                animation-delay: -2s;
+            }
+            .hero-glow {
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                width: 800px;
+                height: 800px;
+                background: radial-gradient(circle, rgba(90, 107, 94, 0.1) 0%, transparent 70%);
+                border-radius: 9999px;
+                filter: blur(64px);
+            }
+            .hero-container {
+                max-width: 1280px;
+                margin: 0 auto;
+                padding: 0 1rem;
+                position: relative;
+                z-index: 10;
+            }
+            @media (min-width: 640px) { .hero-container { padding: 0 1.5rem; } }
+            @media (min-width: 1024px) { .hero-container { padding: 0 2rem; } }
+            .hero-grid {
+                display: grid;
+                gap: 3rem;
+                align-items: center;
+            }
+            @media (min-width: 1024px) {
+                .hero-grid { grid-template-columns: repeat(2, 1fr); }
+            }
+            .hero-badge {
+                display: inline-flex;
+                align-items: center;
+                gap: 0.5rem;
+                background: rgba(255,255,255,0.6);
+                backdrop-filter: blur(4px);
+                padding: 0.5rem 1rem;
+                border-radius: 9999px;
+                box-shadow: 0 1px 2px 0 rgba(0,0,0,0.05);
+                border: 1px solid rgba(90, 107, 94, 0.2);
+            }
+            .badge-dot {
+                width: 0.5rem;
+                height: 0.5rem;
+                background: #5A6B5E;
+                border-radius: 9999px;
+                animation: pulse 2s infinite;
+            }
+            @keyframes pulse { 0%,100%{opacity:1;} 50%{opacity:0.5;} }
+            .hero-title {
+                font-family: 'Playfair Display', serif;
+                font-size: 3rem;
+                font-weight: 700;
+                color: #22211F;
+                line-height: 1.1;
+            }
+            @media (min-width: 768px) { .hero-title { font-size: 4.5rem; } }
+            .hero-text {
+                font-size: 1.125rem;
+                color: #22211F;
+                opacity: 0.8;
+                max-width: 32rem;
+                font-weight: 300;
+                line-height: 1.625;
+            }
+            @media (min-width: 768px) { .hero-text { font-size: 1.25rem; } }
+            .hero-buttons {
+                display: flex;
+                flex-wrap: wrap;
+                gap: 1rem;
+            }
+            .btn-primary {
+                background-color: #5A6B5E;
+                color: white;
+                padding: 1rem 2rem;
+                border-radius: 9999px;
+                font-weight: 600;
+                text-decoration: none;
+                display: inline-flex;
+                align-items: center;
+                gap: 0.5rem;
+                transition: all 0.2s;
+                box-shadow: 0 20px 25px -5px rgba(0,0,0,0.1);
+            }
+            .btn-primary:hover {
+                background-color: #4a5a4e;
+                transform: translateY(-2px);
+                box-shadow: 0 25px 30px -5px rgba(0,0,0,0.15);
+            }
+            .btn-secondary {
+                background: rgba(255,255,255,0.8);
+                color: #22211F;
+                border: 2px solid rgba(34, 33, 31, 0.1);
+                padding: 1rem 2rem;
+                border-radius: 9999px;
+                font-weight: 600;
+                text-decoration: none;
+                display: inline-flex;
+                align-items: center;
+                gap: 0.5rem;
+                transition: all 0.2s;
+            }
+            .btn-secondary:hover {
+                border-color: #5A6B5E;
+                color: #5A6B5E;
+            }
+            .trust-badge {
+                display: flex;
+                align-items: center;
+                gap: 1.5rem;
+                padding-top: 1rem;
+            }
+            .avatar-group {
+                display: flex;
+            }
+            .avatar {
+                width: 2.5rem;
+                height: 2.5rem;
+                border-radius: 9999px;
+                border: 2px solid white;
+                object-fit: cover;
+                margin-left: -0.75rem;
+            }
+            .avatar:first-child { margin-left: 0; }
+            .trust-text .trust-title {
+                font-weight: 600;
+                color: #22211F;
+            }
+            .trust-text .trust-location {
+                color: #22211F;
+                opacity: 0.6;
+                font-size: 0.875rem;
+            }
+
+            /* ----- HERO IMAGE ----- */
+            .hero-image-wrapper {
+                position: relative;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            }
+            .image-ring {
+                position: absolute;
+                inset: 0;
+                background: radial-gradient(circle, rgba(90, 107, 94, 0.2) 0%, rgba(169, 166, 162, 0.3) 100%);
+                border-radius: 9999px;
+                filter: blur(40px);
+                transform: scale(1.1);
+                animation: breathe 4s infinite;
+            }
+            @keyframes breathe { 0%,100%{transform:scale(1.1);} 50%{transform:scale(1.15);} }
+            .main-image {
+                position: relative;
+                border-radius: 1.5rem;
+                overflow: hidden;
+                box-shadow: 0 25px 50px -12px rgba(0,0,0,0.25);
+            }
+            .main-image img {
+                width: 100%;
+                height: 500px;
+                object-fit: cover;
+            }
+            @media (min-width: 1024px) { .main-image img { height: 600px; } }
+            .float-card {
+                position: absolute;
+                bottom: 1.5rem;
+                left: 1.5rem;
+                background: rgba(255,255,255,0.95);
+                backdrop-filter: blur(4px);
+                padding: 1rem;
+                border-radius: 1rem;
+                box-shadow: 0 10px 15px -3px rgba(0,0,0,0.1);
+                max-width: 16rem;
+                animation: float 6s infinite;
+            }
+            .float-card.right {
+                top: 1.5rem;
+                right: 1.5rem;
+                left: auto;
+                bottom: auto;
+                animation-delay: -3s;
+            }
+            @keyframes float {
+                0%,100% { transform: translateY(0); }
+                50% { transform: translateY(-10px); }
+            }
+            .card-icon {
+                width: 2.5rem;
+                height: 2.5rem;
+                background: rgba(90, 107, 94, 0.1);
+                border-radius: 9999px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                color: #5A6B5E;
+            }
+            .card-icon.blue {
+                background: rgba(90, 107, 94, 0.1);
+                color: #5A6B5E;
+            }
+            .scroll-indicator {
+                position: absolute;
+                bottom: 2rem;
+                left: 50%;
+                transform: translateX(-50%);
+                animation: bounce 2s infinite;
+            }
+            .scroll-circle {
+                width: 1.5rem;
+                height: 2.5rem;
+                border: 2px solid rgba(90, 107, 94, 0.3);
+                border-radius: 9999px;
+                display: flex;
+                justify-content: center;
+                padding-top: 0.5rem;
+            }
+            .scroll-dot {
+                width: 0.25rem;
+                height: 0.5rem;
+                background: #5A6B5E;
+                border-radius: 9999px;
+                animation: pulse 2s infinite;
+            }
+
+            /* ----- SECTION COMMON ----- */
+            .section {
+                padding: 6rem 0;
+            }
+            .container {
+                max-width: 1280px;
+                margin: 0 auto;
+                padding: 0 1rem;
+            }
+            @media (min-width: 640px) { .container { padding: 0 1.5rem; } }
+            @media (min-width: 1024px) { .container { padding: 0 2rem; } }
+
+            /* ----- ABOUT SECTION ----- */
+            .about-grid {
+                display: grid;
+                gap: 4rem;
+                align-items: center;
+            }
+            @media (min-width: 1024px) { .about-grid { grid-template-columns: repeat(2, 1fr); } }
+            .welcome-badge {
+                display: inline-block;
+                padding: 0.25rem 1rem;
+                background: rgba(90, 107, 94, 0.1);
+                color: #5A6B5E;
+                border-radius: 9999px;
+                font-size: 0.875rem;
+                font-weight: 600;
+                letter-spacing: 0.05em;
+                text-transform: uppercase;
+            }
+            .about-title {
+                font-family: 'Playfair Display', serif;
+                font-size: 2.5rem;
+                font-weight: 700;
+                color: #22211F;
+                line-height: 1.2;
+            }
+            @media (min-width: 768px) { .about-title { font-size: 3rem; } }
+            .about-text {
+                color: #22211F;
+                opacity: 0.8;
+                font-size: 1.125rem;
+                line-height: 1.7;
+            }
+            .feature-grid {
+                display: grid;
+                grid-template-columns: repeat(2, 1fr);
+                gap: 1.5rem;
+                padding-top: 1rem;
+            }
+            .feature-item {
+                display: flex;
+                gap: 0.75rem;
+                align-items: flex-start;
+            }
+            .feature-icon {
+                width: 3rem;
+                height: 3rem;
+                background: rgba(90, 107, 94, 0.1);
+                border-radius: 0.75rem;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                color: #5A6B5E;
+                flex-shrink: 0;
+            }
+            .feature-icon.sage {
+                background: rgba(90, 107, 94, 0.15);
+                color: #5A6B5E;
+            }
+            .discover-link {
+                display: inline-flex;
+                align-items: center;
+                gap: 0.5rem;
+                color: #5A6B5E;
+                font-weight: 600;
+                text-decoration: none;
+                transition: gap 0.2s;
+            }
+            .discover-link:hover {
+                gap: 0.75rem;
+            }
+            .about-images {
+                display: grid;
+                grid-template-columns: repeat(2, 1fr);
+                gap: 1rem;
+            }
+            .image-col {
+                display: flex;
+                flex-direction: column;
+                gap: 1rem;
+            }
+            .image-col.mt-8 {
+                margin-top: 2rem;
+            }
+            .about-img {
+                border-radius: 1rem;
+                overflow: hidden;
+                box-shadow: 0 10px 15px -3px rgba(0,0,0,0.1);
+            }
+            .about-img img {
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+            }
+            .img-h-64 { height: 16rem; }
+            .img-h-48 { height: 12rem; }
+            .exp-badge {
+                position: absolute;
+                bottom: -1.5rem;
+                right: -0.9rem;
+                background: #5A6B5E;
+                color: white;
+                padding: 1.1rem;
+                border-radius: 1rem;
+                box-shadow: 0 20px 25px -5px rgba(0,0,0,0.1);
+            }
+            .exp-number {
+                font-size: 2.25rem;
+                font-weight: 700;
+                font-family: 'Playfair Display', serif;
+            }
+
+            /* ----- WHY SOUL CARDS ----- */
+            .section-title {
+                font-family: 'Playfair Display', serif;
+                font-size: 2.5rem;
+                font-weight: 700;
+                color: #22211F;
+                margin-bottom: 1rem;
+            }
+            @media (min-width: 768px) { .section-title { font-size: 3rem; } }
+            .title-divider {
+                width: 6rem;
+                height: 0.25rem;
+                background: #5A6B5E;
+                margin: 0 auto 1.5rem;
+                border-radius: 9999px;
+            }
+            .section-sub {
+                color: #22211F;
+                opacity: 0.7;
+                font-size: 1.125rem;
+            }
+            .card-grid {
+                display: grid;
+                gap: 2rem;
+            }
+            @media (min-width: 768px) { .card-grid { grid-template-columns: repeat(2,1fr); } }
+            @media (min-width: 1024px) { .card-grid { grid-template-columns: repeat(3,1fr); } }
+            .program-card {
+                background: linear-gradient(135deg, rgba(255,255,255,0.8) 0%, rgba(245,245,244,0.8) 100%);
+                border: 1px solid rgba(90, 107, 94, 0.1);
+                border-radius: 1.5rem;
+                padding: 2rem;
+            }
+            .card-icon-large {
+                width: 4rem;
+                height: 4rem;
+                border-radius: 1rem;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                margin-bottom: 1.5rem;
+                transition: transform 0.3s;
+            }
+            .group:hover .card-icon-large {
+                transform: scale(1.1);
+            }
+            .card-title {
+                font-family: 'Playfair Display', serif;
+                font-size: 1.25rem;
+                font-weight: 700;
+                color: #22211F;
+                margin-bottom: 0.75rem;
+            }
+            .card-text {
+                color: #22211F;
+                opacity: 0.7;
+                line-height: 1.625;
+            }
+
+            /* ----- PROGRAM CARDS (IMAGE OVERLAY) ----- */
+            .program-grid {
+                display: grid;
+                gap: 1.5rem;
+            }
+            @media (min-width: 768px) { .program-grid { grid-template-columns: repeat(2,1fr); } }
+            @media (min-width: 1024px) { .program-grid { grid-template-columns: repeat(4,1fr); } }
+            .program-item {
+                position: relative;
+                border-radius: 1.5rem;
+                overflow: hidden;
+                box-shadow: 0 10px 15px -3px rgba(0,0,0,0.1);
+            }
+            .program-item img {
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+                transition: transform 0.7s;
+            }
+            .program-item:hover img {
+                transform: scale(1.1);
+            }
+            .program-overlay {
+                position: absolute;
+                inset: 0;
+                background: linear-gradient(to top, rgba(34, 33, 31, 0.9), rgba(34, 33, 31, 0.2), transparent);
+            }
+            .program-content {
+                position: absolute;
+                bottom: 0;
+                left: 0;
+                right: 0;
+                padding: 1.5rem;
+                color: white;
+            }
+            .program-age {
+                font-size: 0.875rem;
+                font-weight: 500;
+                margin-bottom: 0.25rem;
+                color: #e5e5e5;
+            }
+            .program-name {
+                font-family: 'Playfair Display', serif;
+                font-size: 1.5rem;
+                font-weight: 700;
+                margin-bottom: 0.5rem;
+            }
+            .program-desc {
+                font-size: 0.875rem;
+                color: rgba(255,255,255,0.8);
+                margin-bottom: 1rem;
+                opacity: 0;
+                transition: opacity 0.3s;
+            }
+            .program-item:hover .program-desc {
+                opacity: 1;
+            }
+            .program-link {
+                display: inline-flex;
+                align-items: center;
+                gap: 0.5rem;
+                font-size: 0.875rem;
+                font-weight: 600;
+                color: white;
+                text-decoration: none;
+                transition: gap 0.2s;
+            }
+            .program-link:hover {
+                gap: 0.75rem;
+            }
+
+            /* ----- MISSION/VISION ----- */
+            .mission-section {
+                background: #22211F;
+                color: white;
+                position: relative;
+                overflow: hidden;
+            }
+            .mission-grid {
+                display: grid;
+                gap: 4rem;
+                align-items: center;
+            }
+            @media (min-width: 1024px) { .mission-grid { grid-template-columns: repeat(2,1fr); } }
+            .mission-sub {
+                color: #5A6B5E;
+                font-weight: 600;
+                letter-spacing: 0.05em;
+                text-transform: uppercase;
+                font-size: 0.875rem;
+                margin-bottom: 0.5rem;
+            }
+            .mission-text {
+                font-size: 1.25rem;
+                font-weight: 300;
+                line-height: 1.625;
+                color: #e5e5e5;
+            }
+            @media (min-width: 768px) { .mission-text { font-size: 1.5rem; } }
+            .divider {
+                width: 100%;
+                height: 1px;
+                background: linear-gradient(to right, #5A6B5E, transparent);
+            }
+            .stats {
+                display: flex;
+                flex-wrap: wrap;
+                gap: 2rem;
+                padding-top: 1rem;
+            }
+            .stat-item {
+                text-align: center;
+            }
+            .stat-number {
+                font-size: 2.25rem;
+                font-weight: 700;
+                font-family: 'Playfair Display', serif;
+                color: #5A6B5E;
+                font-variant-numeric: tabular-nums;
+            }
+            .stat-label {
+                font-size: 0.875rem;
+                color: #e5e5e5;
+                margin-top: 0.25rem;
+            }
+            .testimonial-card {
+                background: rgba(34, 33, 31, 0.85);
+                backdrop-filter: blur(12px);
+                padding: 1.5rem;
+                border-radius: 1rem;
+            }
+
+            /* ----- FAQ ----- */
+            .faq-bg {
+                background: #e5e5e5;
+            }
+            .faq-item {
+                background: rgba(255,255,255,0.6);
+                border-radius: 1rem;
+                border: 1px solid rgba(34, 33, 31, 0.1);
+                overflow: hidden;
+                margin-bottom: 1rem;
+            }
+            .faq-question {
+                width: 100%;
+                padding: 1.25rem 1.5rem;
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                text-align: left;
+                background: none;
+                border: none;
+                font-weight: 600;
+                color: #22211F;
+                font-size: 1.125rem;
+                transition: background 0.2s;
+            }
+            .faq-question:hover {
+                background: rgba(90, 107, 94, 0.05);
+            }
+
+            /* ----- CONTACT ----- */
+            .contact-section {
+                background: rgba(255,255,255,0.5);
+                position: relative;
+                overflow: hidden;
+            }
+            .contact-grid {
+                display: grid;
+                gap: 4rem;
+            }
+            @media (min-width: 1024px) { .contact-grid { grid-template-columns: repeat(2,1fr); } }
+            .contact-info {
+                display: flex;
+                flex-direction: column;
+                gap: 2rem;
+            }
+            .contact-detail {
+                display: flex;
+                gap: 1rem;
+                align-items: flex-start;
+            }
+            .contact-icon {
+                width: 3rem;
+                height: 3rem;
+                background: rgba(90, 107, 94, 0.1);
+                border-radius: 0.75rem;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                color: #5A6B5E;
+                flex-shrink: 0;
+            }
+            .social-links {
+                display: flex;
+                gap: 1rem;
+                padding-top: 1rem;
+            }
+            .social-icon {
+                width: 3rem;
+                height: 3rem;
+                background: #22211F;
+                color: white;
+                border-radius: 9999px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                text-decoration: none;
+                transition: background 0.2s;
+            }
+            .social-icon:hover {
+                background: #5A6B5E;
+            }
+            .contact-form {
+                background: rgba(255,255,255,0.8);
+                border-radius: 1.5rem;
+                box-shadow: 0 20px 25px -5px rgba(0,0,0,0.1);
+                padding: 2.5rem;
+                border: 1px solid rgba(34, 33, 31, 0.1);
+            }
+            .form-title {
+                font-family: 'Playfair Display', serif;
+                font-size: 1.5rem;
+                font-weight: 700;
+                color: #22211F;
+                margin-bottom: 1.5rem;
+            }
+            .form-grid {
+                display: grid;
+                gap: 1.25rem;
+            }
+            @media (min-width: 768px) { .form-grid { grid-template-columns: repeat(2,1fr); } }
+            .form-input {
+                width: 100%;
+                padding: 0.75rem 1rem;
+                border-radius: 0.75rem;
+                border: 1px solid rgba(34, 33, 31, 0.2);
+                outline: none;
+                transition: all 0.2s;
+                background: rgba(255,255,255,0.5);
+            }
+            .form-input:focus {
+                border-color: #5A6B5E;
+                box-shadow: 0 0 0 2px rgba(90, 107, 94, 0.2);
+            }
+            .form-select {
+                width: 100%;
+                padding: 0.75rem 1rem;
+                border-radius: 0.75rem;
+                border: 1px solid rgba(34, 33, 31, 0.2);
+                background: rgba(255,255,255,0.5);
+                outline: none;
+            }
+            .form-textarea {
+                width: 100%;
+                padding: 0.75rem 1rem;
+                border-radius: 0.75rem;
+                border: 1px solid rgba(34, 33, 31, 0.2);
+                resize: none;
+                outline: none;
+                background: rgba(255,255,255,0.5);
+            }
+            .submit-btn {
+                width: 100%;
+                background: #5A6B5E;
+                color: white;
+                padding: 1rem;
+                border-radius: 0.75rem;
+                font-weight: 600;
+                border: none;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                gap: 0.5rem;
+                transition: all 0.2s;
+            }
+            .submit-btn:hover {
+                background: #4a5a4e;
+                transform: translateY(-2px);
+            }
+
+            /* ----- FOOTER ----- */
+            .footer {
+                background: #22211F;
+                color: white;
+                padding: 5rem 0 2rem;
+            }
+            .footer-grid {
+                display: grid;
+                gap: 3rem;
+                margin-bottom: 4rem;
+            }
+            @media (min-width: 768px) { .footer-grid { grid-template-columns: repeat(2,1fr); } }
+            @media (min-width: 1024px) { .footer-grid { grid-template-columns: repeat(4,1fr); } }
+            .footer-brand {
+                display: flex;
+                flex-direction: column;
+                gap: 1.5rem;
+            }
+            .footer-logo {
+                display: flex;
+                align-items: center;
+                gap: 0.75rem;
+            }
+            .footer-logo-icon {
+                width: 3rem;
+                height: 3rem;
+                background: #5A6B5E;
+                border-radius: 9999px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                font-family: 'Playfair Display', serif;
+                font-size: 1.5rem;
+            }
+            .footer-logo-text {
+                font-family: 'Playfair Display', serif;
+                font-size: 1.25rem;
+                font-weight: 700;
+            }
+            .footer-logo-sub {
+                font-size: 0.75rem;
+                color: #5A6B5E;
+                letter-spacing: 0.05em;
+            }
+            .footer-description {
+                color: #e5e5e5;
+                font-size: 0.875rem;
+                line-height: 1.625;
+            }
+            .footer-social {
+                display: flex;
+                gap: 0.75rem;
+            }
+            .footer-social-link {
+                width: 2.5rem;
+                height: 2.5rem;
+                background: rgba(255,255,255,0.1);
+                border-radius: 9999px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                color: white;
+                text-decoration: none;
+                transition: background 0.2s;
+            }
+            .footer-social-link:hover {
+                background: #5A6B5E;
+            }
+            .footer-title {
+                font-weight: 600;
+                font-size: 1.125rem;
+                margin-bottom: 1.5rem;
+            }
+            .footer-links {
+                list-style: none;
+                padding: 0;
+                margin: 0;
+                display: flex;
+                flex-direction: column;
+                gap: 0.75rem;
+            }
+            .footer-links a {
+                color: #e5e5e5;
+                text-decoration: none;
+                transition: color 0.2s;
+            }
+            .footer-links a:hover {
+                color: #5A6B5E;
+            }
+            .footer-contact {
+                list-style: none;
+                padding: 0;
+                margin: 0;
+                display: flex;
+                flex-direction: column;
+                gap: 1rem;
+                color: #e5e5e5;
+                font-size: 0.875rem;
+            }
+            .footer-contact li {
+                display: flex;
+                gap: 0.75rem;
+                align-items: flex-start;
+            }
+            .footer-contact i {
+                color: #5A6B5E;
+                margin-top: 0.25rem;
+            }
+            .footer-bottom {
+                border-top: 1px solid rgba(255,255,255,0.1);
+                padding-top: 2rem;
+                display: flex;
+                flex-direction: column;
+                justify-content: space-between;
+                align-items: center;
+                gap: 1rem;
+            }
+            @media (min-width: 768px) {
+                .footer-bottom { flex-direction: row; }
+            }
+            .copyright {
+                color: #e5e5e5;
+                font-size: 0.875rem;
+            }
+            .footer-policy {
+                display: flex;
+                gap: 1.5rem;
+                font-size: 0.875rem;
+            }
+            .footer-policy a {
+                color:#e5e5e5;
+                text-decoration: none;
+                transition: color 0.2s;
+            }
+            .footer-policy a:hover {
+                color: white;
+            }
+
+            /* ----- FLOATING BUTTONS ----- */
+            .whatsapp-float {
+                position: fixed;
+                bottom: 1.5rem;
+                right: 1.5rem;
+                width: 3.5rem;
+                height: 3.5rem;
+                background: #5A6B5E;
+                color: white;
+                border-radius: 9999px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                box-shadow: 0 25px 50px -12px rgba(0,0,0,0.25);
+                transition: transform 0.3s;
+                z-index: 40;
+                text-decoration: none;
+            }
+            .whatsapp-float:hover {
+                transform: scale(1.1);
+            }
+            .whatsapp-float i {
+                font-size: 1.5rem;
+                transition: transform 0.3s;
+            }
+            .whatsapp-float:hover i {
+                transform: rotate(12deg);
+            }
+            .whatsapp-tooltip {
+                position: absolute;
+                top: -2.5rem;
+                right: 0;
+                background: white;
+                color: #22211F;
+                padding: 0.25rem 0.75rem;
+                border-radius: 0.5rem;
+                font-size: 0.875rem;
+                font-weight: 500;
+                opacity: 0;
+                transition: opacity 0.3s;
+                box-shadow: 0 10px 15px -3px rgba(0,0,0,0.1);
+                white-space: nowrap;
+            }
+            .whatsapp-float:hover .whatsapp-tooltip {
+                opacity: 1;
+            }
+            .back-top {
+                position: fixed;
+                bottom: 1.5rem;
+                left: 1.5rem;
+                width: 3rem;
+                height: 3rem;
+                background: #5A6B5E;
+                color: white;
+                border-radius: 9999px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                box-shadow: 0 10px 15px -3px rgba(0,0,0,0.1);
+                transition: all 0.3s;
+                z-index: 40;
+                border: none;
+                opacity: 0;
+                pointer-events: none;
+            }
+            .back-top.visible {
+                opacity: 1;
+                pointer-events: auto;
+            }
+            .back-top:hover {
+                background: #4a5a4e;
+            }
+
+            /* ----- UTILITY ----- */
+            .relative { position: relative; }
+            .absolute { position: absolute; }
+            .fixed { position: fixed; }
+            .inset-0 { top:0; right:0; bottom:0; left:0; }
+            .z-10 { z-index: 10; }
+            .z-40 { z-index: 40; }
+            .z-50 { z-index: 50; }
+            .hidden { display: none; }
+            .block { display: block; }
+            .flex { display: flex; }
+            .grid { display: grid; }
+            .text-center { text-align: center; }
+            .mx-auto { margin-left: auto; margin-right: auto; }
+            .my-0 { margin-top:0; margin-bottom:0; }
+            .bg-white { background-color: rgba(255,255,255,0.6); }
+            
+            .logo {
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+    }
+
+    .logo-img {
+        height: 90px;
+        width: auto;
+        object-fit: contain;
+    }
+
+        </style>
+    </head>
+    <body>
+
+
+        <!-- NAVIGATION -->
+        <nav class="navbar" id="navbar">
+            <div class="glass">
+                <div class="nav-container">
+                    <div class="nav-content">
+                        <div class="logo" onclick="window.scrollTo({top:0,behavior:'smooth'})">
+                            <!-- Logo Image -->
+                    <div class="logo" onclick="window.scrollTo({top:0,behavior:'smooth'})">
+                        <img src="img/qt=q_95.jpg" alt="Soul Preschool Academy Logo" class="logo-img">
+                    </div>
+                        </div>
+
+                        <div class="desktop-menu">
+                            <a href="#home" class="nav-link">Home</a>
+                            <a href="#about" class="nav-link">About</a>
+                            <a href="#programs" class="nav-link">Programs</a>
+                            <a href="#why-soul" class="nav-link">Why Soul</a>
+                            <a href="#contact" class="nav-link">Contact</a>
+                        </div>
+
+                        <div class="desktop-cta">
+                            <a href="tel:+919912373335" class="phone-link">
+                                
+                            </a>
+                            <a href="#contact" class="enquire-btn btn-shine">Enquire Now</a>
+                        </div>
+
+                        <button class="mobile-menu-btn" id="mobile-menu-btn">
+                            <i class="fas fa-bars"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </nav>
+
+        <!-- MOBILE MENU -->
+        <div class="mobile-menu" id="mobile-menu">
+            <div class="mobile-menu-content">
+                <div class="mobile-menu-header">
+                    <div class="mobile-menu-brand">Soul</div>
+                    <button class="close-menu" id="close-menu">
+                        <i class="fas fa-times"></i>
+                    </button>
+                </div>
+                <div class="mobile-links">
+                    <a href="#home" class="mobile-link">Home</a>
+                    <a href="#about" class="mobile-link">About</a>
+                    <a href="#programs" class="mobile-link">Programs</a>
+                    <a href="#why-soul" class="mobile-link">Why Soul</a>
+                    <a href="#contact" class="mobile-link">Contact</a>
+                </div>
+                <div class="mobile-footer">
+                    <a href="tel:+919912373335" class="mobile-phone">
+                        <i class="fas fa-phone mr-2"></i>+91 99123 73335
+                    </a>
+                </div>
+            </div>
+        </div>
+
+  <!-- HERO -->
+<!-- MOBILE OPTIMIZED VIDEO HERO SECTION - LAG FREE -->
+<style>
+    .video-hero-section {
+        position: relative;
+        height: 500vh;
+        background: #000;
+        font-family: 'Inter', sans-serif;
+        -webkit-overflow-scrolling: touch;
+    }
+
+    .video-hero-sticky {
+        position: sticky;
+        top: 0;
+        height: 100vh;
+        width: 100%;
+        overflow: hidden;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .video-hero-canvas {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        will-change: transform;
+        image-rendering: crisp-edges;
+        -webkit-transform: translateZ(0);
+        transform: translateZ(0);
+    }
+
+    .video-hero-overlay {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(
+            to bottom,
+            rgba(26, 20, 16, 0.3) 0%,
+            rgba(26, 20, 16, 0.5) 50%,
+            rgba(26, 20, 16, 0.85) 100%
+        );
+        z-index: 2;
+        pointer-events: none;
+    }
+
+    .video-hero-content {
+        position: relative;
+        z-index: 3;
+        text-align: center;
+        max-width: 900px;
+        padding: 0 20px;
+        opacity: 1;
+        transform: translateY(0);
+        transition: opacity 0.5s ease, transform 0.5s ease;
+        width: 100%;
+    }
+
+    .video-hero-content h1 {
+        font-size: clamp(2rem, 6vw, 5rem);
+        font-weight: 700;
+        line-height: 1.1;
+        margin-bottom: 1.5rem;
+        font-family: 'Playfair Display', serif;
+        background: linear-gradient(135deg, #f5f0eb 0%, #d4a574 100%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        letter-spacing: -0.02em;
+        padding: 0 10px;
+    }
+
+    .video-hero-content p {
+        font-size: clamp(0.95rem, 2vw, 1.25rem);
+        color: rgba(245, 240, 235, 0.9);
+        margin-bottom: 2rem;
+        line-height: 1.6;
+        font-weight: 400;
+        max-width: 600px;
+        margin-left: auto;
+        margin-right: auto;
+        padding: 0 15px;
+    }
+
+    .video-hero-cta {
+        display: inline-block;
+        padding: 0.875rem 2rem;
+        background: linear-gradient(135deg, #d4a574 0%, #c4956a 100%);
+        color: #1a1410;
+        text-decoration: none;
+        border-radius: 9999px;
+        font-weight: 600;
+        font-size: clamp(0.9rem, 1.5vw, 1rem);
+        transition: all 0.3s ease;
+        border: none;
+        cursor: pointer;
+        -webkit-tap-highlight-color: transparent;
+        touch-action: manipulation;
+    }
+
+    .video-hero-cta:hover,
+    .video-hero-cta:active {
+        transform: translateY(-2px);
+        box-shadow: 0 10px 30px rgba(212, 165, 116, 0.4);
+    }
+
+    /* Scroll Indicator */
+    .video-hero-scroll {
+        position: absolute;
+        bottom: 30px;
+        left: 50%;
+        transform: translateX(-50%);
+        z-index: 4;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 8px;
+        opacity: 1;
+        transition: opacity 0.5s ease;
+        pointer-events: none;
+    }
+
+    .video-hero-scroll span {
+        font-size: 0.65rem;
+        text-transform: uppercase;
+        letter-spacing: 2px;
+        color: rgba(245, 240, 235, 0.6);
+        font-weight: 500;
+    }
+
+    .video-hero-mouse {
+        width: 22px;
+        height: 34px;
+        border: 2px solid rgba(245, 240, 235, 0.4);
+        border-radius: 11px;
+        position: relative;
+    }
+
+    .video-hero-wheel {
+        width: 3px;
+        height: 5px;
+        background: rgba(212, 165, 116, 0.9);
+        border-radius: 2px;
+        position: absolute;
+        top: 6px;
+        left: 50%;
+        transform: translateX(-50%);
+        animation: videoHeroScroll 2s infinite;
+    }
+
+    @keyframes videoHeroScroll {
+        0% { opacity: 1; transform: translateX(-50%) translateY(0); }
+        100% { opacity: 0; transform: translateX(-50%) translateY(8px); }
+    }
+
+    /* Progress Bar */
+    .video-hero-progress {
+        position: fixed;
+        top: 0;
+        left: 0;
+        height: 2px;
+        background: linear-gradient(90deg, #d4a574, #c4956a);
+        z-index: 10000;
+        width: 0%;
+        will-change: width;
+    }
+
+    /* Mobile Specific Optimizations */
+    @media (max-width: 768px) {
+        .video-hero-section {
+            height: 350vh;
+        }
+        
+        .video-hero-content {
+            padding: 0 15px;
+        }
+        
+        .video-hero-content h1 {
+            font-size: clamp(1.75rem, 7vw, 2.5rem);
+            line-height: 1.15;
+        }
+        
+        .video-hero-content p {
+            font-size: 0.95rem;
+            line-height: 1.5;
+            margin-bottom: 1.5rem;
+        }
+        
+        .video-hero-cta {
+            padding: 0.75rem 1.75rem;
+            font-size: 0.9rem;
+        }
+        
+        .video-hero-scroll {
+            bottom: 20px;
+        }
+        
+        .video-hero-mouse {
+            width: 20px;
+            height: 30px;
+        }
+    }
+
+    /* Small mobile devices */
+    @media (max-width: 380px) {
+        .video-hero-section {
+            height: 300vh;
+        }
+        
+        .video-hero-content h1 {
+            font-size: 1.6rem;
+        }
+        
+        .video-hero-content p {
+            font-size: 0.9rem;
+        }
+    }
+
+    /* Reduced motion preference */
+    @media (prefers-reduced-motion: reduce) {
+        .video-hero-wheel {
+            animation: none;
+        }
+        .video-hero-content {
+            transition: none;
+        }
+    }
+</style>
+
+<!-- Progress Bar -->
+<div class="video-hero-progress" id="videoHeroProgress"></div>
+
+<!-- Hero Section -->
+<section class="video-hero-section" id="videoHeroSection">
+    <div class="video-hero-sticky">
+        <canvas class="video-hero-canvas" id="videoHeroCanvas"></canvas>
+        <div class="video-hero-overlay"></div>
+        
+        <div class="video-hero-content" id="videoHeroContent">
+            <h1>Where Little Minds Grow & Shine</h1>
+            <p>At Little Stars Preschool, we create a safe, joyful, and nurturing environment where children explore, learn, and build a strong foundation for a bright future.</p>
+            <button class="video-hero-cta" onclick="document.getElementById('programs')?.scrollIntoView({behavior: 'smooth'})">
+                Discover Our Programs
+            </button>
+        </div>
+    </div>
+</section>
+
+<script>
+(function() {
+    'use strict';
+    
+    // ==================== MOBILE DETECTION ====================
+    const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) || window.innerWidth < 768;
+    
+    // ==================== OPTIMIZED CONFIGURATION ====================
+    const frameConfig = {
+        totalFrames: 192,
+        imagePath: (index) => {
+            const paddedIndex = String(index).padStart(3, '0');
+            return `img/ezgif-frame-${paddedIndex}.jpg`;
+        },
+        preloadBatchSize: 20, // Pehle 20 frames load karo
+        preloadAhead: 30, // Aage ke 30 frames preload karo
+        lerpFactor: 0.25,
+        fpsLimit: 30,
+    };
+
+    // ==================== SETUP ====================
+    const canvas = document.getElementById('videoHeroCanvas');
+    const ctx = canvas.getContext('2d', { alpha: false, antialias: true });
+    const section = document.getElementById('videoHeroSection');
+    const content = document.getElementById('videoHeroContent');
+    const progress = document.getElementById('videoHeroProgress');
+
+    let images = new Array(frameConfig.totalFrames + 1);
+    let currentFrame = 1;
+    let targetFrame = 1;
+    let isLoaded = false;
+    let animationId = null;
+    let loadedFrames = new Set(); // Loaded frames ka record
+
+    // Canvas resize with HIGH QUALITY
+    function resizeCanvas() {
+        const dpr = Math.min(window.devicePixelRatio, 2);
+        const displayWidth = window.innerWidth;
+        const displayHeight = window.innerHeight;
+        
+        canvas.width = displayWidth * dpr;
+        canvas.height = displayHeight * dpr;
+        canvas.style.width = displayWidth + 'px';
+        canvas.style.height = displayHeight + 'px';
+        
+        ctx.setTransform(1, 0, 0, 1, 0, 0);
+        ctx.scale(dpr, dpr);
+        
+        ctx.imageSmoothingEnabled = true;
+        ctx.imageSmoothingQuality = 'high';
+        
+        if (isLoaded) {
+            renderFrame(Math.round(currentFrame));
+        }
+    }
+    
+    resizeCanvas();
+    
+    window.addEventListener('resize', () => {
+        clearTimeout(resizeTimeout);
+        resizeTimeout = setTimeout(resizeCanvas, 100);
+    }, { passive: true });
+
+    // ==================== INTELLIGENT PRELOADING ====================
+    function loadImage(index) {
+        return new Promise((resolve) => {
+            if (index < 1 || index > frameConfig.totalFrames || images[index]) {
+                resolve();
+                return;
+            }
+            
+            const img = new Image();
+            img.crossOrigin = 'anonymous';
+            
+            img.onload = () => {
+                images[index] = img;
+                loadedFrames.add(index);
+                
+                // Pehla frame load hote hi dikhao
+                if (index === 1 && !isLoaded) {
+                    isLoaded = true;
+                    renderFrame(1);
+                    startRenderLoop();
+                    handleScroll();
+                }
+                
+                resolve(img);
+            };
+            
+            img.onerror = () => {
+                console.warn(`Failed to load frame ${index}`);
+                images[index] = null;
+                resolve();
+            };
+            
+            img.src = frameConfig.imagePath(index);
+        });
+    }
+
+    // Priority loading - pehle important frames load karo
+    async function preloadImages() {
+        // PHASE 1: Pehle 20 frames load karo (immediate)
+        const initialPromises = [];
+        for (let i = 1; i <= frameConfig.preloadBatchSize; i++) {
+            initialPromises.push(loadImage(i));
+        }
+        await Promise.all(initialPromises);
+
+        // PHASE 2: Remaining frames in background
+        for (let i = frameConfig.preloadBatchSize + 1; i <= frameConfig.totalFrames; i++) {
+            loadImage(i); // Background mein load
+        }
+    }
+
+    // Smart preload - jo frame scroll mein aane wala hai use pehle load karo
+    function preloadNearbyFrames(currentTarget) {
+        const target = Math.round(currentTarget);
+        const start = Math.max(1, target - frameConfig.preloadAhead);
+        const end = Math.min(frameConfig.totalFrames, target + frameConfig.preloadAhead);
+        
+        // Priority queue - paas wale frames pehle load karo
+        for (let i = target; i <= end; i++) {
+            if (!images[i] && !loadedFrames.has(i)) {
+                loadImage(i);
+            }
+        }
+        for (let i = target - 1; i >= start; i--) {
+            if (!images[i] && !loadedFrames.has(i)) {
+                loadImage(i);
+            }
+        }
+    }
+
+    // ==================== RENDER FUNCTION ====================
+    function renderFrame(frameIndex) {
+        const safeIndex = Math.max(1, Math.min(frameConfig.totalFrames, Math.round(frameIndex)));
+        let displayFrame = images[safeIndex];
+        
+        // Nearest loaded frame with small search radius (lag avoid karne ke liye)
+        if (!displayFrame?.complete) {
+            for (let offset = 1; offset <= 5; offset++) { // Sirf 5 frames tak search
+                if (images[safeIndex + offset]?.complete) {
+                    displayFrame = images[safeIndex + offset];
+                    break;
+                }
+                if (images[safeIndex - offset]?.complete) {
+                    displayFrame = images[safeIndex - offset];
+                    break;
+                }
+            }
+        }
+        
+        if (!displayFrame?.complete) return;
+        
+        ctx.clearRect(0, 0, canvas.clientWidth, canvas.clientHeight);
+        
+        const canvasRatio = canvas.clientWidth / canvas.clientHeight;
+        const imgRatio = displayFrame.width / displayFrame.height;
+        
+        let drawWidth, drawHeight, drawX, drawY;
+        
+        if (canvasRatio > imgRatio) {
+            drawWidth = canvas.clientWidth;
+            drawHeight = canvas.clientWidth / imgRatio;
+            drawX = 0;
+            drawY = (canvas.clientHeight - drawHeight) / 2;
+        } else {
+            drawHeight = canvas.clientHeight;
+            drawWidth = canvas.clientHeight * imgRatio;
+            drawX = (canvas.clientWidth - drawWidth) / 2;
+            drawY = 0;
+        }
+        
+        ctx.drawImage(displayFrame, drawX, drawY, drawWidth, drawHeight);
+    }
+
+    // ==================== SMOOTH RENDER LOOP ====================
+    function startRenderLoop() {
+        if (animationId) return;
+        
+        let lastTime = 0;
+        const frameTime = 1000 / frameConfig.fpsLimit;
+        
+        function render(timestamp) {
+            if (!lastTime) lastTime = timestamp;
+            const elapsed = timestamp - lastTime;
+            
+            if (elapsed > frameTime) {
+                // Smooth interpolation with adaptive lerp
+                const diff = targetFrame - currentFrame;
+                const distance = Math.abs(targetFrame - currentFrame);
+                
+                // Adaptive lerp - door ho to tez, paas ho to smooth
+                let lerp = distance > 30 ? 0.4 : frameConfig.lerpFactor;
+                
+                currentFrame += diff * lerp;
+                currentFrame = Math.max(1, Math.min(frameConfig.totalFrames, currentFrame));
+                
+                renderFrame(currentFrame);
+                
+                // Nearby frames preload karo
+                preloadNearbyFrames(targetFrame);
+                
+                lastTime = timestamp - (elapsed % frameTime);
+            }
+            
+            animationId = requestAnimationFrame(render);
+        }
+        
+        animationId = requestAnimationFrame(render);
+    }
+
+    // ==================== SMOOTH SCROLL HANDLER ====================
+    let ticking = false;
+    let lastProgress = 0;
+    
+    function handleScroll() {
+        if (!ticking) {
+            requestAnimationFrame(() => {
+                updateScrollState();
+                ticking = false;
+            });
+            ticking = true;
+        }
+    }
+    
+    function updateScrollState() {
+        const rect = section.getBoundingClientRect();
+        const windowHeight = window.innerHeight;
+        
+        let newProgress = -rect.top / (rect.height - windowHeight);
+        newProgress = Math.max(0, Math.min(1, newProgress));
+        
+        // Smooth progress change (lag avoid)
+        const progressDiff = Math.abs(newProgress - lastProgress);
+        if (progressDiff > 0.01) {
+            targetFrame = 1 + (newProgress * (frameConfig.totalFrames - 1));
+            
+            if (progress) {
+                progress.style.width = `${newProgress * 100}%`;
+            }
+            
+            if (content) {
+                const contentOpacity = Math.max(0, 1 - (newProgress * 3));
+                content.style.opacity = contentOpacity;
+                content.style.transform = `translateY(${newProgress * 30}px)`;
+            }
+            
+            lastProgress = newProgress;
+        }
+    }
+
+    // Scroll listener with throttle
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    handleScroll();
+    
+    // Start loading immediately
+    preloadImages();
+
+    // Visibility handling
+    document.addEventListener('visibilitychange', () => {
+        if (document.hidden) {
+            if (animationId) {
+                cancelAnimationFrame(animationId);
+                animationId = null;
+            }
+        } else {
+            if (isLoaded && !animationId) {
+                startRenderLoop();
+            }
+        }
+    });
+
+    // Preload first frame immediately
+    loadImage(1);
+})();
+</script>      <!-- ABOUT -->
+        <section id="about" class="section bg-white">
+            <div class="container">
+                <div class="about-grid">
+                    <div class="space-y-6 reveal-on-scroll">
+                        <span class="welcome-badge">Welcome to Soul</span>
+                        <h2 class="about-title">
+                            A Journey to Excellence Begins with <span class="text-gradient">Emotional Safety</span>
+                        </h2>
+                        <div class="about-text space-y-4">
+                            <p>Soul Preschool Academy is a meticulously crafted early education environment tailored for the crucial formative years of life. We emphasise children's development rather than the speed of their performance.</p>
+                            <p>In serene settings, with proficient educators and a development-centric methodology, we help children build robust emotional, social and cognitive foundations at a rhythm that is secure and instinctive for them.</p>
+                        </div>
+                        <div class="feature-grid">
+                            <div class="feature-item">
+                                <div class="feature-icon">
+                                    <i class="fas fa-heart text-xl"></i>
+                                </div>
+                                <div>
+                                    <div class="font-semibold">Emotional First</div>
+                                    <div class="text-sm text-gray-500">Safety before academics</div>
+                                </div>
+                            </div>
+                            <div class="feature-item">
+                                <div class="feature-icon sage">
+                                    <i class="fas fa-leaf text-xl"></i>
+                                </div>
+                                <div>
+                                    <div class="font-semibold">Nature Inspired</div>
+                                    <div class="text-sm text-gray-500">Calm environments</div>
+                                </div>
+                            </div>
+                        </div>
+                        <a href="#why-soul" class="discover-link">
+                            Discover Our Philosophy
+                            <i class="fas fa-arrow-right"></i>
+                        </a>
+                    </div>
+                    <div class="relative reveal-on-scroll">
+                        <div class="about-images">
+                            <div class="image-col mt-8">
+                                <div class="about-img img-zoom">
+                                    <img src="https://images.unsplash.com/photo-1587654780291-39c9404d746b?w=400&h=500&fit=crop" class="img-h-64">
+                                </div>
+                                <div class="about-img img-zoom">
+                                    <img src="https://images.unsplash.com/photo-1544779493-aa344a6ddaac?w=400&h=300&fit=crop" class="img-h-48">
+                                </div>
+                            </div>
+                            <div class="image-col">
+                                <div class="about-img img-zoom">
+                                    <img src="https://images.unsplash.com/photo-1516627145497-ae6968895b74?w=400&h=300&fit=crop" class="img-h-48">
+                                </div>
+                                <div class="about-img img-zoom">
+                                    <img src="https://images.unsplash.com/photo-1566004100631-35d015d6a491?w=400&h=500&fit=crop" class="img-h-64">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="exp-badge">
+                            <div class="exp-number">8+</div>
+                            <div class="text-sm opacity-90">Years of<br>Excellence</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- WHY SOUL --><style>
+    .why-soul-section {
+    background: #e5e5e5;
+    padding: 80px 20px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: #22211F;
+    }
+
+    .why-soul-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    }
+
+    .why-soul-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 60px;
+    gap: 40px;
+    }
+
+    .why-soul-title {
+    font-size: 48px;
+    font-weight: 300;
+    line-height: 1.1;
+    margin: 0;
+    color: #22211F;
+    }
+
+    .why-soul-title span {
+    display: block;
+    font-weight: 600;
+    }
+
+    .why-soul-desc {
+    max-width: 400px;
+    font-size: 14px;
+    line-height: 1.6;
+    color: #22211F;
+    opacity: 0.8;
+    margin-top: 10px;
+    }
+
+    .why-soul-content {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 500px;
+    }
+
+    .why-soul-image-container {
+    position: relative;
+    width: 350px;
+    height: 450px;
+    z-index: 2;
+    }
+
+    .why-soul-curved-bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+
+    border-radius: 150px 150px 150px 150px;
+    overflow: hidden;
+    }
+
+    .why-soul-image {
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80%;
+    height: auto;
+    object-fit: cover;
+    z-index: 3;
+    }
+
+    .why-soul-features {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    }
+
+    .feature-box {
+    position: absolute;
+    max-width: 250px;
+    }
+
+    .feature-box h3 {
+    font-size: 20px;
+    font-weight: 600;
+    margin-bottom: 8px;
+    color: #22211F;
+    }
+
+    .feature-box .subtitle {
+    font-size: 13px;
+    font-weight: 500;
+    color: #22211F;
+    margin-bottom: 10px;
+    display: block;
+    }
+
+    .feature-box p {
+    font-size: 13px;
+    line-height: 1.5;
+    color: #22211F;
+    opacity: 0.8;
+    margin: 0;
+    }
+
+    .feature-top-left {
+    top: 10%;
+    left: 5%;
+    text-align: left;
+    }
+
+    .feature-top-right {
+    top: 10%;
+    right: 5%;
+    text-align: left;
+    }
+
+    .feature-bottom-left {
+    bottom: 15%;
+    left: 5%;
+    text-align: left;
+    }
+
+    .feature-bottom-right {
+    bottom: 15%;
+    right: 5%;
+    text-align: left;
+    }
+
+    .why-soul-arc {
+    position: absolute;
+    top: -30px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 600px;
+    height: 100px;
+    border: 1px dashed #22211F;
+    border-bottom: none;
+    border-radius: 300px 300px 0 0;
+    opacity: 0.3;
+    z-index: 1;
+    }
+
+    @media (max-width: 968px) {
+    .why-soul-header {
+        flex-direction: column;
+    }
+    
+    .why-soul-content {
+        flex-direction: column;
+        min-height: auto;
+        gap: 30px;
+    }
+    
+    .why-soul-features {
+        position: relative;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 30px;
+    }
+    
+    .feature-box {
+        position: relative !important;
+        max-width: 100%;
+        text-align: center !important;
+        top: auto !important;
+        left: auto !important;
+        right: auto !important;
+        bottom: auto !important;
+    }
+    
+    .why-soul-arc {
+        display: none;
+    }
+    }
+
+    @media (max-width: 600px) {
+    .why-soul-features {
+        grid-template-columns: 1fr;
+    }
+    
+    .why-soul-title {
+        font-size: 36px;
+    }
+    }
+    </style>
+
+    <section class="why-soul-section">
+    <div class="why-soul-container">
+        <div class="why-soul-header">
+        <h2 class="why-soul-title">Why <span>Soul?</span></h2>
+        <p class="why-soul-desc">Every aspect of our preschool is designed with intention, care, and deep respect for childhood.</p>
+        </div>
+        
+        <div class="why-soul-content">
+        <div class="why-soul-arc"></div>
+        
+        <div class="why-soul-image-container">
+            <div class="why-soul-curved-bg">
+            <img src="https://images.unsplash.com/photo-1503454537195-1dcabb73ffb9?w=400&h=600&fit=crop" alt="Child at Soul Preschool" class="why-soul-image">
+            </div>
+        </div>
+        
+        <div class="why-soul-features">
+            <div class="feature-box feature-top-left">
+            <h3>Development-First Approach</h3>
+            <span class="subtitle">Emotional preparedness first</span>
+            <p>Emotional preparedness and independence are nurtured before academic expectations. We follow each child's natural rhythm.</p>
+            </div>
+            
+            <div class="feature-box feature-top-right">
+            <h3>Calm, Child-Centric Spaces</h3>
+            <span class="subtitle">Thoughtfully designed environments</span>
+            <p>Thoughtfully designed environments support how children explore, regulate, and learn naturally without overstimulation.</p>
+            </div>
+            
+            <div class="feature-box feature-bottom-left">
+            <h3>Curated Blended Curriculum</h3>
+            <span class="subtitle">Inspired by best practices</span>
+            <p>Inspired by Montessori, Reggio Emilia, Finnish education, and IB-PYP—integrated with care, never overloaded.</p>
+            </div>
+            
+            <div class="feature-box feature-bottom-right">
+            <h3>Respect for Individual Pace</h3>
+            <span class="subtitle">No rushing or comparisons</span>
+            <p>No rushing or comparisons. Every child is supported at their own rhythm with personalized attention.</p>
+            </div>
+        </div>
+        </div>
+    </div>
+    </section>
+        <!-- PROGRAMS -->
+        <section id="programs" class="section bg-white">
+            <div class="container relative z-10">
+                <div class="text-center max-w-3xl mx-auto mb-16 reveal-on-scroll">
+                    <span class="text-sm font-semibold tracking-wider uppercase" style="color: #5A6B5E;">Our Programs</span>
+                    <h2 class="section-title mt-2">Nurturing Each Stage with Care</h2>
+                    <p class="section-sub">Thoughtfully designed programs for ages 2-6, respecting developmental milestones.</p>
+                </div>
+                
+    <!-- PRODUCT CAROUSEL SECTION - MOBILE FIXED -->
+    <div class="product-carousel-section-unique" id="productCarouselSection">
+    <section class="product-carousel-unique">
+        <div class="carousel-header-unique">
+
+        </div>
+        
+        <div class="carousel-wrapper-unique">
+        <!-- Left Button - Desktop Only -->
+        <button class="nav-btn-unique prev-btn-unique" id="prevBtnUnique">
+            <i class="fas fa-chevron-left"></i>
+        </button>
+        
+        <!-- Carousel Container -->
+        <div class="carousel-inner-unique">
+            <div class="slides-container-unique" id="slidesContainerUnique">
+            <!-- Slide 1 -->
+                <div class="product-card-unique">
+        <div class="img-box-unique">
+        <img src="https://images.unsplash.com/photo-1588072432836-e10032774350?auto=format&fit=crop&w=800&q=80" alt="Playgroup">
+        <div class="image-text-overlay-unique">
+            <h3>Playgroup (2+ Years)</h3>
+            <p>Nurturing Each Stage with Care</p>
+            <div class="price-unique">Fun • Exploration • Social Skills</div>
+        </div>
+        </div>
+    </div>
+
+            <!-- Slide 2 -->
+            <div class="product-card-unique">
+        <div class="img-box-unique">
+        <img src="https://images.unsplash.com/photo-1600880292203-757bb62b4baf?auto=format&fit=crop&w=800&q=80" alt="Nursery Class">
+        <div class="image-text-overlay-unique">
+            <h3>Nursery (3+ Years)</h3>
+            <p>Thoughtfully designed programs for ages 2-6</p>
+            <div class="price-unique">Creativity • Communication • Confidence</div>
+        </div>
+        </div>
+    </div>
+            <!-- Slide 3 -->
+            <div class="product-card-unique">
+        <div class="img-box-unique">
+        <img src="https://images.unsplash.com/photo-1596464716127-f2a82984de30?auto=format&fit=crop&w=800&q=80" alt="Junior KG">
+        <div class="image-text-overlay-unique">
+            <h3>Junior KG (4+ Years)</h3>
+            <p>Respecting developmental milestones</p>
+            <div class="price-unique">Learning • Growth • Independence</div>
+        </div>
+        </div>
+    </div>
+    <div class="product-card-unique">
+        <div class="img-box-unique">
+        <img src="https://images.unsplash.com/photo-1584697964154-2f0fef8a4d1d?auto=format&fit=crop&w=800&q=80" alt="Senior KG">
+        <div class="image-text-overlay-unique">
+            <h3>Senior KG (5+ Years)</h3>
+            <p>Building strong academic foundations</p>
+            <div class="price-unique">Reading • Writing • Numeracy</div>
+        </div>
+        </div>
+    </div>
+
+    <!-- Slide 5 - Activity Learning -->
+    <div class="product-card-unique">
+        <div class="img-box-unique">
+        <img src="https://images.unsplash.com/photo-1509062522246-3755977927d7?auto=format&fit=crop&w=800&q=80" alt="Activity Based Learning">
+        <div class="image-text-overlay-unique">
+            <h3>Activity-Based Learning</h3>
+            <p>Hands-on experiences for better understanding</p>
+            <div class="price-unique">Art • Music • Dance • Play</div>
+        </div>
+        </div>
+    </div>
+
+    <!-- Slide 6 - Safe Environment -->
+    <div class="product-card-unique">
+        <div class="img-box-unique">
+        <img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&w=800&q=80" alt="Safe Environment">
+        <div class="image-text-overlay-unique">
+            <h3>Safe & Caring Environment</h3>
+            <p>Where children feel secure and happy</p>
+            <div class="price-unique">Security • Hygiene • Care</div>
+        </div>
+        </div>
+    </div>
+            <!-- Slide 7 -->
+            
+            </div>
+        </div>
+        
+        <!-- Right Button - Desktop Only -->
+        <button class="nav-btn-unique next-btn-unique" id="nextBtnUnique">
+            <i class="fas fa-chevron-right"></i>
+        </button>
+        </div>
+    </section>
+    </div>
+
+    <style>
+        @media (max-width: 768px) {
+    .slides-container-unique::before,
+    .slides-container-unique::after {
+        display: none !important;
+    }
+}
+
+    /* ==================== PRODUCT CAROUSEL UNIQUE STYLES ==================== */
+    .product-carousel-section-unique {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    padding: 50px 20px;
+    max-width: 1400px;
+    margin: 0 auto;
+    background: #f8f9fa;
+    overflow: hidden;
+    position: relative;
+    }
+
+    .product-carousel-unique {
+    width: 100%;
+    }
+
+    .carousel-header-unique {
+    text-align: center;
+    margin-bottom: 40px;
+    }
+
+    .carousel-header-unique h2 {
+    font-size: 36px;
+    color: #222;
+    margin-bottom: 10px;
+    font-weight: 600;
+    }
+
+    /* FIXED: Carousel wrapper with proper positioning */
+    .carousel-wrapper-unique {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    overflow: visible;
+    width: 100%;
+    }
+
+    .carousel-inner-unique {
+    overflow: hidden;
+    width: 100%;
+    border-radius: 16px;
+    position: relative;
+    flex: 1;
+    }
+
+    /* Desktop - Slides container */
+    .slides-container-unique {
+    display: flex;
+    transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+    gap: 20px;
+    width: auto;
+    min-width: 100%;
+    }
+
+    /* FIXED: Mobile view - Scrollable container */
+    @media (max-width: 768px) {
+    .slides-container-unique {
+        display: flex;
+        overflow-x: auto;
+        scroll-snap-type: x mandatory;
+        -webkit-overflow-scrolling: touch;
+        scroll-behavior: smooth;
+        gap: 15px;
+        padding: 0 10px 20px 10px;
+        margin: 0 -10px;
+        width: calc(100% + 20px);
+        transition: none !important; /* Remove transition for mobile */
+        transform: none !important; /* Remove transform for mobile */
+    }
+    
+    .slides-container-unique::-webkit-scrollbar {
+        display: none;
+    }
+    
+    /* Hide scrollbar for Firefox */
+    .slides-container-unique {
+        scrollbar-width: none;
+    }
+    }
+
+    .product-card-unique {
+    flex: 0 0 calc(33.333% - 13.33px);
+    min-width: calc(33.333% - 13.33px);
+    background: white;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+    transition: all 0.3s ease;
+    min-height: 400px;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    }
+
+    /* FIXED: Mobile view - Single card */
+    @media (max-width: 768px) {
+    .product-card-unique {
+        flex: 0 0 calc(100% - 20px) !important;
+        min-width: calc(100% - 20px) !important;
+        min-height: 350px;
+        scroll-snap-align: center;
+        margin: 0 5px;
+        box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    }
+    
+    /* First and last card margin adjustment */
+    .product-card-unique:first-child {
+        margin-left: 10px;
+    }
+    
+    .product-card-unique:last-child {
+        margin-right: 10px;
+    }
+    }
+
+    .product-card-unique:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 30px rgba(0,0,0,0.15);
+    }
+
+    .img-box-unique {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    position: relative;
+    flex-grow: 1;
+    }
+
+    .img-box-unique img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+    }
+
+    .product-card-unique:hover .img-box-unique img {
+    transform: scale(1.08);
+    }
+
+    .image-text-overlay-unique {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    padding: 25px;
+    color: white;
+    text-align: left;
+    background: linear-gradient(to bottom, rgba(0,0,0,0.6) 0%, rgba(0,0,0,0.3) 50%, rgba(0,0,0,0) 100%);
+    border-radius: 12px 12px 0 0;
+    }
+
+    .image-text-overlay-unique h3 {
+    font-size: 28px;
+    font-weight: 700;
+    margin: 0 0 8px 0;
+    text-shadow: 1px 1px 3px rgba(0,0,0,0.5);
+    }
+
+    .image-text-overlay-unique p {
+    font-size: 16px;
+    margin: 0 0 12px 0;
+    opacity: 0.9;
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
+    }
+
+    .price-unique {
+    font-size: 18px;
+    font-weight: 600;
+    margin-top: 15px;
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
+    }
+
+    .price-unique sup {
+    font-size: 12px;
+    vertical-align: super;
+    }
+
+    /* Mobile adjustments for text */
+    @media (max-width: 768px) {
+    .image-text-overlay-unique {
+        padding: 20px;
+    }
+    
+    .image-text-overlay-unique h3 {
+        font-size: 1.4rem;
+    }
+    
+    .image-text-overlay-unique p {
+        font-size: 0.9rem;
+    }
+    
+    .price-unique {
+        font-size: 1rem;
+    }
+    }
+
+    /* FIXED: Navigation buttons positioning */
+    .nav-btn-unique {
+    background: black;
+    border: none;
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+    z-index: 10;
+    transition: all 0.3s ease;
+    font-size: 22px;
+    color: white;
+    flex-shrink: 0;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    }
+
+    .nav-btn-unique:hover {
+    background: #333;
+    transform: translateY(-50%) scale(1.1);
+    }
+
+    .nav-btn-unique:active {
+    transform: translateY(-50%) scale(0.95);
+    }
+
+    .nav-btn-unique:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+    transform: translateY(-50%) !important;
+    }
+
+    /* FIXED: Button positions */
+    .prev-btn-unique {
+    left: -28px; /* Half of button width to position outside */
+    }
+
+    .next-btn-unique {
+    right: -28px; /* Half of button width to position outside */
+    }
+
+    /* Ensure buttons are above the carousel */
+    .carousel-wrapper-unique {
+    position: relative;
+    }
+
+    /* ==================== RESPONSIVE STYLES ==================== */
+    @media (max-width: 992px) and (min-width: 769px) {
+    .product-card-unique {
+        flex: 0 0 calc(50% - 10px) !important;
+        min-width: calc(50% - 10px) !important;
+    }
+    
+    /* Adjust button positions for tablet */
+    .prev-btn-unique {
+        left: -20px;
+    }
+    
+    .next-btn-unique {
+        right: -20px;
+    }
+    }
+
+    /* FIXED: Mobile styles */
+    @media (max-width: 768px) {
+    .product-carousel-section-unique {
+        padding: 30px 10px;
+    }
+    
+    .carousel-header-unique h2 {
+        font-size: 1.5rem;
+        padding: 0 10px;
+    }
+    
+    .carousel-inner-unique {
+        overflow: visible; /* Allow scrolling */
+    }
+    
+    .carousel-wrapper-unique {
+        overflow: visible;
+    }
+    
+    /* Hide buttons on mobile completely */
+    .nav-btn-unique {
+        display: none !important;
+    }
+    
+    /* Add scroll indicators for mobile */
+    .slides-container-unique::after {
+        content: '';
+        position: absolute;
+        right: 0;
+        top: 0;
+        bottom: 0;
+        width: 40px;
+        background: linear-gradient(to right, transparent, rgba(248, 249, 250, 0.9));
+        pointer-events: none;
+    }
+    
+    .slides-container-unique::before {
+        content: '';
+        position: absolute;
+        left: 0;
+        top: 0;
+        bottom: 0;
+        width: 40px;
+        background: linear-gradient(to left, transparent, rgba(248, 249, 250, 0.9));
+        pointer-events: none;
+        z-index: 1;
+    }
+    }
+
+    /* Adjust for smaller screens */
+    @media (max-width: 1200px) {
+    .prev-btn-unique {
+        left: -20px;
+    }
+    
+    .next-btn-unique {
+        right: -20px;
+    }
+    }
+
+    /* Adjust for very wide screens */
+    @media (min-width: 1400px) {
+    .prev-btn-unique {
+        left: -40px;
+    }
+    
+    .next-btn-unique {
+        right: -40px;
+    }
+    }
+
+    /* Mobile horizontal scroll fix */
+    @media (max-width: 768px) {
+    .product-carousel-section-unique {
+        -webkit-overflow-scrolling: touch;
+    }
+    
+    /* Ensure cards don't shrink */
+    .product-card-unique {
+        flex-shrink: 0;
+    }
+    }
+    </style>
+
+    <script>
+    // PRODUCT CAROUSEL UNIQUE JAVASCRIPT - MOBILE FIXED
+    document.addEventListener('DOMContentLoaded', function() {
+    // Get elements using unique IDs
+    const slidesContainer = document.getElementById('slidesContainerUnique');
+    const prevBtn = document.getElementById('prevBtnUnique');
+    const nextBtn = document.getElementById('nextBtnUnique');
+    const productCards = document.querySelectorAll('.product-card-unique');
+    const carouselWrapper = document.querySelector('.carousel-wrapper-unique');
+    
+    // Check if elements exist
+    if (!slidesContainer || !prevBtn || !nextBtn || productCards.length === 0) {
+        console.error('Carousel elements not found');
+        return;
+    }
+    
+    console.log('Carousel initialized with', productCards.length, 'cards');
+    
+    // Detect if mobile
+    const isMobile = window.innerWidth <= 768;
+    
+    // Carousel variables
+    let currentSlideIndex = 0;
+    let cardsPerView = isMobile ? 1 : 3;
+    
+    // Function to calculate cards per view based on screen size
+    function calculateCardsPerView() {
+        const screenWidth = window.innerWidth;
+        
+        if (screenWidth <= 768) {
+        return 1; // Mobile - single card
+        } else if (screenWidth <= 992) {
+        return 2; // Tablet - 2 cards
+        } else {
+        return 3; // Desktop - 3 cards
+        }
+    }
+    
+    // Function to setup mobile scrolling
+    function setupMobileScrolling() {
+        if (window.innerWidth > 768) return;
+        
+        // Remove desktop behavior
+        slidesContainer.style.transform = 'none';
+        slidesContainer.style.transition = 'none';
+        
+        // Setup scroll snapping
+        let isScrolling = false;
+        let scrollTimeout;
+        
+        // Handle scroll events for mobile
+        slidesContainer.addEventListener('scroll', function() {
+        if (!isScrolling) {
+            isScrolling = true;
+        }
+        
+        clearTimeout(scrollTimeout);
+        scrollTimeout = setTimeout(function() {
+            isScrolling = false;
+            snapToNearestCard();
+        }, 100);
+        });
+        
+        // Function to snap to nearest card
+        function snapToNearestCard() {
+        const containerWidth = slidesContainer.offsetWidth;
+        const scrollLeft = slidesContainer.scrollLeft;
+        const cardWidth = productCards[0].offsetWidth + 15; // Width + margin
+        
+        // Calculate which card is closest
+        const nearestIndex = Math.round(scrollLeft / cardWidth);
+        
+        // Snap to that card
+        slidesContainer.scrollTo({
+            left: nearestIndex * cardWidth,
+            behavior: 'smooth'
+        });
+        
+        // Update current index
+        currentSlideIndex = Math.min(nearestIndex, productCards.length - 1);
+        console.log('Mobile scroll to index:', currentSlideIndex);
+        }
+    }
+    
+    // Function to update carousel position (Desktop only)
+    function updateCarouselPosition() {
+        // If mobile, don't use transform
+        if (window.innerWidth <= 768) {
+        setupMobileScrolling();
+        return;
+        }
+        
+        // Update cards per view for desktop/tablet
+        cardsPerView = calculateCardsPerView();
+        
+        // Calculate maximum slide index
+        const maxSlideIndex = Math.max(0, productCards.length - cardsPerView);
+        
+        // Ensure current index is within bounds
+        if (currentSlideIndex > maxSlideIndex) {
+        currentSlideIndex = maxSlideIndex;
+        }
+        
+        // Get first card to calculate dimensions
+        const firstCard = productCards[0];
+        if (!firstCard) return;
+        
+        // Calculate card width including gap
+        const cardWidth = firstCard.offsetWidth;
+        const gap = 20; // From CSS gap
+        
+        // Calculate translation
+        const translateX = currentSlideIndex * (cardWidth + gap);
+        
+        // Apply transform
+        slidesContainer.style.transform = `translateX(-${translateX}px)`;
+        slidesContainer.style.transition = 'transform 0.5s cubic-bezier(0.4, 0, 0.2, 1)';
+        
+        // Update button states
+        updateButtonStates(maxSlideIndex);
+        
+        console.log('Desktop updated - Index:', currentSlideIndex, 'Max:', maxSlideIndex, 'Translate:', translateX);
+    }
+    
+    // Function to update button states (Desktop only)
+    function updateButtonStates(maxSlideIndex) {
+        if (window.innerWidth <= 768) return;
+        
+        const isAtStart = currentSlideIndex === 0;
+        const isAtEnd = currentSlideIndex >= maxSlideIndex;
+        
+        // Update previous button
+        prevBtn.disabled = isAtStart;
+        prevBtn.style.opacity = isAtStart ? '0.5' : '1';
+        prevBtn.style.cursor = isAtStart ? 'not-allowed' : 'pointer';
+        
+        // Update next button
+        nextBtn.disabled = isAtEnd;
+        nextBtn.style.opacity = isAtEnd ? '0.5' : '1';
+        nextBtn.style.cursor = isAtEnd ? 'not-allowed' : 'pointer';
+    }
+    
+    // Function to go to next slide (Desktop only)
+    function goToNextSlide() {
+        if (window.innerWidth <= 768) return;
+        
+        cardsPerView = calculateCardsPerView();
+        const maxSlideIndex = Math.max(0, productCards.length - cardsPerView);
+        
+        if (currentSlideIndex < maxSlideIndex) {
+        currentSlideIndex++;
+        updateCarouselPosition();
+        }
+    }
+    
+    // Function to go to previous slide (Desktop only)
+    function goToPrevSlide() {
+        if (window.innerWidth <= 768) return;
+        
+        if (currentSlideIndex > 0) {
+        currentSlideIndex--;
+        updateCarouselPosition();
+        }
+    }
+    
+    // Event listeners for navigation buttons (Desktop only)
+    nextBtn.addEventListener('click', goToNextSlide);
+    prevBtn.addEventListener('click', goToPrevSlide);
+    
+    // Handle window resize
+    let resizeTimer;
+    window.addEventListener('resize', function() {
+        clearTimeout(resizeTimer);
+        resizeTimer = setTimeout(function() {
+        const isNowMobile = window.innerWidth <= 768;
+        
+        if (isNowMobile) {
+            // Switch to mobile mode
+            slidesContainer.style.transform = 'none';
+            slidesContainer.style.transition = 'none';
+            slidesContainer.style.overflowX = 'auto';
+            prevBtn.style.display = 'none';
+            nextBtn.style.display = 'none';
+            setupMobileScrolling();
+        } else {
+            // Switch to desktop mode
+            slidesContainer.style.overflowX = 'hidden';
+            prevBtn.style.display = 'flex';
+            nextBtn.style.display = 'flex';
+            currentSlideIndex = 0;
+            updateCarouselPosition();
+        }
+        }, 250);
+    });
+    
+    // Auto-slide functionality (Desktop only)
+    let autoSlideInterval;
+    
+    function startAutoSlide() {
+        // Don't auto-slide on mobile
+        if (window.innerWidth <= 768) return;
+        
+        clearInterval(autoSlideInterval);
+        
+        autoSlideInterval = setInterval(function() {
+        cardsPerView = calculateCardsPerView();
+        const maxSlideIndex = Math.max(0, productCards.length - cardsPerView);
+        
+        if (currentSlideIndex < maxSlideIndex) {
+            goToNextSlide();
+        } else {
+            // Go back to first slide
+            currentSlideIndex = 0;
+            updateCarouselPosition();
+        }
+        }, 5000); // Change slide every 5 seconds
+    }
+    
+    function stopAutoSlide() {
+        clearInterval(autoSlideInterval);
+    }
+    
+    // Start auto-slide if desktop
+    if (window.innerWidth > 768) {
+        startAutoSlide();
+    }
+    
+    // Pause auto-slide on hover (Desktop only)
+    if (carouselWrapper && window.innerWidth > 768) {
+        carouselWrapper.addEventListener('mouseenter', stopAutoSlide);
+        carouselWrapper.addEventListener('mouseleave', startAutoSlide);
+    }
+    
+    // Initialize based on screen size
+    if (window.innerWidth <= 768) {
+        // Mobile initialization
+        setupMobileScrolling();
+        prevBtn.style.display = 'none';
+        nextBtn.style.display = 'none';
+    } else {
+        // Desktop initialization
+        updateCarouselPosition();
+    }
+    
+    // Log initialization
+    console.log('Product carousel initialized successfully - Mode:', window.innerWidth <= 768 ? 'Mobile' : 'Desktop');
+    });
+    </script>
+    </div>
+        </section><section class="soul-preschool-wrapper">
+    <!-- Approach Section -->
+    <div class="soul-container">
+        <div class="soul-grid">
+            <div class="soul-content">
+                <span class="soul-tag">✦  our approach  ✦</span>
+                <h2 class="soul-title">where learning feels like childhood</h2>
+                <div class="soul-divider"></div>
+                <p class="soul-text">
+                    We run a thoughtfully blended-curriculum preschool that ensures 
+                    emotional safety, age-appropriate development, and meaningful learning. 
+                    Through calm environments, skilled educators, and clear parent communication, 
+                    every child feels secure, valued, and understood.
+                </p>
+            </div>
+            <div class="soul-image-wrapper">
+                <div class="soul-image-inner">
+                    <img src="https://images.unsplash.com/photo-1509062522246-3755977927d7?q=80&w=1932&auto=format&fit=crop" 
+                         alt="Children learning" 
+                         class="soul-image"
+                         loading="lazy">
+                    <div class="soul-image-border"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Vision Section -->
+    <div class="soul-container">
+        <div class="soul-grid soul-grid-reverse">
+            <div class="soul-content">
+                <span class="soul-tag">✦  our vision  ✦</span>
+                <h2 class="soul-title">protecting childhood, naturally</h2>
+                <div class="soul-divider"></div>
+                <p class="soul-text">
+                    A calm preschool where childhood is protected, learning is meaningful, 
+                    and development unfolds naturally—creating confident, capable, and emotionally 
+                    secure learners.
+                </p>
+                <p class="soul-text soul-text-margin">
+                    Without feeling pressured to perform or compete, children are free to settle, 
+                    observe, explore, repeat, ask questions, and grow at their own pace.
+                </p>
+            </div>
+            <div class="soul-image-wrapper">
+                <div class="soul-image-inner">
+                    <img src="https://images.unsplash.com/photo-1588072432836-e10032774350?q=80&w=1974&auto=format&fit=crop" 
+                         alt="Happy children" 
+                         class="soul-image"
+                         loading="lazy">
+                    <div class="soul-image-border"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Founder Section -->
+    <div class="soul-founder">
+        <div class="soul-founder-content">
+            <div class="soul-founder-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1">
+                    <path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/>
+                </svg>
+            </div>
+            <h3 class="soul-founder-name">Harrison</h3>
+            <p class="soul-founder-role">Founder, Soul Preschool</p>
+            <div class="soul-founder-divider"></div>
+            <blockquote class="soul-founder-quote">
+                "Thoughtful Beginnings shape confident futures."
+            </blockquote>
+        </div>
+    </div>
+</section>
+
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.soul-preschool-wrapper {
+    background: #fffcf8;
+    padding: 120px 0;
+    font-family: 'Cormorant Garamond', 'Inter', -apple-system, serif;
+}
+
+.soul-container {
+    max-width: 1200px;
+    margin: 0 auto 120px;
+    padding: 0 24px;
+}
+
+.soul-container:last-of-type {
+    margin-bottom: 80px;
+}
+
+.soul-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+    align-items: center;
+}
+
+.soul-grid-reverse {
+    direction: rtl;
+}
+
+.soul-grid-reverse .soul-content {
+    direction: ltr;
+}
+
+.soul-content {
+    max-width: 480px;
+}
+
+.soul-tag {
+    display: inline-block;
+    font-size: 14px;
+    letter-spacing: 4px;
+    color: #b7a48b;
+    margin-bottom: 20px;
+    font-weight: 300;
+    text-transform: lowercase;
+}
+
+.soul-title {
+    font-size: 48px;
+    line-height: 1.1;
+    color: #2c2c2c;
+    margin-bottom: 20px;
+    font-weight: 400;
+    font-family: 'Cormorant Garamond', serif;
+}
+
+.soul-divider {
+    width: 60px;
+    height: 1px;
+    background: #e2d9d0;
+    margin-bottom: 30px;
+}
+
+.soul-text {
+    font-size: 17px;
+    line-height: 1.8;
+    color: #5f5f5f;
+    font-weight: 300;
+    font-family: 'Inter', sans-serif;
+}
+
+.soul-text-margin {
+    margin-top: 20px;
+}
+
+/* Aesthetic Image Animations */
+.soul-image-wrapper {
+    position: relative;
+    perspective: 2000px;
+}
+
+.soul-image-inner {
+    position: relative;
+    overflow: hidden;
+    border-radius: 2px;
+    transform-style: preserve-3d;
+}
+
+.soul-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    filter: sepia(20%) saturate(80%) brightness(102%);
+    transition: all 1.4s cubic-bezier(0.4, 0, 0.2, 1);
+    transform: scale(1.08) rotate(0.5deg);
+    opacity: 0.95;
+}
+
+/* Approach Image Animation */
+.soul-grid:not(.soul-grid-reverse) .soul-image {
+    animation: soulFloatApproach 1.8s ease-out forwards;
+    animation-delay: 0.3s;
+}
+
+/* Vision Image Animation */
+.soul-grid-reverse .soul-image {
+    animation: soulFloatVision 1.8s ease-out forwards;
+    animation-delay: 0.3s;
+}
+
+@keyframes soulFloatApproach {
+    0% {
+        opacity: 0;
+        transform: scale(1.2) translateX(-20px) rotate(-1deg);
+        filter: sepia(40%) blur(5px);
+    }
+    30% {
+        opacity: 0.6;
+        filter: sepia(30%) blur(2px);
+    }
+    70% {
+        transform: scale(1.05) translateX(2px) rotate(0.3deg);
+    }
+    100% {
+        opacity: 0.95;
+        transform: scale(1.08) translateX(0) rotate(0.5deg);
+        filter: sepia(20%) saturate(80%);
+    }
+}
+
+@keyframes soulFloatVision {
+    0% {
+        opacity: 0;
+        transform: scale(1.2) translateX(20px) rotate(1deg);
+        filter: sepia(40%) blur(5px);
+    }
+    30% {
+        opacity: 0.6;
+        filter: sepia(30%) blur(2px);
+    }
+    70% {
+        transform: scale(1.05) translateX(-2px) rotate(-0.3deg);
+    }
+    100% {
+        opacity: 0.95;
+        transform: scale(1.08) translateX(0) rotate(-0.5deg);
+        filter: sepia(20%) saturate(80%);
+    }
+}
+
+/* Hover Animation */
+.soul-image-inner:hover .soul-image {
+    transform: scale(1.02) rotate(0deg);
+    filter: sepia(0%) saturate(100%) brightness(105%);
+    opacity: 1;
+    transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Decorative Border */
+.soul-image-border {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    right: -20px;
+    bottom: -20px;
+    border: 1px solid #e8ddd2;
+    z-index: -1;
+    transition: all 0.6s ease;
+}
+
+.soul-image-inner:hover + .soul-image-border {
+    top: 15px;
+    left: 15px;
+}
+
+/* Founder Section */
+.soul-founder {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 0 24px;
+    text-align: center;
+    animation: soulFadeUp 1.2s ease 0.6s both;
+}
+
+.soul-founder-content {
+    padding: 60px 40px;
+    background: #ffffff;
+    border: 1px solid #f0e9e2;
+    box-shadow: 0 20px 40px -20px rgba(0,0,0,0.08);
+}
+
+.soul-founder-icon {
+    width: 48px;
+    height: 48px;
+    margin: 0 auto 24px;
+    color: #b7a48b;
+    stroke: currentColor;
+}
+
+.soul-founder-icon svg {
+    width: 100%;
+    height: 100%;
+}
+
+.soul-founder-name {
+    font-size: 28px;
+    color: #2c2c2c;
+    margin-bottom: 8px;
+    font-weight: 400;
+    font-family: 'Cormorant Garamond', serif;
+    letter-spacing: 1px;
+}
+
+.soul-founder-role {
+    font-size: 13px;
+    color: #b7a48b;
+    margin-bottom: 20px;
+    font-weight: 300;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    font-family: 'Inter', sans-serif;
+}
+
+.soul-founder-divider {
+    width: 40px;
+    height: 1px;
+    background: #e2d9d0;
+    margin: 0 auto 24px;
+}
+
+.soul-founder-quote {
+    font-size: 22px;
+    color: #5f5f5f;
+    font-style: italic;
+    line-height: 1.6;
+    max-width: 400px;
+    margin: 0 auto;
+    font-weight: 300;
+    font-family: 'Cormorant Garamond', serif;
+}
+
+@keyframes soulFadeUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Responsive */
+@media (max-width: 992px) {
+    .soul-grid {
+        grid-template-columns: 1fr;
+        gap: 60px;
+        text-align: center;
+    }
+    
+    .soul-grid-reverse {
+        direction: ltr;
+    }
+    
+    .soul-content {
+        max-width: 100%;
+    }
+    
+    .soul-divider {
+        margin-left: auto;
+        margin-right: auto;
+    }
+    
+    .soul-title {
+        font-size: 42px;
+    }
+    
+    .soul-image-wrapper {
+        max-width: 500px;
+        margin: 0 auto;
+    }
+    
+    .soul-preschool-wrapper {
+        padding: 80px 0;
+    }
+    
+    .soul-container {
+        margin-bottom: 80px;
+    }
+    
+    .soul-image-border {
+        top: 15px;
+        left: 15px;
+        right: -15px;
+        bottom: -15px;
+    }
+}
+
+@media (max-width: 480px) {
+    .soul-title {
+        font-size: 36px;
+    }
+    
+    .soul-text {
+        font-size: 16px;
+    }
+    
+    .soul-founder-content {
+        padding: 40px 24px;
+    }
+    
+    .soul-founder-quote {
+        font-size: 20px;
+    }
+    
+    @keyframes soulFloatApproach {
+        0% {
+            opacity: 0;
+            transform: scale(1.15) translateX(-10px) rotate(-1deg);
+        }
+        100% {
+            opacity: 0.95;
+            transform: scale(1.05) translateX(0) rotate(0.5deg);
+        }
+    }
+    
+    @keyframes soulFloatVision {
+        0% {
+            opacity: 0;
+            transform: scale(1.15) translateX(10px) rotate(1deg);
+        }
+        100% {
+            opacity: 0.95;
+            transform: scale(1.05) translateX(0) rotate(-0.5deg);
+        }
+    }
+}
+
+/* Add fonts */
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500&family=Inter:wght@300;400&display=swap');
+</style>
+<section class="stats-section" id="statsSection">
+    <div class="stats-container">
+
+        <div class="stat-box">
+            <h2 class="counter" data-target="500">0</h2>
+            <p>Happy Children</p>
+        </div>
+
+        <div class="stat-box">
+            <h2 class="counter" data-target="50">0</h2>
+            <p>Expert Educators</p>
+        </div>
+
+        <div class="stat-box">
+            <h2 class="counter" data-target="8">0</h2>
+            <p>Years of Trust</p>
+        </div>
+
+    </div>
+
+    <style>
+        .stats-section {
+            padding: 80px 20px;
+            background: #e5e5e5;
+            text-align: center;
+        }
+
+        .stats-container {
+            display: flex;
+            justify-content: center;
+            gap: 60px;
+            flex-wrap: wrap;
+        }
+
+        .stat-box h2 {
+            font-size: 48px;
+            color: #254224;
+            margin-bottom: 10px;
+            font-weight: 700;
+        }
+
+        .stat-box p {
+            font-size: 18px;
+            color: #254224;
+        }
+
+        @media (max-width: 768px) {
+            .stats-container {
+                gap: 30px;
+            }
+
+            .stat-box h2 {
+                font-size: 36px;
+            }
+        }
+    </style>
+
+    <script>
+        const section = document.getElementById('statsSection');
+        const counters = document.querySelectorAll('.counter');
+        let started = false;
+
+        const startCounter = () => {
+            counters.forEach(counter => {
+                const target = +counter.getAttribute('data-target');
+                const duration = 2000;
+                const stepTime = Math.max(Math.floor(duration / target), 20);
+                let current = 0;
+
+                const timer = setInterval(() => {
+                    current++;
+                    counter.innerText = current;
+
+                    if (current >= target) {
+                        clearInterval(timer);
+                        counter.innerText = target;
+                    }
+                }, stepTime);
+            });
+        };
+
+        const observer = new IntersectionObserver(entries => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting && !started) {
+                    startCounter();
+                    started = true; // ek hi baar chale
+                }
+            });
+        }, { threshold: 0.5 });
+
+        observer.observe(section);
+    </script>
+
+</section>
+
+</section>
+        <!-- FAQ -->
+        <section class="section faq-bg">
+            <div class="container max-w-4xl">
+                <div class="text-center mb-12 reveal-on-scroll">
+                    <h2 class="section-title">Thoughtful Beginnings for Lifelong Growth</h2>
+                    <p class="section-sub">Common questions from parents like you</p>
+                </div>
+                <div class="reveal-on-scroll">
+                    <div class="faq-item">
+                        <button class="faq-question" onclick="toggleAccordion(this)">
+                            <span>What is your Development-First Approach?</span>
+                            <span class="accordion-icon">
+                                <i class="fas fa-chevron-down"></i>
+                            </span>
+                        </button>
+                        <div class="accordion-content px-6">
+                            <div class="pb-5 text-gray-600">Emotional readiness, independence, and curiosity are nurtured before academic expectations. We believe children must feel secure and confident before they can effectively learn academic concepts. Our approach follows each child's unique developmental timeline rather than forcing uniform milestones.</div>
+                        </div>
+                    </div>
+                    <div class="faq-item">
+                        <button class="faq-question" onclick="toggleAccordion(this)">
+                            <span>How are your learning spaces designed?</span>
+                            <span class="accordion-icon">
+                                <i class="fas fa-chevron-down"></i>
+                            </span>
+                        </button>
+                        <div class="accordion-content px-6">
+                            <div class="pb-5 text-gray-600">Our environments are thoughtfully designed to support how children naturally explore, regulate emotions, and learn. We use calming color palettes, natural materials, flexible furniture, and defined activity zones. Every corner is intentional—from cozy reading nooks to open-ended exploration areas.</div>
+                        </div>
+                    </div>
+                    <div class="faq-item">
+                        <button class="faq-question" onclick="toggleAccordion(this)">
+                            <span>What curriculum do you follow?</span>
+                            <span class="accordion-icon">
+                                <i class="fas fa-chevron-down"></i>
+                            </span>
+                        </button>
+                        <div class="accordion-content px-6">
+                            <div class="pb-5 text-gray-600">We use a thoughtfully blended approach inspired by Montessori, Reggio Emilia, Finnish education, and IB-PYP—integrated with care, never overloaded.</div>
+                        </div>
+                    </div>
+                    <div class="faq-item">
+                        <button class="faq-question" onclick="toggleAccordion(this)">
+                            <span>How do you handle individual learning paces?</span>
+                            <span class="accordion-icon">
+                                <i class="fas fa-chevron-down"></i>
+                            </span>
+                        </button>
+                        <div class="accordion-content px-6">
+                            <div class="pb-5 text-gray-600">Every child is supported at their own rhythm, without comparison, pressure, or haste. Our low student-teacher ratio allows for personalized attention.</div>
+                        </div>
+                    </div>
+                    <div class="faq-item">
+                        <button class="faq-question" onclick="toggleAccordion(this)">
+                            <span>What makes your teachers different?</span>
+                            <span class="accordion-icon">
+                                <i class="fas fa-chevron-down"></i>
+                            </span>
+                        </button>
+                        <div class="accordion-content px-6">
+                            <div class="pb-5 text-gray-600">Our educators are trained observers who guide with patience, empathy, and intention. They understand that their role is not to instruct but to facilitate discovery.</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- CONTACT -->
+        <section id="contact" class="contact-section section">
+            <div class="container relative z-10">
+                <div class="contact-grid">
+                    <div class="contact-info reveal-on-scroll">
+                        <div>
+                            <span class="text-sm font-semibold tracking-wider uppercase" style="color: #5A6B5E;">Get in Touch</span>
+                            <h2 class="section-title mt-2">Ready to Experience Soul?</h2>
+                            <p class="section-sub text-lg">Visit the campus. Feel the serenity. Make inquiries. We're here to guide you through every step of your child's early education journey.</p>
+                        </div>
+                        <div class="space-y-6">
+                            <div class="contact-detail">
+                                <div class="contact-icon"><i class="fas fa-map-marker-alt text-xl"></i></div>
+                                <div><div class="font-semibold">Campus Location</div><div class="text-gray-600">Whitefield, Bengaluru<br>Karnataka, India 560066</div></div>
+                            </div>
+                            <div class="contact-detail">
+                                <div class="contact-icon"><i class="fas fa-phone text-xl"></i></div>
+                                <div><div class="font-semibold">Phone Numbers</div><div class="text-gray-600">+91 99123 73335<br>+91 90007 99242</div></div>
+                            </div>
+                            <div class="contact-detail">
+                                <div class="contact-icon"><i class="fas fa-envelope text-xl"></i></div>
+                                <div><div class="font-semibold">Email Us</div><div class="text-gray-600">admissions@soulpreschool.com<br>info@soulpreschool.com</div></div>
+                            </div>
+                            <div class="contact-detail">
+                                <div class="contact-icon"><i class="fas fa-clock text-xl"></i></div>
+                                <div><div class="font-semibold">Visiting Hours</div><div class="text-gray-600">Monday - Saturday: 9:00 AM - 5:00 PM<br>Sunday: By Appointment</div></div>
+                            </div>
+                        </div>
+                        <div class="social-links">
+                            <a href="#" class="social-icon"><i class="fab fa-facebook-f"></i></a>
+                            <a href="#" class="social-icon"><i class="fab fa-instagram"></i></a>
+                            <a href="#" class="social-icon"><i class="fab fa-youtube"></i></a>
+                            <a href="#" class="social-icon"><i class="fab fa-whatsapp"></i></a>
+                        </div>
+                    </div>
+                    <div class="contact-form reveal-on-scroll">
+                        <h3 class="form-title">Schedule a Visit</h3>
+                        <form id="contactForm" onsubmit="handleSubmit(event)">
+                            <div class="form-grid">
+                                <div><label class="block text-sm font-medium mb-2">Parent's Name *</label><input type="text" required class="form-input" placeholder="Full Name"></div>
+                                <div><label class="block text-sm font-medium mb-2">Child's Name</label><input type="text" class="form-input" placeholder="Child's Name"></div>
+                                <div><label class="block text-sm font-medium mb-2">Email Address *</label><input type="email" required class="form-input" placeholder="email@example.com"></div>
+                                <div><label class="block text-sm font-medium mb-2">Phone Number *</label><input type="tel" required class="form-input" placeholder="+91 98765 43210"></div>
+                            </div>
+                            <div class="mt-5"><label class="block text-sm font-medium mb-2">Child's Age / Program</label>
+                                <select class="form-select"><option>Select Program</option><option>Toddlers (2-2.5 yrs)</option><option>Playgroup (2.5-3.5 yrs)</option><option>Nursery (3.5-4.5 yrs)</option><option>Prep (4.5-5.5 yrs)</option></select>
+                            </div>
+                            <div class="mt-5"><label class="block text-sm font-medium mb-2">Preferred Visit Date</label><input type="date" class="form-input"></div>
+                            <div class="mt-5"><label class="block text-sm font-medium mb-2">Message</label><textarea rows="4" class="form-textarea" placeholder="Tell us about your child..."></textarea></div>
+                            <button type="submit" class="submit-btn btn-shine mt-6">Submit Enquiry <i class="fas fa-paper-plane"></i></button>
+                            <div class="text-center text-sm text-gray-500 mt-4"><i class="fas fa-lock mr-1"></i> Your information is secure</div>
+                        </form>
+                        <div id="successMessage" class="hidden text-center py-10">
+                            <div class="w-20 h-20 rounded-full flex items-center justify-center mx-auto mb-4" style="background: rgba(90,107,94,0.1); color: #5A6B5E;"><i class="fas fa-check text-3xl"></i></div>
+                            <h4 class="font-display text-2xl font-bold mb-2">Thank You!</h4>
+                            <p class="text-gray-600 mb-6">We've received your enquiry. Our admissions team will contact you within 24 hours.</p>
+                            <button onclick="resetForm()" class="font-semibold hover:underline" style="color: #5A6B5E;">Submit another enquiry</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- FOOTER -->
+        <footer class="footer">
+            <div class="container">
+                <div class="footer-grid">
+                    <div class="footer-brand">
+                        <div class="footer-logo">
+                            <div class="footer-logo-icon">S</div>
+                            <div><div class="footer-logo-text">Soul Preschool</div><div class="footer-logo-sub">ACADEMY</div></div>
+                        </div>
+                        <p class="footer-description">Where childhood is protected, not rushed. A tranquil space for meaningful early learning in Bengaluru.</p>
+                        <div class="footer-social">
+                            <a href="#" class="footer-social-link"><i class="fab fa-facebook-f"></i></a>
+                            <a href="#" class="footer-social-link"><i class="fab fa-instagram"></i></a>
+                            <a href="#" class="footer-social-link"><i class="fab fa-youtube"></i></a>
+                        </div>
+                    </div>
+                    <div><h4 class="footer-title">Quick Links</h4>
+                        <ul class="footer-links"><li><a href="#home">Home</a></li><li><a href="#about">About Us</a></li><li><a href="#programs">Programs</a></li><li><a href="#contact">Contact</a></li></ul>
+                    </div>
+                    <div><h4 class="footer-title">Our Programs</h4>
+                        <ul class="footer-links"><li><a href="#">Toddlers (2-2.5 yrs)</a></li><li><a href="#">Playgroup (2.5-3.5 yrs)</a></li><li><a href="#">Nursery (3.5-4.5 yrs)</a></li><li><a href="#">Prep (4.5-5.5 yrs)</a></li><li><a href="#">Day Care</a></li></ul>
+                    </div>
+                    <div><h4 class="footer-title">Contact Us</h4>
+                        <ul class="footer-contact"><li><i class="fas fa-map-marker-alt"></i><span>Whitefield, Bengaluru<br>Karnataka, India 560066</span></li><li><i class="fas fa-phone"></i><span>+91 99123 73335</span></li><li><i class="fas fa-envelope"></i><span>info@soulpreschool.com</span></li></ul>
+                    </div>
+                </div>
+                <div class="footer-bottom">
+                    <div class="copyright">© 2026 Soul Preschool Academy. All rights reserved.</div>
+                    <div class="footer-policy"><a href="#">Privacy Policy</a><a href="#">Terms of Service</a><a href="#">Cookie Policy</a></div>
+                </div>
+            </div>
+        </footer>
+
+        <!-- WHATSAPP FLOAT -->
+        <a href="https://wa.me/919912373335" target="_blank" class="whatsapp-float">
+            <i class="fab fa-whatsapp"></i>
+            <span class="whatsapp-tooltip">Chat with us</span>
+        </a>
+
+
+        <script>
+            // Mobile Menu
+            const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+            const closeMenuBtn = document.getElementById('close-menu');
+            const mobileMenu = document.getElementById('mobile-menu');
+            const mobileLinks = document.querySelectorAll('.mobile-link');
+            function toggleMenu() { mobileMenu.classList.toggle('active'); document.body.style.overflow = mobileMenu.classList.contains('active') ? 'hidden' : ''; }
+            mobileMenuBtn?.addEventListener('click', toggleMenu);
+            closeMenuBtn?.addEventListener('click', toggleMenu);
+            mobileLinks.forEach(link => link.addEventListener('click', toggleMenu));
+
+            // Navbar scroll + Announcement hide
+            const navbar = document.getElementById('navbar');
+            const announcementBar = document.getElementById('announcementBar');
+            window.addEventListener('scroll', function() {
+                if (window.scrollY > 20) {
+                    navbar.classList.add('shadow');
+                    if (announcementBar) announcementBar.classList.add('hide');
+                } else {
+                    navbar.classList.remove('shadow');
+                    if (announcementBar) announcementBar.classList.remove('hide');
+                }
+                // Back to top button
+                const backBtn = document.getElementById('backToTop');
+                if (window.scrollY > 500) backBtn.classList.add('visible'); else backBtn.classList.remove('visible');
+            });
+
+            function scrollToTop() { window.scrollTo({ top: 0, behavior: 'smooth' }); }
+
+            // Accordion
+            window.toggleAccordion = function(button) {
+                const content = button.nextElementSibling;
+                const icon = button.querySelector('.accordion-icon');
+                const isActive = content.classList.contains('active');
+                document.querySelectorAll('.accordion-content').forEach(c => { c.classList.remove('active'); c.style.maxHeight = null; });
+                document.querySelectorAll('.accordion-icon').forEach(i => i.classList.remove('rotated'));
+                if (!isActive) {
+                    content.classList.add('active');
+                    content.style.maxHeight = content.scrollHeight + 'px';
+                    if (icon) icon.classList.add('rotated');
+                }
+            }
+
+            // Form
+            window.handleSubmit = function(e) {
+                e.preventDefault();
+                document.getElementById('contactForm').style.display = 'none';
+                document.getElementById('successMessage').classList.remove('hidden');
+            }
+            window.resetForm = function() {
+                document.getElementById('contactForm').reset();
+                document.getElementById('contactForm').style.display = 'block';
+                document.getElementById('successMessage').classList.add('hidden');
+            }
+
+            // GSAP Animations (stagger, reveal)
+            gsap.registerPlugin(ScrollTrigger);
+            gsap.to('.stagger-item', { opacity: 1, y: 0, duration: 0.8, stagger: 0.15, ease: 'power2.out', delay: 0.5 });
+            const revealElements = document.querySelectorAll('.reveal-on-scroll');
+            revealElements.forEach(el => {
+                gsap.fromTo(el, { opacity: 0, y: 50 }, { opacity: 1, y: 0, duration: 0.8, scrollTrigger: { trigger: el, start: 'top 85%' } });
+            });
+
+            // Stat counter
+            const statNumbers = document.querySelectorAll('.stat-number');
+            statNumbers.forEach(stat => {
+                const target = parseInt(stat.getAttribute('data-target'));
+                ScrollTrigger.create({
+                    trigger: stat, start: 'top 80%',
+                    onEnter: () => { gsap.to(stat, { innerHTML: target, duration: 2, snap: { innerHTML: 1 }, ease: 'power2.out' }); }
+                });
+            });
+
+            // Smooth scroll
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const target = document.querySelector(this.getAttribute('href'));
+                    if (target) target.scrollIntoView({ behavior: 'smooth' });
+                });
+            });
+        </script>
+    </body>
+    </html>
