@@ -2845,7 +2845,7 @@
   .about-soul__card-number {
     display: none;
   }
-</style><!-- PROGRAMS SECTION - COMPACT CARDS WITH COMPLETE UNIQUE IDS/CLASSES - FULLY STANDALONE -->
+</style><!-- PROGRAMS SECTION - MOBILE: ONE CARD AT A TIME, DESKTOP: TWO CARDS -->
 <div class="programs-section-wrapper-unique">
     <section id="programs-unique" class="section-unique bg-white-unique">
         <div class="container-unique relative-unique z-10-unique">
@@ -2855,7 +2855,7 @@
                 <p class="section-sub-unique">Each program at Soul is carefully designed to support children at their specific developmental stage—emotionally, socially, physically, and cognitively. Our focus remains consistent: safety, readiness, independence, and joy in learning.</p>
             </div>
 
-            <!-- COMPACT PROGRAMS CAROUSEL - EVERY ELEMENT HAS UNIQUE ID/CLASS -->
+            <!-- PROGRAMS CAROUSEL - MOBILE: 1 CARD, DESKTOP: 2 CARDS -->
             <div class="programs-carousel-container-unique">
                 <div class="programs-track-wrapper-unique">
                     <button class="program-nav-btn-unique prev-btn-unique" id="programPrevBtnUnique" aria-label="Previous program">
@@ -2866,7 +2866,7 @@
 
                     <div class="programs-viewport-unique" id="programsViewportUnique">
                         <div class="programs-track-unique" id="programsTrackUnique">
-                            <!-- CARD 1: TODDLERS - EVERY ELEMENT UNIQUE -->
+                            <!-- CARD 1: TODDLERS -->
                             <article class="program-card-unique compact-card-unique" id="cardToddlersUnique" data-age="2+">
                                 <div class="card-image-wrapper-unique" id="toddlersImgWrapperUnique">
                                     <img src="https://kimi-web-img.moonshot.cn/img/littlescholarsnyc.com/45f2dbda1011b0b25c821687eb87b6418c9186e7.jpg" alt="Toddlers sensory play" id="toddlersImgUnique">
@@ -2897,7 +2897,7 @@
                                 </div>
                             </article>
 
-                            <!-- CARD 2: PLAYGROUP - EVERY ELEMENT UNIQUE -->
+                            <!-- CARD 2: PLAYGROUP -->
                             <article class="program-card-unique compact-card-unique" id="cardPlaygroupUnique" data-age="3+">
                                 <div class="card-image-wrapper-unique" id="playgroupImgWrapperUnique">
                                     <img src="https://kimi-web-img.moonshot.cn/img/playtolearnpreschool.us/bcbddc5051472868d4e60ed631546a9a2cdda145.jpg" alt="Playgroup art activities" id="playgroupImgUnique">
@@ -2928,7 +2928,7 @@
                                 </div>
                             </article>
 
-                            <!-- CARD 3: NURSERY - EVERY ELEMENT UNIQUE -->
+                            <!-- CARD 3: NURSERY -->
                             <article class="program-card-unique compact-card-unique" id="cardNurseryUnique" data-age="4+">
                                 <div class="card-image-wrapper-unique" id="nurseryImgWrapperUnique">
                                     <img src="https://kimi-web-img.moonshot.cn/img/cdn.shopify.com/33ea69699617b73722e66efb44172ef59408603f.jpg" alt="Nursery reading time" id="nurseryImgUnique">
@@ -2959,7 +2959,7 @@
                                 </div>
                             </article>
 
-                            <!-- CARD 4: PREP - EVERY ELEMENT UNIQUE -->
+                            <!-- CARD 4: PREP -->
                             <article class="program-card-unique compact-card-unique" id="cardPrepUnique" data-age="5+">
                                 <div class="card-image-wrapper-unique" id="prepImgWrapperUnique">
                                     <img src="https://kimi-web-img.moonshot.cn/img/theprimaryparade.com/0821acda409e5afc8b53d4fc9e024461f1e7b401.jpg" alt="Prep school readiness" id="prepImgUnique">
@@ -2999,7 +2999,7 @@
                     </button>
                 </div>
 
-                <!-- Progress Indicators with UNIQUE IDs -->
+                <!-- Progress Indicators -->
                 <div class="carousel-progress-unique" id="carouselProgressUnique">
                     <div class="progress-bar-unique" id="progressBarUnique"></div>
                 </div>
@@ -3016,7 +3016,7 @@
 </div>
 
 <style>
-/* ========== COMPLETELY UNIQUE STYLES - NO CONFLICT WITH EXISTING CODE ========== */
+/* ========== COMPLETELY UNIQUE STYLES - MOBILE: 1 CARD, DESKTOP: 2 CARDS ========== */
 .programs-section-wrapper-unique {
     display: block;
     width: 100%;
@@ -3115,9 +3115,9 @@
     will-change: transform;
 }
 
-/* COMPACT CARD STYLES */
+/* CARD STYLES - MOBILE: 1 CARD, DESKTOP: 2 CARDS */
 .program-card-unique.compact-card-unique {
-    flex: 0 0 calc(50% - 12px);
+    flex: 0 0 calc(50% - 12px);  /* Desktop: 2 cards */
     min-width: calc(50% - 12px);
     background: #ffffff;
     border-radius: 20px;
@@ -3127,6 +3127,14 @@
     border: 1px solid rgba(145, 84, 160, 0.1);
     display: flex;
     flex-direction: column;
+}
+
+/* Mobile: 1 card */
+@media (max-width: 768px) {
+    .program-card-unique.compact-card-unique {
+        flex: 0 0 calc(100% - 0px);
+        min-width: calc(100% - 0px);
+    }
 }
 
 .program-card-unique.compact-card-unique:hover {
@@ -3241,6 +3249,12 @@
     gap: 6px 10px;
 }
 
+@media (max-width: 480px) {
+    .compact-card-unique .focus-list-unique {
+        grid-template-columns: 1fr;
+    }
+}
+
 .compact-card-unique .focus-list-unique li {
     font-size: 0.75rem;
     color: #475569;
@@ -3329,6 +3343,13 @@
     color: #94a3b8;
 }
 
+/* Hide nav buttons on mobile */
+@media (max-width: 768px) {
+    .program-nav-btn-unique {
+        display: none;
+    }
+}
+
 /* Progress bar */
 .carousel-progress-unique {
     width: 100%;
@@ -3372,18 +3393,10 @@
 }
 
 /* Responsive */
-@media (max-width: 1024px) {
+@media (max-width: 1024px) and (min-width: 769px) {
     .program-card-unique.compact-card-unique {
-        flex: 0 0 calc(100% - 0px);
-        min-width: calc(100% - 0px);
-    }
-    
-    .compact-card-unique .focus-list-unique {
-        grid-template-columns: 1fr;
-    }
-    
-    .section-title-unique {
-        font-size: 2.2rem;
+        flex: 0 0 calc(50% - 12px);
+        min-width: calc(50% - 12px);
     }
 }
 
@@ -3396,31 +3409,16 @@
         gap: 0;
     }
     
-    .program-nav-btn-unique {
-        display: none;
-    }
-    
     .programs-viewport-unique {
-        overflow-x: auto;
-        scroll-snap-type: x mandatory;
-        -webkit-overflow-scrolling: touch;
-        margin: 0 -16px;
-        padding: 0 16px;
-        border-radius: 0;
+        border-radius: 16px;
     }
     
     .programs-track-unique {
         gap: 16px;
     }
     
-    .program-card-unique.compact-card-unique {
-        flex: 0 0 80%;
-        min-width: 80%;
-        scroll-snap-align: center;
-    }
-    
     .compact-card-unique .card-image-wrapper-unique {
-        height: 170px;
+        height: 180px;
     }
 }
 
@@ -3439,7 +3437,6 @@
 
 <script>
 (function() {
-    // Self-contained script with unique IDs - won't interfere with other code
     document.addEventListener('DOMContentLoaded', function() {
         const track = document.getElementById('programsTrackUnique');
         const prevBtn = document.getElementById('programPrevBtnUnique');
@@ -3454,7 +3451,8 @@
         const totalCards = cards.length;
         
         function getCardsPerView() {
-            return window.innerWidth > 1024 ? 2 : 1;
+            // Mobile: 1 card, Desktop: 2 cards
+            return window.innerWidth <= 768 ? 1 : 2;
         }
         
         function getMaxIndex() {
@@ -3466,7 +3464,7 @@
             const card = cards[0];
             if (!card) return;
             const cardWidth = card.offsetWidth;
-            const gap = 24;
+            const gap = window.innerWidth <= 768 ? 16 : 24;
             const offset = currentIndex * (cardWidth + gap);
             
             track.style.transform = `translateX(-${offset}px)`;
