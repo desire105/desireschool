@@ -5383,8 +5383,14 @@
             <h2>Ready to experience <span>Soul?</span></h2>
             <p>Visit the area. Feel the serenity. Make inquiries.</p>
             <div class="ws-cta-buttons">
-                <a href="#" class="ws-btn ws-btn-primary">Schedule a Visit</a>
-                <a href="#" class="ws-btn ws-btn-outline">Speak to Our Admissions Team</a>
+                <a href="#" class="ws-btn ws-btn-primary">
+                    <span class="btn-icon">▶</span>
+                    Schedule a Visit
+                </a>
+                <a href="#" class="ws-btn ws-btn-outline">
+                    <span class="btn-icon">▶</span>
+                    Speak to Our Admissions Team
+                </a>
             </div>
         </div>
     </div>
@@ -5553,7 +5559,7 @@
             font-weight: 600;
             font-size: clamp(14px, 2.5vw, 15px);
             transition: gap 0.3s ease;
-            padding: 8px 0; /* Larger tap target */
+            padding: 12px 0; /* Larger tap target */
         }
 
         @media (hover: hover) {
@@ -5562,7 +5568,7 @@
             }
         }
 
-        /* CTA */
+        /* CTA Section */
         .ws-cta {
             margin-top: clamp(60px, 12vw, 160px);
             background: #0A1937;
@@ -5594,7 +5600,7 @@
 
         .ws-cta-buttons {
             display: flex;
-            gap: clamp(10px, 2vw, 20px);
+            gap: 16px;
             justify-content: center;
             flex-wrap: wrap;
         }
@@ -5603,47 +5609,50 @@
             display: inline-flex;
             align-items: center;
             justify-content: center;
-            gap: 10px;
-            padding: clamp(14px, 3vw, 18px) clamp(20px, 4vw, 36px);
+            gap: 12px;
+            padding: 16px 32px;
             text-decoration: none;
             border-radius: 100px;
             font-weight: 600;
-            font-size: clamp(13px, 2.5vw, 15px);
+            font-size: 15px;
             transition: all 0.3s ease;
-            white-space: nowrap;
+            border: none;
+            cursor: pointer;
+            min-width: 200px;
         }
 
-        .ws-btn::before {
-            content: '▶';
-            font-size: clamp(10px, 2vw, 12px);
+        .btn-icon {
+            font-size: 12px;
             transition: transform 0.3s ease;
         }
 
         .ws-btn-primary {
             background: white;
             color: #0A1937;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
         }
 
         .ws-btn-outline {
             background: transparent;
             color: white;
-            border: 1px solid rgba(255,255,255,0.3);
+            border: 2px solid rgba(255,255,255,0.3);
+            backdrop-filter: blur(5px);
         }
 
         @media (hover: hover) {
             .ws-btn-primary:hover {
-                transform: translateY(-2px);
+                transform: translateY(-3px);
                 box-shadow: 0 10px 30px rgba(0,0,0,0.2);
             }
 
             .ws-btn-outline:hover {
                 background: rgba(255,255,255,0.1);
                 border-color: white;
-                transform: translateY(-2px);
+                transform: translateY(-3px);
             }
 
-            .ws-btn:hover::before {
-                transform: translateX(3px);
+            .ws-btn:hover .btn-icon {
+                transform: translateX(4px);
             }
         }
 
@@ -5659,7 +5668,7 @@
                 top: 0;
                 height: auto;
                 max-height: 500px;
-                order: -1; /* Image comes first on mobile */
+                order: -1;
             }
 
             .ws-image {
@@ -5680,6 +5689,11 @@
 
             .ws-program {
                 padding: 25px 0;
+            }
+
+            .ws-btn {
+                min-width: 180px;
+                padding: 15px 28px;
             }
         }
 
@@ -5753,16 +5767,18 @@
 
             .ws-cta-buttons {
                 flex-direction: column;
-                align-items: center;
+                align-items: stretch;
                 gap: 12px;
+                max-width: 400px;
+                margin: 0 auto;
             }
 
             .ws-btn {
                 width: 100%;
-                max-width: 300px;
-                white-space: normal;
-                text-align: center;
                 padding: 16px 24px;
+                font-size: 14px;
+                min-width: unset;
+                justify-content: center;
             }
         }
 
@@ -5813,10 +5829,41 @@
 
             .ws-link {
                 font-size: 13px;
+                padding: 10px 0;
             }
 
             .ws-cta h2 {
-                font-size: 24px;
+                font-size: 26px;
+            }
+
+            .ws-cta p {
+                font-size: 14px;
+                margin-bottom: 25px;
+            }
+
+            .ws-cta-buttons {
+                max-width: 320px;
+            }
+
+            .ws-btn {
+                padding: 14px 20px;
+                font-size: 13px;
+                gap: 8px;
+            }
+
+            .btn-icon {
+                font-size: 11px;
+            }
+        }
+
+        /* Extra Small Mobile Styles */
+        @media screen and (max-width: 360px) {
+            .ws-cta {
+                padding: 30px 15px;
+            }
+
+            .ws-cta h2 {
+                font-size: 22px;
             }
 
             .ws-cta p {
@@ -5825,13 +5872,8 @@
             }
 
             .ws-btn {
-                font-size: 13px;
-                padding: 14px 20px;
-                max-width: 250px;
-            }
-
-            .ws-btn::before {
-                font-size: 10px;
+                padding: 12px 16px;
+                font-size: 12px;
             }
         }
 
@@ -5847,11 +5889,13 @@
 
             .ws-cta-buttons {
                 flex-direction: row;
+                max-width: 600px;
+                margin: 0 auto;
             }
 
             .ws-btn {
-                width: auto;
-                min-width: 200px;
+                flex: 1;
+                min-width: 180px;
             }
         }
 
@@ -5864,15 +5908,21 @@
 
             .ws-link:active,
             .ws-btn:active {
-                opacity: 0.7;
+                opacity: 0.8;
+                transform: scale(0.98);
             }
 
             .ws-btn-primary:active {
-                transform: scale(0.98);
+                background: #f0f0f0;
             }
 
             .ws-btn-outline:active {
                 background: rgba(255,255,255,0.15);
+                border-color: white;
+            }
+
+            .btn-icon:active {
+                transform: translateX(4px);
             }
         }
 
@@ -5881,26 +5931,20 @@
             .ws-image,
             .ws-link,
             .ws-btn,
-            .ws-btn::before {
-                transition: none;
-            }
-
+            .btn-icon,
             .ws-link:hover,
-            .ws-btn:hover {
+            .ws-btn:hover,
+            .ws-btn:hover .btn-icon {
+                transition: none;
                 transform: none !important;
-                gap: 10px !important;
             }
         }
 
-        /* Fix for very small devices */
-        @media screen and (max-width: 360px) {
-            .ws-program-name {
-                font-size: 14px;
-            }
-
-            .ws-btn {
-                max-width: 220px;
-                padding: 12px 16px;
+        /* Fix for devices with notches */
+        @supports (padding: max(0px)) {
+            .why-soul {
+                padding-left: max(16px, env(safe-area-inset-left));
+                padding-right: max(16px, env(safe-area-inset-right));
             }
         }
     </style>
