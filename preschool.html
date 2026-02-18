@@ -2084,7 +2084,7 @@
             animation-play-state: paused;
         }
 
-        /* MOBILE STYLES - Completely Rewritten for Better Mobile Experience */
+        /* MOBILE STYLES - Button Layout Fixed */
         @media (max-width: 768px) {
             .hero-section {
                 min-height: auto;
@@ -2110,7 +2110,7 @@
             }
             
             .cards-container {
-                height: 380px;
+                height: 420px;
                 -webkit-mask-image: linear-gradient(to right, transparent 5%, black 10%, black 90%, transparent 95%);
                 mask-image: linear-gradient(to right, transparent 5%, black 10%, black 90%, transparent 95%);
                 margin: 20px 0;
@@ -2133,15 +2133,15 @@
             }
 
             .card {
-                width: 220px;
-                height: 340px;
+                width: 260px;
+                height: 380px;
                 margin: 0;
-                transform: rotate(-3deg);
+                transform: rotate(-2deg);
                 border-radius: 20px;
             }
 
             .card:nth-child(odd) {
-                transform: rotate(3deg);
+                transform: rotate(2deg);
                 margin-top: 0;
             }
 
@@ -2149,35 +2149,58 @@
                 transform: rotate(0deg) scale(1.02) translateY(-5px);
             }
 
+            /* BUTTON LAYOUT FIX - Vertical Stack */
             .card-content {
-                padding: 15px 12px;
-                height: 42%;
+                padding: 15px;
+                height: auto;
+                min-height: 40%;
+                display: flex;
+                flex-direction: column;
+                justify-content: flex-end;
+                align-items: center;
+                text-align: center;
+                gap: 10px;
             }
 
             .card-name {
-                font-size: 1.1rem;
-                margin-bottom: 5px;
+                font-size: 1.2rem;
+                margin-bottom: 0;
+                white-space: normal;
+                text-align: center;
+                width: 100%;
             }
 
             .card-role {
-                font-size: 0.75rem;
-                margin-bottom: 10px;
+                font-size: 0.8rem;
+                margin-bottom: 0;
                 line-height: 1.4;
+                text-align: center;
+                width: 100%;
             }
 
             .card-btn {
-                padding: 8px 16px;
-                font-size: 0.75rem;
+                padding: 10px 20px;
+                font-size: 0.8rem;
                 border-radius: 20px;
+                width: 100%;
+                max-width: 140px;
+                justify-content: center;
+                margin-top: 5px;
             }
 
             .cta-button {
                 margin-top: 30px;
+                width: 100%;
+                padding: 0 20px;
+                display: flex;
+                justify-content: center;
             }
 
             .cta-btn {
                 padding: 12px 30px;
                 font-size: 0.9rem;
+                width: 100%;
+                max-width: 250px;
             }
 
             .hero-section::before,
@@ -2201,36 +2224,43 @@
             }
 
             .cards-container {
-                height: 340px;
+                height: 360px;
             }
 
             .card {
-                width: 190px;
-                height: 300px;
+                width: 220px;
+                height: 320px;
                 border-radius: 16px;
             }
 
             .card-content {
-                padding: 12px 10px;
-                height: 45%;
+                padding: 12px;
+                gap: 8px;
+                min-height: 42%;
             }
 
             .card-name {
-                font-size: 1rem;
+                font-size: 1.05rem;
             }
 
             .card-role {
-                font-size: 0.7rem;
-                -webkit-line-clamp: 2;
+                font-size: 0.75rem;
             }
 
             .card-btn {
-                padding: 6px 14px;
-                font-size: 0.7rem;
+                padding: 8px 16px;
+                font-size: 0.75rem;
+                max-width: 120px;
             }
 
             .cards-track {
                 gap: 12px;
+            }
+
+            .cta-btn {
+                max-width: 200px;
+                padding: 10px 25px;
+                font-size: 0.85rem;
             }
         }
 
