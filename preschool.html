@@ -2007,6 +2007,11 @@
             z-index: 10;
             opacity: 0;
             animation: fadeInUp 1s ease 0.4s forwards;
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+            justify-content: center;
+            align-items: center;
         }
 
         .cta-btn {
@@ -2084,7 +2089,7 @@
             animation-play-state: paused;
         }
 
-        /* MOBILE STYLES - Button Layout Fixed */
+        /* MOBILE STYLES - CTA Buttons Stacked Vertically */
         @media (max-width: 768px) {
             .hero-section {
                 min-height: auto;
@@ -2149,58 +2154,40 @@
                 transform: rotate(0deg) scale(1.02) translateY(-5px);
             }
 
-            /* BUTTON LAYOUT FIX - Vertical Stack */
             .card-content {
                 padding: 15px;
-                height: auto;
-                min-height: 40%;
-                display: flex;
-                flex-direction: column;
-                justify-content: flex-end;
-                align-items: center;
-                text-align: center;
-                gap: 10px;
+                height: 42%;
             }
 
             .card-name {
                 font-size: 1.2rem;
-                margin-bottom: 0;
-                white-space: normal;
-                text-align: center;
-                width: 100%;
+                margin-bottom: 5px;
             }
 
             .card-role {
                 font-size: 0.8rem;
-                margin-bottom: 0;
-                line-height: 1.4;
-                text-align: center;
-                width: 100%;
+                margin-bottom: 10px;
             }
 
             .card-btn {
-                padding: 10px 20px;
+                padding: 8px 18px;
                 font-size: 0.8rem;
-                border-radius: 20px;
-                width: 100%;
-                max-width: 140px;
-                justify-content: center;
-                margin-top: 5px;
             }
 
+            /* CTA BUTTONS STACKED VERTICALLY ON MOBILE */
             .cta-button {
                 margin-top: 30px;
+                flex-direction: column;
+                gap: 15px;
                 width: 100%;
                 padding: 0 20px;
-                display: flex;
-                justify-content: center;
             }
 
             .cta-btn {
-                padding: 12px 30px;
-                font-size: 0.9rem;
                 width: 100%;
-                max-width: 250px;
+                max-width: 280px;
+                padding: 14px 30px;
+                font-size: 1rem;
             }
 
             .hero-section::before,
@@ -2224,23 +2211,21 @@
             }
 
             .cards-container {
-                height: 360px;
+                height: 380px;
             }
 
             .card {
                 width: 220px;
-                height: 320px;
+                height: 340px;
                 border-radius: 16px;
             }
 
             .card-content {
                 padding: 12px;
-                gap: 8px;
-                min-height: 42%;
             }
 
             .card-name {
-                font-size: 1.05rem;
+                font-size: 1.1rem;
             }
 
             .card-role {
@@ -2248,9 +2233,8 @@
             }
 
             .card-btn {
-                padding: 8px 16px;
+                padding: 6px 14px;
                 font-size: 0.75rem;
-                max-width: 120px;
             }
 
             .cards-track {
@@ -2258,9 +2242,9 @@
             }
 
             .cta-btn {
-                max-width: 200px;
-                padding: 10px 25px;
-                font-size: 0.85rem;
+                max-width: 250px;
+                padding: 12px 25px;
+                font-size: 0.9rem;
             }
         }
 
@@ -5220,14 +5204,15 @@
             <div style="margin-top: 30px; color: rgba(255,255,255,0.8); font-size: 0.9rem; letter-spacing: 0.1em; text-transform: uppercase;">
                 Located in Whitefield | Crafted for early developmental stages | Intentionally child-centric
             </div>
-            <div class="cta-button">
+<br>
+<br>
                 <button class="cta-btn" onclick="document.getElementById('contact').scrollIntoView({behavior: 'smooth'})">
                     Book a Campus Visit
                 </button>
                 <button class="cta-btn" style="margin-left: 15px; background: transparent; border: 2px solid white; color: white;" onclick="openPopup()">
                     Enquire About Admissions
                 </button>
-            </div>
+            
         </div>
 
         <!-- INFINITE CARDS CONTAINER -->
