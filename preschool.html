@@ -5310,249 +5310,8 @@
                 </div>
             </div>
         </div>
-    </section>
-    <!-- WHY SOUL - Ultra Minimal Luxury -->
+    </section><!-- WHY SOUL - Ultra Minimal Luxury -->
 <section class="why-soul" id="why-soul">
-    <style>
-        .why-soul {
-            font-family: 'Inter', -apple-system, sans-serif;
-            background: #fafafa;
-            padding: 160px 60px;
-            color: #0A1937;
-        }
-
-        .ws-container {
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-
-        .ws-header {
-            margin-bottom: 120px;
-        }
-
-        .ws-label {
-            font-size: 12px;
-            text-transform: uppercase;
-            letter-spacing: 3px;
-            color: #9154A0;
-            margin-bottom: 24px;
-            font-weight: 600;
-        }
-
-        .ws-title {
-            font-size: 72px;
-            font-weight: 300;
-            letter-spacing: -3px;
-            line-height: 1;
-            margin-bottom: 32px;
-        }
-
-        .ws-title b {
-            font-weight: 600;
-            color: #9154A0;
-        }
-
-        .ws-subtitle {
-            font-size: 20px;
-            color: #666;
-            max-width: 500px;
-            line-height: 1.6;
-            font-weight: 400;
-        }
-
-        /* Asymmetric Grid */
-        .ws-grid {
-            display: grid;
-            grid-template-columns: 1.2fr 0.8fr;
-            gap: 80px;
-            align-items: start;
-        }
-
-        .ws-image-wrap {
-            position: sticky;
-            top: 100px;
-        }
-
-        .ws-image {
-            width: 100%;
-            height: 700px;
-            object-fit: cover;
-            border-radius: 8px;
-            filter: grayscale(20%);
-            transition: filter 0.6s;
-        }
-
-        .ws-image:hover {
-            filter: grayscale(0%);
-        }
-
-        .ws-features {
-            display: flex;
-            flex-direction: column;
-            gap: 60px;
-        }
-
-        .ws-feature {
-            border-bottom: 1px solid #e0e0e0;
-            padding-bottom: 40px;
-        }
-
-        .ws-feature-num {
-            font-size: 14px;
-            color: #9154A0;
-            margin-bottom: 16px;
-            font-weight: 600;
-        }
-
-        .ws-feature h3 {
-            font-size: 28px;
-            font-weight: 500;
-            margin-bottom: 16px;
-            letter-spacing: -0.5px;
-        }
-
-        .ws-feature p {
-            font-size: 16px;
-            color: #666;
-            line-height: 1.7;
-        }
-
-        /* Programs */
-        .ws-programs {
-            margin-top: 160px;
-            padding-top: 80px;
-            border-top: 1px solid #e0e0e0;
-        }
-
-        .ws-section-title {
-            font-size: 14px;
-            text-transform: uppercase;
-            letter-spacing: 3px;
-            margin-bottom: 60px;
-            color: #999;
-        }
-
-        .ws-programs-list {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 40px;
-        }
-
-        .ws-program {
-            padding: 40px 0;
-            border-top: 2px solid #0A1937;
-        }
-
-        .ws-program-name {
-            font-size: 24px;
-            font-weight: 600;
-            margin-bottom: 8px;
-        }
-
-        .ws-programs-desc {
-            font-size: 16px;
-            color: #666;
-            line-height: 1.7;
-            margin: 40px 0 30px 0;
-            max-width: 800px;
-        }
-
-        .ws-link {
-            display: inline-flex;
-            align-items: center;
-            gap: 10px;
-            color: #9154A0;
-            text-decoration: none;
-            font-weight: 600;
-            font-size: 15px;
-            transition: gap 0.3s;
-        }
-
-        .ws-link:hover {
-            gap: 15px;
-        }
-
-        /* CTA */
-        .ws-cta {
-            margin-top: 160px;
-            background: #0A1937;
-            padding: 100px 80px;
-            border-radius: 16px;
-            text-align: center;
-            color: white;
-        }
-
-        .ws-cta h2 {
-            font-size: 48px;
-            font-weight: 300;
-            margin-bottom: 20px;
-            letter-spacing: -1px;
-        }
-
-        .ws-cta h2 span {
-            color: #9154A0;
-            font-weight: 600;
-        }
-
-        .ws-cta p {
-            color: rgba(255,255,255,0.6);
-            font-size: 18px;
-            margin-bottom: 40px;
-        }
-
-        .ws-btn {
-            display: inline-flex;
-            align-items: center;
-            gap: 10px;
-            padding: 18px 36px;
-            text-decoration: none;
-            border-radius: 100px;
-            font-weight: 600;
-            font-size: 15px;
-            transition: all 0.3s;
-            margin: 0 10px;
-        }
-
-        .ws-btn::before {
-            content: '▶';
-            font-size: 12px;
-        }
-
-        .ws-btn-primary {
-            background: white;
-            color: #0A1937;
-        }
-
-        .ws-btn-primary:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
-        }
-
-        .ws-btn-outline {
-            background: transparent;
-            color: white;
-            border: 1px solid rgba(255,255,255,0.3);
-        }
-
-        .ws-btn-outline:hover {
-            background: rgba(255,255,255,0.1);
-            border-color: white;
-            transform: translateY(-2px);
-        }
-
-        @media (max-width: 968px) {
-            .why-soul { padding: 80px 24px; }
-            .ws-title { font-size: 42px; }
-            .ws-grid { grid-template-columns: 1fr; }
-            .ws-image-wrap { position: relative; top: 0; height: 400px; }
-            .ws-image { height: 100%; }
-            .ws-programs-list { grid-template-columns: repeat(2, 1fr); gap: 20px; }
-            .ws-cta { padding: 60px 24px; }
-            .ws-cta h2 { font-size: 32px; }
-            .ws-btn { margin: 5px; }
-        }
-    </style>
-
     <div class="ws-container">
         <header class="ws-header">
             <div class="ws-label">Why Soul?</div>
@@ -5562,7 +5321,7 @@
 
         <div class="ws-grid">
             <div class="ws-image-wrap">
-                <img src="https://images.unsplash.com/photo-1503454537195-1dcabb73ffb9?w=800&h=1000&fit=crop" alt="Child" class="ws-image">
+                <img src="https://images.unsplash.com/photo-1503454537195-1dcabb73ffb9?w=800&h=1000&fit=crop" alt="Child playing" class="ws-image" loading="lazy">
             </div>
 
             <div class="ws-features">
@@ -5623,12 +5382,528 @@
         <div class="ws-cta">
             <h2>Ready to experience <span>Soul?</span></h2>
             <p>Visit the area. Feel the serenity. Make inquiries.</p>
-            <div>
+            <div class="ws-cta-buttons">
                 <a href="#" class="ws-btn ws-btn-primary">Schedule a Visit</a>
                 <a href="#" class="ws-btn ws-btn-outline">Speak to Our Admissions Team</a>
             </div>
         </div>
     </div>
+
+    <style>
+        .why-soul {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: #fafafa;
+            padding: clamp(60px, 10vw, 160px) clamp(16px, 5vw, 60px);
+            color: #0A1937;
+        }
+
+        .ws-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .ws-header {
+            margin-bottom: clamp(40px, 8vw, 120px);
+        }
+
+        .ws-label {
+            font-size: clamp(10px, 2vw, 12px);
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            color: #9154A0;
+            margin-bottom: clamp(16px, 3vw, 24px);
+            font-weight: 600;
+        }
+
+        .ws-title {
+            font-size: clamp(36px, 8vw, 72px);
+            font-weight: 300;
+            letter-spacing: -2px;
+            line-height: 1;
+            margin-bottom: clamp(20px, 4vw, 32px);
+        }
+
+        .ws-title b {
+            font-weight: 600;
+            color: #9154A0;
+        }
+
+        .ws-subtitle {
+            font-size: clamp(16px, 3vw, 20px);
+            color: #666;
+            max-width: 500px;
+            line-height: 1.6;
+            font-weight: 400;
+        }
+
+        /* Asymmetric Grid */
+        .ws-grid {
+            display: grid;
+            grid-template-columns: 1.2fr 0.8fr;
+            gap: clamp(30px, 6vw, 80px);
+            align-items: start;
+        }
+
+        .ws-image-wrap {
+            position: sticky;
+            top: 100px;
+            height: fit-content;
+        }
+
+        .ws-image {
+            width: 100%;
+            height: clamp(400px, 50vw, 700px);
+            object-fit: cover;
+            border-radius: 8px;
+            filter: grayscale(20%);
+            transition: filter 0.6s ease;
+        }
+
+        @media (hover: hover) {
+            .ws-image:hover {
+                filter: grayscale(0%);
+            }
+        }
+
+        .ws-features {
+            display: flex;
+            flex-direction: column;
+            gap: clamp(30px, 5vw, 60px);
+        }
+
+        .ws-feature {
+            border-bottom: 1px solid #e0e0e0;
+            padding-bottom: clamp(20px, 4vw, 40px);
+        }
+
+        .ws-feature:last-child {
+            border-bottom: none;
+        }
+
+        .ws-feature-num {
+            font-size: clamp(12px, 2vw, 14px);
+            color: #9154A0;
+            margin-bottom: clamp(10px, 2vw, 16px);
+            font-weight: 600;
+        }
+
+        .ws-feature h3 {
+            font-size: clamp(20px, 4vw, 28px);
+            font-weight: 500;
+            margin-bottom: clamp(10px, 2vw, 16px);
+            letter-spacing: -0.5px;
+            line-height: 1.3;
+        }
+
+        .ws-feature p {
+            font-size: clamp(14px, 2.5vw, 16px);
+            color: #666;
+            line-height: 1.7;
+        }
+
+        /* Programs */
+        .ws-programs {
+            margin-top: clamp(60px, 12vw, 160px);
+            padding-top: clamp(40px, 8vw, 80px);
+            border-top: 1px solid #e0e0e0;
+        }
+
+        .ws-section-title {
+            font-size: clamp(12px, 2vw, 14px);
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            margin-bottom: clamp(30px, 6vw, 60px);
+            color: #999;
+        }
+
+        .ws-programs-list {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: clamp(15px, 3vw, 40px);
+            margin-bottom: clamp(20px, 4vw, 30px);
+        }
+
+        .ws-program {
+            padding: clamp(15px, 3vw, 40px) 0;
+            border-top: 2px solid #0A1937;
+        }
+
+        .ws-program-name {
+            font-size: clamp(16px, 3vw, 24px);
+            font-weight: 600;
+            margin-bottom: 4px;
+            line-height: 1.2;
+            word-break: break-word;
+        }
+
+        .ws-programs-desc {
+            font-size: clamp(14px, 2.5vw, 16px);
+            color: #666;
+            line-height: 1.7;
+            margin: clamp(20px, 5vw, 40px) 0 clamp(15px, 3vw, 30px) 0;
+            max-width: 800px;
+        }
+
+        .ws-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            color: #9154A0;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: clamp(14px, 2.5vw, 15px);
+            transition: gap 0.3s ease;
+            padding: 8px 0; /* Larger tap target */
+        }
+
+        @media (hover: hover) {
+            .ws-link:hover {
+                gap: 15px;
+            }
+        }
+
+        /* CTA */
+        .ws-cta {
+            margin-top: clamp(60px, 12vw, 160px);
+            background: #0A1937;
+            padding: clamp(40px, 8vw, 100px) clamp(20px, 6vw, 80px);
+            border-radius: clamp(12px, 3vw, 16px);
+            text-align: center;
+            color: white;
+        }
+
+        .ws-cta h2 {
+            font-size: clamp(28px, 6vw, 48px);
+            font-weight: 300;
+            margin-bottom: clamp(12px, 3vw, 20px);
+            letter-spacing: -1px;
+            line-height: 1.2;
+        }
+
+        .ws-cta h2 span {
+            color: #9154A0;
+            font-weight: 600;
+        }
+
+        .ws-cta p {
+            color: rgba(255,255,255,0.6);
+            font-size: clamp(14px, 3vw, 18px);
+            margin-bottom: clamp(25px, 5vw, 40px);
+            line-height: 1.6;
+        }
+
+        .ws-cta-buttons {
+            display: flex;
+            gap: clamp(10px, 2vw, 20px);
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .ws-btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            padding: clamp(14px, 3vw, 18px) clamp(20px, 4vw, 36px);
+            text-decoration: none;
+            border-radius: 100px;
+            font-weight: 600;
+            font-size: clamp(13px, 2.5vw, 15px);
+            transition: all 0.3s ease;
+            white-space: nowrap;
+        }
+
+        .ws-btn::before {
+            content: '▶';
+            font-size: clamp(10px, 2vw, 12px);
+            transition: transform 0.3s ease;
+        }
+
+        .ws-btn-primary {
+            background: white;
+            color: #0A1937;
+        }
+
+        .ws-btn-outline {
+            background: transparent;
+            color: white;
+            border: 1px solid rgba(255,255,255,0.3);
+        }
+
+        @media (hover: hover) {
+            .ws-btn-primary:hover {
+                transform: translateY(-2px);
+                box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            }
+
+            .ws-btn-outline:hover {
+                background: rgba(255,255,255,0.1);
+                border-color: white;
+                transform: translateY(-2px);
+            }
+
+            .ws-btn:hover::before {
+                transform: translateX(3px);
+            }
+        }
+
+        /* Tablet Styles */
+        @media screen and (max-width: 968px) {
+            .ws-grid {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+
+            .ws-image-wrap {
+                position: relative;
+                top: 0;
+                height: auto;
+                max-height: 500px;
+                order: -1; /* Image comes first on mobile */
+            }
+
+            .ws-image {
+                height: 100%;
+                max-height: 500px;
+                width: 100%;
+                object-position: center;
+            }
+
+            .ws-feature {
+                padding-bottom: 30px;
+            }
+
+            .ws-programs-list {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 20px;
+            }
+
+            .ws-program {
+                padding: 25px 0;
+            }
+        }
+
+        /* Mobile Styles */
+        @media screen and (max-width: 768px) {
+            .why-soul {
+                padding: 40px 16px;
+            }
+
+            .ws-header {
+                margin-bottom: 40px;
+            }
+
+            .ws-title {
+                letter-spacing: -1px;
+                word-break: break-word;
+            }
+
+            .ws-subtitle {
+                max-width: 100%;
+            }
+
+            .ws-grid {
+                gap: 30px;
+            }
+
+            .ws-image-wrap {
+                max-height: 350px;
+                border-radius: 8px;
+                overflow: hidden;
+            }
+
+            .ws-image {
+                max-height: 350px;
+            }
+
+            .ws-features {
+                gap: 25px;
+            }
+
+            .ws-feature {
+                padding-bottom: 25px;
+            }
+
+            .ws-programs {
+                margin-top: 50px;
+                padding-top: 30px;
+            }
+
+            .ws-programs-list {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 15px;
+            }
+
+            .ws-program {
+                padding: 20px 0;
+            }
+
+            .ws-program-name {
+                font-size: 18px;
+            }
+
+            .ws-programs-desc {
+                margin: 20px 0 15px 0;
+            }
+
+            .ws-cta {
+                margin-top: 50px;
+                padding: 40px 20px;
+            }
+
+            .ws-cta-buttons {
+                flex-direction: column;
+                align-items: center;
+                gap: 12px;
+            }
+
+            .ws-btn {
+                width: 100%;
+                max-width: 300px;
+                white-space: normal;
+                text-align: center;
+                padding: 16px 24px;
+            }
+        }
+
+        /* Small Mobile Styles */
+        @media screen and (max-width: 480px) {
+            .why-soul {
+                padding: 30px 12px;
+            }
+
+            .ws-title {
+                font-size: 32px;
+                letter-spacing: -0.5px;
+            }
+
+            .ws-image-wrap {
+                max-height: 280px;
+            }
+
+            .ws-image {
+                max-height: 280px;
+            }
+
+            .ws-feature h3 {
+                font-size: 18px;
+            }
+
+            .ws-feature p {
+                font-size: 13px;
+            }
+
+            .ws-programs-list {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 10px;
+            }
+
+            .ws-program {
+                padding: 15px 0;
+            }
+
+            .ws-program-name {
+                font-size: 16px;
+            }
+
+            .ws-programs-desc {
+                font-size: 13px;
+                margin: 15px 0 12px 0;
+            }
+
+            .ws-link {
+                font-size: 13px;
+            }
+
+            .ws-cta h2 {
+                font-size: 24px;
+            }
+
+            .ws-cta p {
+                font-size: 13px;
+                margin-bottom: 20px;
+            }
+
+            .ws-btn {
+                font-size: 13px;
+                padding: 14px 20px;
+                max-width: 250px;
+            }
+
+            .ws-btn::before {
+                font-size: 10px;
+            }
+        }
+
+        /* Landscape Mode */
+        @media screen and (max-width: 968px) and (orientation: landscape) {
+            .ws-image-wrap {
+                max-height: 300px;
+            }
+
+            .ws-image {
+                max-height: 300px;
+            }
+
+            .ws-cta-buttons {
+                flex-direction: row;
+            }
+
+            .ws-btn {
+                width: auto;
+                min-width: 200px;
+            }
+        }
+
+        /* Touch Device Optimizations */
+        @media (hover: none) and (pointer: coarse) {
+            .ws-link,
+            .ws-btn {
+                -webkit-tap-highlight-color: transparent;
+            }
+
+            .ws-link:active,
+            .ws-btn:active {
+                opacity: 0.7;
+            }
+
+            .ws-btn-primary:active {
+                transform: scale(0.98);
+            }
+
+            .ws-btn-outline:active {
+                background: rgba(255,255,255,0.15);
+            }
+        }
+
+        /* Accessibility */
+        @media (prefers-reduced-motion: reduce) {
+            .ws-image,
+            .ws-link,
+            .ws-btn,
+            .ws-btn::before {
+                transition: none;
+            }
+
+            .ws-link:hover,
+            .ws-btn:hover {
+                transform: none !important;
+                gap: 10px !important;
+            }
+        }
+
+        /* Fix for very small devices */
+        @media screen and (max-width: 360px) {
+            .ws-program-name {
+                font-size: 14px;
+            }
+
+            .ws-btn {
+                max-width: 220px;
+                padding: 12px 16px;
+            }
+        }
+    </style>
 </section>
     <!-- ABOUT SOUL DETAILED -->
     <section class="about-soul">
