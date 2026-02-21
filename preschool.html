@@ -3669,7 +3669,7 @@
 
         .soul-tag {
             display: inline-block;
-            font-size: 14px;
+            font-size: 25px;
             letter-spacing: 4px;
             color: #9154A0;
             margin-bottom: 20px;
@@ -6840,8 +6840,7 @@
             </div>
         </div>
 
-    </section>
-<!-- DAYCARE SECTION -->
+    </section><!-- DAYCARE SECTION -->
 <section class="daycare-section" id="daycare">
     <div class="container">
         <div class="daycare-header text-center mb-12">
@@ -6999,16 +6998,19 @@
         padding: 0 15px;
     }
 
+    /* UPDATED: Cards row with flex for equal height */
     .daycare-cards-row {
-        display: grid;
-        grid-template-columns: repeat(2, 1fr);
+        display: flex;
         gap: 30px;
         max-width: 1200px;
         margin: 0 auto;
         padding: 0 20px;
+        align-items: stretch;
     }
 
+    /* UPDATED: Cards with flex properties for equal height */
     .daycare-card {
+        flex: 1;
         background: white;
         border-radius: 24px;
         padding: 40px;
@@ -7017,7 +7019,6 @@
         transition: transform 0.3s ease, box-shadow 0.3s ease;
         display: flex;
         flex-direction: column;
-        height: 100%; /* Make cards take full height of grid cell */
     }
 
     .daycare-card:hover {
@@ -7030,7 +7031,7 @@
         align-items: center;
         gap: 12px;
         margin-bottom: 24px;
-        flex-shrink: 0; /* Prevent header from shrinking */
+        flex-shrink: 0;
     }
 
     .icon-wrapper {
@@ -7053,11 +7054,12 @@
         font-weight: 600;
     }
 
+    /* UPDATED: Schedule list takes full height */
     .schedule-list {
         list-style: none;
         padding: 0;
         margin: 0;
-        flex: 1; /* Take remaining space */
+        flex: 1;
         display: flex;
         flex-direction: column;
     }
@@ -7088,11 +7090,13 @@
         color: #0A1937;
     }
 
+    /* UPDATED: Includes grid takes full height and distributes space evenly */
     .includes-grid {
         display: flex;
         flex-direction: column;
         gap: 12px;
-        flex: 1; /* Take remaining space */
+        flex: 1;
+        justify-content: space-between;
     }
 
     .include-item {
@@ -7104,6 +7108,7 @@
         border-radius: 12px;
         border-left: 3px solid #9154A0;
         transition: transform 0.2s ease;
+        flex: 0 0 auto;
     }
 
     .include-item:hover {
@@ -7172,15 +7177,21 @@
             padding: 60px 16px;
         }
 
+        /* UPDATED: Stack cards on tablet */
         .daycare-cards-row {
-            grid-template-columns: 1fr;
+            flex-direction: column;
             gap: 25px;
             padding: 0 16px;
         }
 
         .daycare-card {
             padding: 32px;
-            height: auto; /* Reset height for mobile stacking */
+            width: 100%;
+        }
+
+        /* UPDATED: Reset justify-content for stacked view */
+        .includes-grid {
+            justify-content: flex-start;
         }
 
         .section-title {
@@ -7317,12 +7328,18 @@
 
     /* Landscape Mode for Mobile */
     @media screen and (max-width: 968px) and (orientation: landscape) {
+        /* UPDATED: Show two columns in landscape */
         .daycare-cards-row {
-            grid-template-columns: 1fr 1fr;
+            flex-direction: row;
         }
         
         .daycare-card {
-            height: 100%; /* Maintain equal height in landscape */
+            width: auto;
+        }
+        
+        /* UPDATED: Reset justify-content for landscape */
+        .includes-grid {
+            justify-content: space-between;
         }
     }
 
@@ -7685,23 +7702,25 @@
 
         </div>
 
-        <!-- CTA Section -->
-        <div class="admissions-cta">
-            <div class="cta-content">
-                <p class="cta-text">Ready to take the first step?</p>
-                <button class="cta-button" onclick="openPopup()" 
-        style="background-color: #9154A0; color: white;">
-    <span>Start Your Enquiry</span>
-    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-    </svg>
-</button>
-
-                <p class="cta-note">No obligation. We're here to answer all your questions.</p>
-            </div>
-        </div>
+        
+               </div>
 
     </section>
+ <div class="ws-cta">
+            <h2>Ready to take the first <span>step?</span></h2>
+            <p>No obligation. We're here to answer all your questions.</p>
+            <div class="ws-cta-buttons">
+                
+                <a href="#" class="ws-btn ws-btn-outline">
+                    <span class="btn-icon">▶</span>
+                    
 
+
+Start Your Enquiry
+
+                </a>
+            </div>
+        </div>
     <!-- CONTACT -->
     <section id="contact" class="contact-section section">
         <div class="container relative z-10">
