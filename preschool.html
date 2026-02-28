@@ -12,15 +12,14 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600&family=Inter:wght@300;400;500;600&family=Playfair+Display:wght@400;500;600;700&family=Nunito:wght@400;500;600;700&display=swap" rel="stylesheet">
     
-    <!-- Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
-    <!-- GSAP -->
+
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
 
     <style>
-        /* ----- RESET & GLOBAL ----- */
+
         * {
             margin: 0;
             padding: 0;
@@ -40,7 +39,7 @@
             scroll-behavior: smooth;
         }
 
-        /* ----- TYPOGRAPHY ----- */
+
         .font-display {
             font-family: 'Playfair Display', serif;
         }
@@ -60,7 +59,7 @@
             background-clip: text;
         }
 
-        /* ----- COLORS (custom properties) ----- */
+
         :root {
             --navy: #0A1937;
             --purple: #9154A0;
@@ -74,12 +73,11 @@
             --gray-500: #78716C;
         }
 
-        /* ----- SCROLLBAR ----- */
+    
         ::-webkit-scrollbar { width: 10px; }
         ::-webkit-scrollbar-track { background: #FFFFFF; }
         ::-webkit-scrollbar-thumb { background: #9154A0; border-radius: 5px; }
 
-        /* ----- GLASS EFFECT ----- */
         .glass {
             background: rgba(255, 255, 255, 0.9);
             backdrop-filter: blur(12px);
@@ -93,7 +91,6 @@
             -webkit-backdrop-filter: blur(12px);
         }
 
-        /* ----- BLOB SHAPES ----- */
         .blob {
             border-radius: 40% 60% 70% 30% / 40% 50% 60% 50%;
             animation: morph 8s ease-in-out infinite;
@@ -104,7 +101,7 @@
             67% { border-radius: 100% 60% 60% 100% / 100% 100% 60% 60%; }
         }
 
-        /* ----- HOVER LIFT ----- */
+
         .hover-lift {
             transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.3s ease;
         }
@@ -113,7 +110,7 @@
             box-shadow: 0 20px 40px rgba(10, 25, 55, 0.15);
         }
 
-        /* ----- BUTTON SHINE ----- */
+
         .btn-shine {
             position: relative;
             overflow: hidden;
@@ -132,7 +129,7 @@
             left: 100%;
         }
 
-        /* ----- ACCORDION ----- */
+
         .accordion-content {
             max-height: 0;
             overflow: hidden;
@@ -158,7 +155,7 @@
             transform: rotate(180deg);
         }
 
-        /* ----- IMAGE ZOOM ----- */
+        
         .img-zoom {
             overflow: hidden;
         }
@@ -169,19 +166,19 @@
             transform: scale(1.1);
         }
 
-        /* ----- STAGGER ANIMATION (initial state) ----- */
+
         .stagger-item {
             opacity: 0;
             transform: translateY(30px);
         }
 
-        /* ----- REVEAL ON SCROLL (initial state) ----- */
+
         .reveal-on-scroll {
             opacity: 0;
             transform: translateY(30px);
         }
 
-        /* ----- ADMISSIONS POPUP ----- */
+
         .admissions-popup-overlay {
             position: fixed;
             inset: 0;
@@ -406,7 +403,7 @@
             }
         }
 
-        /* ----- NAVIGATION ----- */
+
         .navbar {
             position: fixed;
             width: 100%;
@@ -546,7 +543,7 @@
             .mobile-menu-btn { display: none; }
         }
 
-        /* ----- MOBILE MENU ----- */
+
         .mobile-menu {
             position: fixed;
             inset: 0;
@@ -610,7 +607,7 @@
             text-decoration: none;
         }
 
-        /* ----- ANNOUNCEMENT BAR ----- */
+
         .announcement-bar {
             background-color: rgba(145, 84, 160, 0.15);
             color: #0A1937;
@@ -647,7 +644,7 @@
             100% { transform: translateX(100%); }
         }
 
-        /* ----- HERO ----- */
+        
         .hero {
             position: relative;
             min-height: 100vh;
@@ -815,7 +812,7 @@
             font-size: 0.875rem;
         }
 
-        /* ----- HERO IMAGE ----- */
+
         .hero-image-wrapper {
             position: relative;
             display: flex;
@@ -905,7 +902,7 @@
             animation: pulse 2s infinite;
         }
 
-        /* ----- SECTION COMMON ----- */
+
         .section {
             padding: 6rem 0;
         }
@@ -917,7 +914,7 @@
         @media (min-width: 640px) { .container { padding: 0 1.5rem; } }
         @media (min-width: 1024px) { .container { padding: 0 2rem; } }
 
-        /* ----- ABOUT SECTION ----- */
+
         .about-grid {
             display: grid;
             gap: 4rem;
@@ -1034,7 +1031,7 @@
             font-family: 'Playfair Display', serif;
         }
 
-        /* ----- WHY SOUL CARDS ----- */
+
         .section-title {
             font-family: 'Playfair Display', serif;
             font-size: 2.5rem;
@@ -1093,7 +1090,7 @@
             line-height: 1.625;
         }
 
-        /* ----- PROGRAM CARDS (IMAGE OVERLAY) ----- */
+
         .program-grid {
             display: grid;
             gap: 1.5rem;
@@ -1164,7 +1161,7 @@
             gap: 0.75rem;
         }
 
-        /* ----- MISSION/VISION ----- */
+
         .mission-section {
             background: #0A1937;
             color: white;
@@ -1255,7 +1252,7 @@
             background: rgba(145, 84, 160, 0.05);
         }
 
-        /* ----- CONTACT ----- */
+
         .contact-section {
             background: rgba(255,255,255,0.5);
             position: relative;
@@ -1376,7 +1373,7 @@
             transform: translateY(-2px);
         }
 
-        /* ----- FOOTER ----- */
+
         .footer {
             background: #0A1937;
             color: white;
@@ -1514,7 +1511,7 @@
             color:;
         }
 
-        /* ----- FLOATING BUTTONS ----- */
+
         .whatsapp-float {
             position: fixed;
             bottom: 1.5rem;
@@ -1561,7 +1558,7 @@
             opacity: 1;
         }
 
-        /* Instagram Float Button */
+
         .instagram-float {
             position: fixed;
             bottom: 5.5rem;
@@ -1635,7 +1632,7 @@
             background: #7a4487;
         }
 
-        /* ----- UTILITY ----- */
+
         .relative { position: relative; }
         .absolute { position: absolute; }
         .fixed { position: fixed; }
@@ -1813,7 +1810,7 @@
             }
         }
 
-        /* LIQUID GLASS CARD STYLES */
+
         .card {
             width: 280px;
             height: 400px;
@@ -2092,7 +2089,7 @@
             animation-play-state: paused;
         }
 
-        /* MOBILE STYLES - Text Position Fixed */
+
         @media (max-width: 768px) {
             .hero-section {
                 min-height: auto;
@@ -2178,7 +2175,7 @@
                 width: 80px;
             }
 
-            /* CTA BUTTONS MOBILE FIX */
+
             .cta-button {
                 flex-direction: column;
                 gap: 20px;
@@ -2199,7 +2196,7 @@
             }
         }
 
-        /* Extra small devices */
+
         @media (max-width: 480px) {
             .hero-section {
                 padding: 80px 0 30px 0;
@@ -2256,7 +2253,7 @@
             }
         }
 
-        /* Tablet styles */
+        
         @media (min-width: 769px) and (max-width: 1024px) {
             .card {
                 width: 260px;
@@ -2266,7 +2263,7 @@
             .cards-container {
                 height: 420px;
             }
-        }        /* Why Soul Section */
+        }       
         .why-soul-section {
             background: #FFFFFF;
             padding: 80px 20px;
@@ -2462,7 +2459,7 @@
             }
         }
 
-        /* About Soul Section */
+
         .about-soul {
             padding: 80px 24px;
             max-width: 1200px;
@@ -2722,7 +2719,7 @@
             transition-delay: 0.3s;
         }
 
-        /* Philosophy Stack Section */
+
         .philosophy-stack {
             position: relative;
             background: #ffffff;
@@ -3226,7 +3223,7 @@
             }
         }
 
-        /* Programs Section */
+
         .programs-section-wrapper-unique {
             display: block;
             width: 100%;
@@ -3631,7 +3628,7 @@
             transform: translateY(0);
         }
 
-        /* Campus Section */
+
         .soul-preschool-wrapper {
             background: #FFFFFF;
             padding: 120px 0;
@@ -5081,7 +5078,7 @@
 </head>
 <body>
 
-    <!-- ADMISSIONS POPUP -->
+
     <div class="admissions-popup-overlay" id="admissionsPopup">
         <div class="admissions-popup">
             <div class="popup-header">
@@ -5140,7 +5137,7 @@
         </div>
     </div>
 
-    <!-- NAVIGATION -->
+
     <nav class="navbar" id="navbar">
         <div class="glass">
             <div class="nav-container">
@@ -5175,7 +5172,7 @@
         </div>
     </nav>
 
-    <!-- MOBILE MENU -->
+
     <div class="mobile-menu" id="mobile-menu">
         <div class="mobile-menu-content">
             <div class="mobile-menu-header">
@@ -5204,7 +5201,7 @@
         </div>
     </div>
 
-    <!-- HERO SECTION -->
+
     <section class="hero-section" id="home">
 
         <div class="hero-content">
@@ -5226,11 +5223,11 @@
             </div>
         </div>
 
-        <!-- INFINITE CARDS CONTAINER -->
+
         <div class="cards-container">
             <div class="cards-track" id="cardsTrack">
 
-                <!-- Card 1 -->
+
                 <div class="card">
                     <img src="https://images.unsplash.com/photo-1588072432836-e10032774350?w=400&h=600&fit=crop" alt="child care" class="card-image">
                     <div class="card-content">
@@ -5240,7 +5237,7 @@
                     </div>
                 </div>
 
-                <!-- Card 2 -->
+
                 <div class="card">
                     <img src="https://images.unsplash.com/photo-1607453998774-d533f65dac99?w=400&h=600&fit=crop" alt="creative learning" class="card-image">
                     <div class="card-content">
@@ -5250,7 +5247,7 @@
                     </div>
                 </div>
 
-                <!-- Card 3 -->
+
                 <div class="card">
                     <img src="https://images.unsplash.com/photo-1580582932707-520aed937b7b?w=400&h=600&fit=crop" alt="play based" class="card-image">
                     <div class="card-content">
@@ -5260,7 +5257,7 @@
                     </div>
                 </div>
 
-                <!-- Card 4 -->
+
                 <div class="card">
                     <img src="https://images.unsplash.com/photo-1509062522246-3755977927d7?w=400&h=600&fit=crop" alt="educators" class="card-image">
                     <div class="card-content">
@@ -5270,7 +5267,7 @@
                     </div>
                 </div>
 
-                <!-- Card 5 -->
+
                 <div class="card">
                     <img src="https://images.unsplash.com/photo-1596464716127-f2a82984de30?w=400&h=600&fit=crop" alt="joyful community" class="card-image">
                     <div class="card-content">
@@ -5280,9 +5277,6 @@
                     </div>
                 </div>
 
-                <!-- DUPLICATES for seamless loop -->
-
-                <!-- Card 1 duplicate -->
                 <div class="card">
                     <img src="https://images.unsplash.com/photo-1588072432836-e10032774350?w=400&h=600&fit=crop" alt="child care" class="card-image">
                     <div class="card-content">
@@ -5292,7 +5286,7 @@
                     </div>
                 </div>
 
-                <!-- Card 2 duplicate -->
+
                 <div class="card">
                     <img src="https://images.unsplash.com/photo-1607453998774-d533f65dac99?w=400&h=600&fit=crop" alt="creative learning" class="card-image">
                     <div class="card-content">
@@ -5302,7 +5296,7 @@
                     </div>
                 </div>
 
-                <!-- Card 3 duplicate -->
+
                 <div class="card">
                     <img src="https://images.unsplash.com/photo-1580582932707-520aed937b7b?w=400&h=600&fit=crop" alt="play based" class="card-image">
                     <div class="card-content">
@@ -5312,7 +5306,7 @@
                     </div>
                 </div>
 
-                <!-- Card 4 duplicate -->
+
                 <div class="card">
                     <img src="https://images.unsplash.com/photo-1509062522246-3755977927d7?w=400&h=600&fit=crop" alt="educators" class="card-image">
                     <div class="card-content">
@@ -5322,7 +5316,7 @@
                     </div>
                 </div>
 
-                <!-- Card 5 duplicate -->
+
                 <div class="card">
                     <img src="https://images.unsplash.com/photo-1596464716127-f2a82984de30?w=400&h=600&fit=crop" alt="joyful community" class="card-image">
                     <div class="card-content">
@@ -5337,7 +5331,7 @@
 
     </section>
 
-    <!-- ABOUT -->
+
     <section id="about" class="section bg-white">
         <div class="container">
             <div class="about-grid">
@@ -5398,7 +5392,7 @@
                 </div>
             </div>
         </div>
-    </section><!-- WHY SOUL - Ultra Minimal Luxury -->
+    </section>
 <section class="why-soul" id="why-soul">
     <div class="ws-container">
         <header class="ws-header">
@@ -5530,7 +5524,7 @@
             font-weight: 400;
         }
 
-        /* Asymmetric Grid */
+
         .ws-grid {
             display: grid;
             grid-template-columns: 1.2fr 0.8fr;
@@ -5647,7 +5641,7 @@
             font-weight: 600;
             font-size: clamp(14px, 2.5vw, 15px);
             transition: gap 0.3s ease;
-            padding: 12px 0; /* Larger tap target */
+            padding: 12px 0; 
         }
 
         @media (hover: hover) {
@@ -5656,7 +5650,7 @@
             }
         }
 
-        /* CTA Section */
+
         .ws-cta {
             margin-top: clamp(60px, 12vw, 160px);
             background: #0A1937;
@@ -5744,7 +5738,7 @@
             }
         }
 
-        /* Tablet Styles */
+
         @media screen and (max-width: 968px) {
             .ws-grid {
                 grid-template-columns: 1fr;
@@ -5785,7 +5779,7 @@
             }
         }
 
-        /* Mobile Styles */
+
         @media screen and (max-width: 768px) {
             .why-soul {
                 padding: 40px 16px;
@@ -5870,7 +5864,7 @@
             }
         }
 
-        /* Small Mobile Styles */
+
         @media screen and (max-width: 480px) {
             .why-soul {
                 padding: 30px 12px;
@@ -5944,7 +5938,7 @@
             }
         }
 
-        /* Extra Small Mobile Styles */
+
         @media screen and (max-width: 360px) {
             .ws-cta {
                 padding: 30px 15px;
@@ -5965,7 +5959,7 @@
             }
         }
 
-        /* Landscape Mode */
+ 
         @media screen and (max-width: 968px) and (orientation: landscape) {
             .ws-image-wrap {
                 max-height: 300px;
@@ -5987,7 +5981,7 @@
             }
         }
 
-        /* Touch Device Optimizations */
+
         @media (hover: none) and (pointer: coarse) {
             .ws-link,
             .ws-btn {
@@ -6014,7 +6008,7 @@
             }
         }
 
-        /* Accessibility */
+
         @media (prefers-reduced-motion: reduce) {
             .ws-image,
             .ws-link,
@@ -6028,7 +6022,7 @@
             }
         }
 
-        /* Fix for devices with notches */
+
         @supports (padding: max(0px)) {
             .why-soul {
                 padding-left: max(16px, env(safe-area-inset-left));
@@ -6037,7 +6031,7 @@
         }
     </style>
 </section>
-    <!-- ABOUT SOUL DETAILED -->
+
     <section class="about-soul">
         <div class="about-soul__header about-soul__fade about-soul__fade--delay1">
             <div class="about-soul__label">Discover</div>
@@ -6046,7 +6040,7 @@
         </div>
 
         <div class="about-soul__grid">
-            <!-- Our Story Card -->
+        
             <div class="about-soul__card about-soul__fade about-soul__fade--delay2">
                 <div class="about-soul__card-header">
                     <div class="about-soul__card-icon" aria-hidden="true">✦</div>
@@ -6077,7 +6071,7 @@
                 </div>
             </div>
 
-            <!-- Vision and Mission Card -->
+
             <div class="about-soul__card about-soul__fade about-soul__fade--delay3">
                 <div class="about-soul__card-header">
                     <div class="about-soul__card-icon" aria-hidden="true">◈</div>
@@ -6111,10 +6105,10 @@
         </div>
     </section>
 
-<!-- OUR PHILOSOPHY -->
+
 <section id="philosophy" class="philosophy-stack">
     
-    <!-- Section Header -->
+
     <div class="philosophy-header">
         <div class="header-content">
             <span class="header-eyebrow">Our Foundation</span>
@@ -6127,10 +6121,10 @@
         </div>
     </div>
 
-    <!-- Stacking Cards Container -->
+
     <div class="stack-cards-container">
         
-        <!-- Card 1: Learning Attitudes Begin Early -->
+
         <article class="stack-card card-1" data-card="1">
             <div class="card-inner">
                 <div class="card-left">
@@ -6164,7 +6158,7 @@
             </div>
         </article>
 
-        <!-- Card 2: Structure Creates Freedom -->
+
         <article class="stack-card card-2" data-card="2">
             <div class="card-inner">
                 <div class="card-left">
@@ -6197,7 +6191,7 @@
             </div>
         </article>
 
-        <!-- Card 3: Responsibility Builds Capability -->
+
         <article class="stack-card card-3" data-card="3">
             <div class="card-inner">
                 <div class="card-left">
@@ -6231,7 +6225,7 @@
             </div>
         </article>
 
-        <!-- Card 4: Observation Guides Teaching -->
+
         <article class="stack-card card-4" data-card="4">
             <div class="card-inner">
                 <div class="card-left">
@@ -6265,7 +6259,7 @@
             </div>
         </article>
 
-        <!-- Card 5: Character Over Curriculum -->
+
         <article class="stack-card card-5" data-card="5">
             <div class="card-inner">
                 <div class="card-left">
@@ -6302,7 +6296,7 @@
     </div>
 
 </section>
-<!-- PROGRAMS -->
+
 <div class="programs-section-wrapper-unique">
     <section id="programs-unique" class="section-unique bg-white-unique">
         <div class="container-unique relative-unique z-10-unique">
@@ -6316,7 +6310,7 @@
                 <p class="section-sub-unique">Our focus remains consistent: safety, readiness, independence, and joy in learning.</p>
             </div>
 
-            <!-- PROGRAMS CAROUSEL -->
+
             <div class="programs-carousel-container-unique">
                 <div class="programs-track-wrapper-unique">
                     <button class="program-nav-btn-unique prev-btn-unique" id="programPrevBtnUnique" aria-label="Previous program">
@@ -6327,7 +6321,7 @@
 
                     <div class="programs-viewport-unique" id="programsViewportUnique">
                         <div class="programs-track-unique" id="programsTrackUnique">
-                            <!-- CARD 1: TODDLERS -->
+                            
                             <article class="program-card-unique compact-card-unique" id="cardToddlersUnique" data-age="1.5-2.5">
                                 <div class="card-image-wrapper-unique" id="toddlersImgWrapperUnique">
                                     <img src="https://kimi-web-img.moonshot.cn/img/littlescholarsnyc.com/45f2dbda1011b0b25c821687eb87b6418c9186e7.jpg" alt="Toddlers sensory play" id="toddlersImgUnique">
@@ -6360,7 +6354,7 @@
                                 </div>
                             </article>
 
-                            <!-- CARD 2: PLAYGROUP -->
+
                             <article class="program-card-unique compact-card-unique" id="cardPlaygroupUnique" data-age="2.5-3.5">
                                 <div class="card-image-wrapper-unique" id="playgroupImgWrapperUnique">
                                     <img src="https://kimi-web-img.moonshot.cn/img/playtolearnpreschool.us/bcbddc5051472868d4e60ed631546a9a2cdda145.jpg" alt="Playgroup art activities" id="playgroupImgUnique">
@@ -6393,7 +6387,7 @@
                                 </div>
                             </article>
 
-                            <!-- CARD 3: NURSERY -->
+
                             <article class="program-card-unique compact-card-unique" id="cardNurseryUnique" data-age="3.5-4.5">
                                 <div class="card-image-wrapper-unique" id="nurseryImgWrapperUnique">
                                     <img src="https://kimi-web-img.moonshot.cn/img/cdn.shopify.com/33ea69699617b73722e66efb44172ef59408603f.jpg" alt="Nursery reading time" id="nurseryImgUnique">
@@ -6426,7 +6420,7 @@
                                 </div>
                             </article>
 
-                            <!-- CARD 4: PREP -->
+
                             <article class="program-card-unique compact-card-unique" id="cardPrepUnique" data-age="4.5-6">
                                 <div class="card-image-wrapper-unique" id="prepImgWrapperUnique">
                                     <img src="https://kimi-web-img.moonshot.cn/img/theprimaryparade.com/0821acda409e5afc8b53d4fc9e024461f1e7b401.jpg" alt="Prep school readiness" id="prepImgUnique">
@@ -6468,7 +6462,7 @@
                     </button>
                 </div>
 
-                <!-- Progress Indicators -->
+
                 <div class="carousel-progress-unique" id="carouselProgressUnique">
                     <div class="progress-bar-unique" id="progressBarUnique"></div>
                 </div>
@@ -6483,11 +6477,11 @@
         </div>
     </section>
 </div>
-<!-- SOULSPHERE CURRICULUM SECTION -->
+
 <section class="curriculum-section" id="curriculum">
     <div class="curriculum-container">
         
-        <!-- Header with decorative elements -->
+
         <div class="curriculum-header">
             <div class="header-decoration">
                 <span class="deco-line"></span>
@@ -6498,7 +6492,7 @@
             <p class="section-desc">SoulSphere Curriculum is Soul Preschool Academy's thoughtfully curated blended curriculum designed exclusively for the foundational years. It draws from Montessori, Reggio Emilia, Finnish education, IB-PYP, and Japanese approaches integrated intentionally, not layered randomly.</p>
         </div>
 
-        <!-- How It Works - Enhanced Grid -->
+
         <div class="how-it-works">
             <div class="works-header">
                 <i class="fas fa-bolt works-icon"></i>
@@ -6555,10 +6549,10 @@
             </div>
         </div>
 
-        <!-- Enhanced Integrated Visual - Connected Diagram -->
+
         <div class="curriculum-visual">
             <div class="visual-container">
-                <!-- Left side: Curriculum Approaches with improved design -->
+
                 <div class="approaches-list">
                     <div class="list-header">Approaches</div>
                     <div class="approach-node" data-target="montessori">
@@ -6588,7 +6582,7 @@
                     </div>
                 </div>
 
-                <!-- Enhanced Center: Soul Sphere -->
+
                 <div class="center-hub">
                     <div class="hub-rings">
                         <div class="ring ring1"></div>
@@ -6602,7 +6596,6 @@
                     <div class="hub-label">Integrated at Soul</div>
                 </div>
 
-                <!-- Enhanced Right side: Outcomes -->
                 <div class="outcomes-list">
                     <div class="list-header">Outcomes</div>
                     <div class="outcome-item" style="animation-delay: 0s;">
@@ -6628,7 +6621,6 @@
                 </div>
             </div>
 
-            <!-- Enhanced SVG Connection Lines with animations -->
             <svg class="connection-lines" viewBox="0 0 800 400" preserveAspectRatio="none">
                 <defs>
                     <linearGradient id="lineGradient" x1="0%" y1="0%" x2="100%" y2="0%">
@@ -6646,14 +6638,12 @@
                     </filter>
                 </defs>
                 
-                <!-- Lines from approaches to center with gradient -->
                 <line class="connector" x1="150" y1="80" x2="350" y2="200" data-from="montessori" stroke="url(#lineGradient)" />
                 <line class="connector" x1="150" y1="140" x2="350" y2="200" data-from="reggio" stroke="url(#lineGradient)" />
                 <line class="connector" x1="150" y1="200" x2="350" y2="200" data-from="finnish" stroke="url(#lineGradient)" />
                 <line class="connector" x1="150" y1="260" x2="350" y2="200" data-from="ib" stroke="url(#lineGradient)" />
                 <line class="connector" x1="150" y1="320" x2="350" y2="200" data-from="japanese" stroke="url(#lineGradient)" />
                 
-                <!-- Lines from center to outcomes with gradient -->
                 <line class="connector outcome-line" x1="450" y1="200" x2="650" y2="80" stroke="url(#lineGradient)" />
                 <line class="connector outcome-line" x1="450" y1="200" x2="650" y2="140" stroke="url(#lineGradient)" />
                 <line class="connector outcome-line" x1="450" y1="200" x2="650" y2="200" stroke="url(#lineGradient)" />
@@ -6662,7 +6652,6 @@
             </svg>
         </div>
 
-        <!-- Floating particles for visual interest -->
         <div class="floating-particles">
             <div class="particle" style="top: 10%; left: 5%; animation-delay: 0s;"></div>
             <div class="particle" style="top: 20%; right: 8%; animation-delay: 0.5s;"></div>
@@ -6785,7 +6774,6 @@
         box-shadow: 0 10px 30px rgba(145, 84, 160, 0.05);
     }
 
-    /* Enhanced How It Works */
     .how-it-works {
         margin-bottom: 100px;
         background: white;
@@ -6959,7 +6947,6 @@
         gap: 40px;
     }
 
-    /* Enhanced Left Side - Approaches */
     .approaches-list {
         display: flex;
         flex-direction: column;
@@ -7061,7 +7048,7 @@
         transform: translate(-50%, -50%) scale(2);
     }
 
-    /* Enhanced Center Hub */
+
     .center-hub {
         position: relative;
         width: 240px;
@@ -7189,7 +7176,6 @@
         50% { opacity: 1; }
     }
 
-    /* Enhanced Right Side - Outcomes */
     .outcomes-list {
         display: flex;
         flex-direction: column;
@@ -7260,7 +7246,6 @@
         50% { transform: scale(1.1); }
     }
 
-    /* SVG Connection Lines */
     .connection-lines {
         position: absolute;
         top: 0;
@@ -7298,7 +7283,6 @@
         }
     }
 
-    /* Interactive States */
     .approach-item.active {
         background: linear-gradient(90deg, rgba(145, 84, 160, 0.05), transparent);
         padding-left: 30px;
@@ -7356,7 +7340,6 @@
         }
     }
 
-    /* Reduced motion preferences */
     @media (prefers-reduced-motion: reduce) {
         .hub-core,
         .hub-rings,
@@ -7375,18 +7358,18 @@
 </style>
 
 <script>
-    // Interactive connections
+
     document.addEventListener('DOMContentLoaded', function() {
         const approachItems = document.querySelectorAll('.approach-item');
         const approachNodes = document.querySelectorAll('.approach-node');
         const connectors = document.querySelectorAll('.connector');
 
         function highlightConnection(approachType) {
-            // Reset all
+        
             approachItems.forEach(item => item.classList.remove('active'));
             connectors.forEach(conn => conn.classList.remove('active'));
 
-            // Highlight current
+            
             const activeItem = document.querySelector(`.approach-item[data-approach="${approachType}"]`);
             const activeConnector = document.querySelector(`.connector[data-from="${approachType}"]`);
             
@@ -7394,11 +7377,9 @@
             if (activeConnector) {
                 activeConnector.classList.add('active');
                 
-                // Add flowing animation
                 activeConnector.style.strokeDasharray = activeConnector.classList.contains('outcome-line') ? 'none' : '8,8';
             }
 
-            // Add ripple effect
             createRipple(approachType);
         }
 
@@ -7423,7 +7404,6 @@
             }, 1000);
         }
 
-        // Add CSS for ripple effect dynamically
         const style = document.createElement('style');
         style.textContent = `
             @keyframes ripple {
@@ -7433,34 +7413,30 @@
         `;
         document.head.appendChild(style);
 
-        // Hover on list items
         approachItems.forEach(item => {
             item.addEventListener('mouseenter', () => {
                 highlightConnection(item.dataset.approach);
             });
         });
 
-        // Hover on diagram nodes
         approachNodes.forEach(node => {
             node.addEventListener('mouseenter', () => {
                 highlightConnection(node.dataset.target);
             });
         });
 
-        // Reset on mouse leave
         document.querySelector('.curriculum-visual').addEventListener('mouseleave', () => {
             approachItems.forEach(item => item.classList.remove('active'));
             connectors.forEach(conn => conn.classList.remove('active'));
         });
 
-        // Click interactions
+
         approachItems.forEach(item => {
             item.addEventListener('click', () => {
                 item.scrollIntoView({ behavior: 'smooth', block: 'center' });
             });
         });
 
-        // Auto-rotate highlights
         let currentIndex = 0;
         const approaches = ['montessori', 'reggio', 'finnish', 'ib', 'japanese'];
         
@@ -7471,10 +7447,9 @@
             }
         }, 3000);
     });
-</script>    <!-- CAMPUS AND SAFETY -->
+</script>    
     <section class="soul-preschool-wrapper">
 
-        <!-- Campus Section -->
         <div class="soul-container">
             <div class="soul-grid">
                 <div class="soul-content">
@@ -7507,7 +7482,6 @@
             </div>
         </div>
 
-        <!-- Safety & Hygiene Section -->
         <div class="soul-container">
             <div class="soul-grid soul-grid-reverse">
                 <div class="soul-content">
@@ -7544,7 +7518,7 @@
             </div>
         </div>
 
-    </section><!-- DAYCARE SECTION -->
+    </section>
 <section class="daycare-section" id="daycare">
     <div class="container">
         <div class="daycare-header text-center mb-12">
@@ -7554,10 +7528,8 @@
             <p class="section-description">A structured, warm after-school experience for children, with predictable routines, thoughtful supervision, and age-appropriate engagement.</p>
         </div>
 
-        <!-- Two Cards in One Line -->
         <div class="daycare-cards-row">
             
-            <!-- Schedule Card -->
             <div class="daycare-card schedule-card">
                 <div class="card-header">
                     <div class="icon-wrapper">
@@ -7598,7 +7570,6 @@
                 </ul>
             </div>
 
-            <!-- Includes Card -->
             <div class="daycare-card includes-card">
                 <div class="card-header">
                     <div class="icon-wrapper">
@@ -7640,7 +7611,6 @@
             </div>
         </div>
 
-        <!-- CTA Buttons -->
         <div class="cta-container">
             <a href="#contact" class="btn-primary">Enquire for Daycare</a>
             <a href="#contact" class="btn-secondary">Schedule a Visit</a>
@@ -7702,7 +7672,6 @@
         padding: 0 15px;
     }
 
-    /* UPDATED: Cards row with flex for equal height */
     .daycare-cards-row {
         display: flex;
         gap: 30px;
@@ -7712,7 +7681,6 @@
         align-items: stretch;
     }
 
-    /* UPDATED: Cards with flex properties for equal height */
     .daycare-card {
         flex: 1;
         background: white;
@@ -7758,7 +7726,6 @@
         font-weight: 600;
     }
 
-    /* UPDATED: Schedule list takes full height */
     .schedule-list {
         list-style: none;
         padding: 0;
@@ -7794,7 +7761,6 @@
         color: #0A1937;
     }
 
-    /* UPDATED: Includes grid takes full height and distributes space evenly */
     .includes-grid {
         display: flex;
         flex-direction: column;
@@ -7875,13 +7841,11 @@
         transform: translateY(-2px);
     }
 
-    /* Tablet Styles */
     @media screen and (max-width: 968px) {
         .daycare-section {
             padding: 60px 16px;
         }
 
-        /* UPDATED: Stack cards on tablet */
         .daycare-cards-row {
             flex-direction: column;
             gap: 25px;
@@ -7893,7 +7857,6 @@
             width: 100%;
         }
 
-        /* UPDATED: Reset justify-content for stacked view */
         .includes-grid {
             justify-content: flex-start;
         }
@@ -7903,7 +7866,6 @@
         }
     }
 
-    /* Mobile Styles */
     @media screen and (max-width: 768px) {
         .daycare-section {
             padding: 50px 12px;
@@ -7951,7 +7913,6 @@
         }
     }
 
-    /* Small Mobile Styles */
     @media screen and (max-width: 480px) {
         .daycare-section {
             padding: 40px 8px;
@@ -8030,9 +7991,8 @@
         }
     }
 
-    /* Landscape Mode for Mobile */
     @media screen and (max-width: 968px) and (orientation: landscape) {
-        /* UPDATED: Show two columns in landscape */
+    
         .daycare-cards-row {
             flex-direction: row;
         }
@@ -8041,13 +8001,11 @@
             width: auto;
         }
         
-        /* UPDATED: Reset justify-content for landscape */
         .includes-grid {
             justify-content: space-between;
         }
     }
 
-    /* Touch Device Optimizations */
     @media (hover: none) {
         .daycare-card:hover,
         .include-item:hover,
@@ -8061,7 +8019,6 @@
         }
     }
 
-    /* Accessibility */
     @media (prefers-reduced-motion: reduce) {
         .daycare-card,
         .include-item,
@@ -8071,7 +8028,7 @@
         }
     }
 </style>
-    <!-- TEAM SECTION -->
+
     <section class="team-section" id="team">
         <div class="team-header">
             <span style="color: #9154A0; font-weight: 600; text-transform: uppercase; letter-spacing: 0.1em; font-size: 0.875rem; display: block; margin-bottom: 16px;">Our People</span>
@@ -8100,7 +8057,6 @@
         </div>
     </section>
 
-    <!-- FAQ -->
     <section class="section faq-bg">
         <div class="container max-w-4xl">
             <div class="text-center mb-12 reveal-on-scroll">
@@ -8182,10 +8138,8 @@
         </div>
     </section>
 
-    <!-- ADMISSIONS PROCESS -->
     <section id="admissions" class="admissions-section">
         
-        <!-- Section Header -->
         <div class="admissions-header">
             <div class="header-content">
                 <span class="header-eyebrow">Join Our Community</span>
@@ -8194,11 +8148,9 @@
             </div>
         </div>
 
-        <!-- Process Timeline -->
         <div class="process-container">
             <div class="timeline-line"></div>
             
-            <!-- Step 1: Enquiry Submission -->
             <article class="process-step" data-step="1">
                 <div class="step-marker">
                     <div class="step-number">01</div>
@@ -8253,7 +8205,6 @@
                 </div>
             </article>
 
-            <!-- Step 2: Campus Visit -->
             <article class="process-step" data-step="2">
                 <div class="step-marker">
                     <div class="step-number">02</div>
@@ -8308,7 +8259,6 @@
                 </div>
             </article>
 
-            <!-- Step 3: Interaction & Observation -->
             <article class="process-step" data-step="3">
                 <div class="step-marker">
                     <div class="step-number">03</div>
@@ -8364,7 +8314,6 @@
                 </div>
             </article>
 
-            <!-- Step 4: Confirmation & Onboarding -->
             <article class="process-step" data-step="4">
                 <div class="step-marker">
                     <div class="step-number">04</div>
@@ -8421,7 +8370,6 @@
 
         </div>
 
-        <!-- CTA Section -->
         <div class="admissions-cta">
             <div class="cta-content">
                 <p class="cta-text">Ready to take the first step?</p>
@@ -8439,7 +8387,6 @@ Start Your Enquiry
 
     </section>
 
-    <!-- CONTACT -->
     <section id="contact" class="contact-section section">
         <div class="container relative z-10">
             <div class="contact-grid">
@@ -8509,7 +8456,6 @@ Start Your Enquiry
         </div>
     </section>
 
-    <!-- FOOTER -->
     <footer class="footer">
         <div class="container">
             <div class="footer-grid">
@@ -8541,12 +8487,11 @@ Start Your Enquiry
             </div>
         </div>
     </footer>
-<!-- Instagram Left -->
+
 <a href="https://instagram.com/yourusername" target="_blank" class="floating-instagram">
     <i class="fab fa-instagram"></i>
 </a>
 
-<!-- WhatsApp Right -->
 <a href="https://wa.me/919999999999" target="_blank" class="floating-whatsapp">
     <i class="fab fa-whatsapp"></i>
 </a>
@@ -8555,7 +8500,7 @@ Start Your Enquiry
 
 
     <script>
-        // Admissions Popup Functions
+
         function openPopup() {
             document.getElementById('admissionsPopup').classList.add('active');
             document.body.style.overflow = 'hidden';
@@ -8572,12 +8517,10 @@ Start Your Enquiry
             closePopup();
         }
 
-        // Show popup after 3 seconds
         setTimeout(function() {
             openPopup();
         }, 3000);
 
-        // Mobile Menu
         const mobileMenuBtn = document.getElementById('mobile-menu-btn');
         const closeMenuBtn = document.getElementById('close-menu');
         const mobileMenu = document.getElementById('mobile-menu');
@@ -8592,7 +8535,6 @@ Start Your Enquiry
         closeMenuBtn?.addEventListener('click', toggleMenu);
         mobileLinks.forEach(link => link.addEventListener('click', toggleMenu));
 
-        // Navbar scroll
         const navbar = document.getElementById('navbar');
         window.addEventListener('scroll', function() {
             if (window.scrollY > 20) {
@@ -8610,7 +8552,6 @@ Start Your Enquiry
             window.scrollTo({ top: 0, behavior: 'smooth' }); 
         }
 
-        // Accordion
         window.toggleAccordion = function(button) {
             const content = button.nextElementSibling;
             const icon = button.querySelector('.accordion-icon');
@@ -8630,7 +8571,6 @@ Start Your Enquiry
             }
         }
 
-        // Form
         window.handleSubmit = function(e) {
             e.preventDefault();
             document.getElementById('contactForm').style.display = 'none';
@@ -8643,7 +8583,6 @@ Start Your Enquiry
             document.getElementById('successMessage').classList.add('hidden');
         }
 
-        // GSAP Animations
         gsap.registerPlugin(ScrollTrigger);
         gsap.to('.stagger-item', { opacity: 1, y: 0, duration: 0.8, stagger: 0.15, ease: 'power2.out', delay: 0.5 });
         
@@ -8652,7 +8591,6 @@ Start Your Enquiry
             gsap.fromTo(el, { opacity: 0, y: 50 }, { opacity: 1, y: 0, duration: 0.8, scrollTrigger: { trigger: el, start: 'top 85%' } });
         });
 
-        // About Soul Animation
         const aboutObserver = new IntersectionObserver((entries) => {
             entries.forEach((entry) => {
                 if (entry.isIntersecting) {
@@ -8665,7 +8603,6 @@ Start Your Enquiry
             aboutObserver.observe(el);
         });
 
-        // Philosophy Stack Animation
         document.addEventListener('DOMContentLoaded', function() {
             const cards = document.querySelectorAll('.stack-card');
             const isMobile = window.innerWidth <= 992;
@@ -8721,7 +8658,6 @@ Start Your Enquiry
             updateCards();
         });
 
-        // Programs Carousel
         (function() {
             document.addEventListener('DOMContentLoaded', function() {
                 const track = document.getElementById('programsTrackUnique');
@@ -8830,7 +8766,6 @@ Start Your Enquiry
             });
         })();
 
-        // Admissions Process Animation
         document.addEventListener('DOMContentLoaded', function() {
             const steps = document.querySelectorAll('.process-step');
             const container = document.querySelector('.process-container');
@@ -8880,7 +8815,6 @@ Start Your Enquiry
             });
         });
 
-        // Hero Cards Animation
         (function() {
             const track = document.querySelector('.cards-track');
             const cards = document.querySelectorAll('.card');
@@ -8911,7 +8845,6 @@ Start Your Enquiry
             });
         })();
 
-        // Smooth scroll for anchor links
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function(e) {
                 e.preventDefault();
