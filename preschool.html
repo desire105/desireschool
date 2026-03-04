@@ -4955,84 +4955,84 @@
             color: #475569;
             line-height: 1.6;
         }
+.founders-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 40px;
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 0 24px;
+}
 
-        .founders-grid {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 40px;
-            max-width: 1000px;
-            margin: 0 auto;
-            padding: 0 24px;
-        }
+.founder-card {
+    background: white;
+    border-radius: 24px;
+    overflow: hidden;
+    box-shadow: 0 10px 40px rgba(10, 25, 55, 0.08);
+    transition: all 0.4s ease;
+    border: 1px solid rgba(145, 84, 160, 0.1);
+}
 
-        .founder-card {
-            background: white;
-            border-radius: 24px;
-            overflow: hidden;
-            box-shadow: 0 10px 40px rgba(10, 25, 55, 0.08);
-            transition: all 0.4s ease;
-            border: 1px solid rgba(145, 84, 160, 0.1);
-        }
+.founder-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 20px 60px rgba(10, 25, 55, 0.12);
+}
 
-        .founder-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 20px 60px rgba(10, 25, 55, 0.12);
-        }
+.founder-image {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+    display: block;
+    background: linear-gradient(135deg, #f5f0f7 0%, #ffffff 100%);
 
-        .founder-image {
-            width: 100%;
-            height: 350px;
-            object-fit: cover;
-            display: block;
-        }
+}
 
-        .founder-info {
-            padding: 30px;
-        }
+.founder-info {
+    padding: 30px;
+}
 
-        .founder-info h3 {
-            font-family: 'Playfair Display', serif;
-            font-size: 1.5rem;
-            color: #0A1937;
-            margin-bottom: 4px;
-        }
+.founder-info h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.5rem;
+    color: #0A1937;
+    margin-bottom: 4px;
+}
 
-        .founder-role {
-            color: #9154A0;
-            font-size: 0.9rem;
-            font-weight: 600;
-            margin-bottom: 16px;
-            text-transform: uppercase;
-            letter-spacing: 0.05em;
-        }
+.founder-role {
+    color: #9154A0;
+    font-size: 0.9rem;
+    font-weight: 600;
+    margin-bottom: 16px;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
 
-        .founder-bio {
-            font-size: 0.95rem;
-            line-height: 1.7;
-            color: #475569;
-        }
+.founder-bio {
+    font-size: 0.95rem;
+    line-height: 1.7;
+    color: #475569;
+}
 
-        @media (max-width: 768px) {
-            .founders-grid {
-                grid-template-columns: 1fr;
-                max-width: 500px;
-            }
-            
-            .team-header h2 {
-                font-size: 2.5rem;
-            }
-        }
+@media (max-width: 768px) {
+    .founders-grid {
+        grid-template-columns: 1fr;
+        max-width: 500px;
+    }
+    
+    .team-header h2 {
+        font-size: 2.5rem;
+    }
+}
 
-        @media (max-width: 480px) {
-            .founder-image {
-                height: 300px;
-            }
-            
-            .team-header h2 {
-                font-size: 2rem;
-            }
-        }
-        /* Instagram Left */
+@media (max-width: 480px) {
+    .founder-image {
+        height: 300px;
+    }
+    
+    .team-header h2 {
+        font-size: 2rem;
+    }
+}        /* Instagram Left */
 .floating-instagram {
     position: fixed;
     left: 20px;
@@ -5079,7 +5079,46 @@
 .floating-whatsapp:hover {
     transform: scale(1.1);
 }
+.form-message {
+    margin-top: 15px;
+    padding: 12px;
+    border-radius: 8px;
+    font-size: 14px;
+    display: none;
+    text-align: center;
+}
 
+.form-message.success {
+    background: #e6f9f0;
+    color: #0f5132;
+    border: 1px solid #badbcc;
+}
+
+.form-message.error {
+    background: #fde8e8;
+    color: #842029;
+    border: 1px solid #f5c2c7;
+}
+.form-message {
+    margin-top: 15px;
+    padding: 12px;
+    border-radius: 8px;
+    font-size: 14px;
+    display: none;
+    text-align: center;
+}
+
+.form-message.success {
+    background: #e6f9f0;
+    color: #0f5132;
+    border: 1px solid #badbcc;
+}
+
+.form-message.error {
+    background: #fde8e8;
+    color: #842029;
+    border: 1px solid #f5c2c7;
+}
     </style>
 </head>
 <body>
@@ -5099,36 +5138,84 @@
                 <p class="popup-subtitle">Fill in your details and we'll get back to you</p>
             </div>
             <div class="popup-body">
-                <form id="popupForm" onsubmit="handlePopupSubmit(event)">
-                    <div class="popup-form-group">
-                        <label>Parent's Name *</label>
-                        <input type="text" required placeholder="Full Name">
-                    </div>
-                    <div class="popup-form-group">
-                        <label>Child's Name *</label>
-                        <input type="text" required placeholder="Child's Name">
-                    </div>
-                    <div class="popup-form-group">
-                        <label>Child's Age *</label>
-                        <select required>
-                            <option value="">Select Age</option>
-                            <option value="1.5-2.5">1.5 - 2.5 years (Toddlers)</option>
-                            <option value="2.5-3.5">2.5 - 3.5 years (Playgroup)</option>
-                            <option value="3.5-4.5">3.5 - 4.5 years (Nursery)</option>
-                            <option value="4.5-6">4.5 - 6 years (Prep)</option>
-                        </select>
-                    </div>
-                    <div class="popup-form-group">
-                        <label>Email ID *</label>
-                        <input type="email" required placeholder="email@example.com">
-                    </div>
-                    <div class="popup-form-group">
-                        <label>Phone Number *</label>
-                        <input type="tel" required placeholder="+91 98765 43210">
-                    </div>
-                    <button type="submit" class="popup-submit">Submit Enquiry</button>
-                </form>
+               <form id="popupForm">
+    <div class="popup-form-group">
+        <label>Parent's Name *</label>
+        <input type="text" name="parent_name" required placeholder="Full Name">
+    </div>
+
+    <div class="popup-form-group">
+        <label>Child's Name *</label>
+        <input type="text" name="child_name" required placeholder="Child's Name">
+    </div>
+
+    <div class="popup-form-group">
+        <label>Child's Age *</label>
+        <select name="child_age" required>
+            <option value="">Select Age</option>
+<option value="1.8-2.5">Toddlers (1.8 – 2.5 Years)</option>
+<option value="2.5-3.5">Playgroup (2.5 – 3.5 Years)</option>
+<option value="3.5-4.5">Nursery (3.5 – 4.5 Years)</option>
+<option value="4.5-6">Prep (4.5 – 6 Years)</option>
+        </select>
+    </div>
+
+    <div class="popup-form-group">
+        <label>Email ID *</label>
+        <input type="email" name="email" required placeholder="email@example.com">
+    </div>
+
+    <div class="popup-form-group">
+        <label>Phone Number *</label>
+        <input type="tel" name="phone" required placeholder="+91 98765 43210">
+    </div>
+<button type="submit" class="popup-submit">Submit Enquiry</button>
+
+<div id="formMessage" class="form-message"></div>
+</form>
             </div>
+         <script>
+document.getElementById("popupForm").addEventListener("submit", function(e) {
+    e.preventDefault();
+
+    let form = this;
+    let formData = new FormData(form);
+    let messageBox = document.getElementById("formMessage");
+
+    fetch("save_enquiry.php", {
+        method: "POST",
+        body: formData
+    })
+    .then(response => response.json())
+    .then(data => {
+
+        messageBox.style.display = "block";
+
+        if(data.status === "success") {
+
+            messageBox.className = "form-message success";
+            messageBox.innerHTML = "✅ Enquiry submitted successfully! We’ll contact you soon.";
+
+            form.reset();
+
+            // Optional: auto hide after 4 sec
+            setTimeout(() => {
+                messageBox.style.display = "none";
+            }, 4000);
+
+        } else {
+
+            messageBox.className = "form-message error";
+            messageBox.innerHTML = "❌ Something went wrong. Please try again.";
+        }
+    })
+    .catch(error => {
+        messageBox.style.display = "block";
+        messageBox.className = "form-message error";
+        messageBox.innerHTML = "⚠ Server error. Please try later.";
+    });
+});
+</script>
             <div class="popup-footer">
                 <p class="popup-social-text">Or reach out directly</p>
                 <div class="popup-social">
@@ -5159,7 +5246,7 @@
 
 
                         <a href="#programs" class="nav-link">Programs</a>
-                        <a href="#why-soul" class="nav-link">Why Soul</a>
+                        <a href="#whysoul" class="nav-link">Why Soul</a>
                         <a href="#contact" class="nav-link">Contact</a>
                     </div>
 
@@ -5192,11 +5279,11 @@
             <div class="mobile-links">
                 <a href="#home" class="mobile-link">Home</a>
                 <a href="#about" class="mobile-link">About</a>
-                <a href="#Philosophy" class="mobile-link">Philosophy</a>
+                <a href="#philosophy" class="mobile-link">Philosophy</a>
 
 
                 <a href="#programs" class="mobile-link">Programs</a>
-                <a href="#why-soul" class="mobile-link">Why Soul</a>
+                <a href="##whysoul" class="mobile-link">Why Soul</a>
                 <a href="#contact" class="mobile-link">Contact</a>
             </div>
             <div class="mobile-footer">
@@ -5360,7 +5447,7 @@ Soul Preschool is a joyful learning environment designed to nurture creativity, 
                             </div>
                         </div>
                     </div>
-                    <a href="#why-soul" class="discover-link">
+                    <a href="#philosophy" class="discover-link">
                         Discover Our Philosophy
                         <i class="fas fa-arrow-right"></i>
                     </a>
@@ -5369,10 +5456,10 @@ Soul Preschool is a joyful learning environment designed to nurture creativity, 
                     <div class="about-images">
                         <div class="image-col mt-8">
                             <div class="about-img img-zoom">
-                                <img src="https://images.unsplash.com/photo-1587654780291-39c9404d746b?w=400&h=500&fit=crop" class="img-h-64" alt="Child learning">
+                                <img src="img/IMG_9491.jpeg" class="img-h-64" alt="Child learning">
                             </div>
                             <div class="about-img img-zoom">
-                                <img src="https://images.unsplash.com/photo-1544779493-aa344a6ddaac?w=400&h=300&fit=crop" class="img-h-48" alt="Children playing">
+                                <img src="img/IMG_9492.jpeg" class="img-h-48" alt="Children playing">
                             </div>
                         </div>
                         <div class="image-col">
@@ -5595,8 +5682,7 @@ Soul Preschool is a joyful learning environment designed to nurture creativity, 
             }
         }
     </style>
-
-    <section class="why-soul-section">
+<section id="whysoul" class="why-soul-section">
         <div class="why-soul-container">
             <div class="why-soul-header">
                 <h2 class="why-soul-title">Why <span>Soul?</span></h2>
@@ -5795,7 +5881,7 @@ Soul Preschool is a joyful learning environment designed to nurture creativity, 
 
                 <div class="card-right">
                     <div class="card-image">
-                        <img src="https://images.unsplash.com/photo-1596462232000-a6c6f2e7b9b3?w=600&auto=format&fit=crop" alt="Structure and Freedom">
+                        <img src="img/IMG_9494.jpeg" alt="Structure and Freedom">
                     </div>
                     <div class="card-accent" style="background: #e8f5e9;"></div>
                 </div>
@@ -5829,7 +5915,7 @@ Soul Preschool is a joyful learning environment designed to nurture creativity, 
 
                 <div class="card-right">
                     <div class="card-image">
-                        <img src="https://images.unsplash.com/photo-1544717301-9cdcb1f5940f?w=600&auto=format&fit=crop" alt="Responsibility">
+                        <img src="img/IMG_9492.jpeg" alt="Responsibility">
                     </div>
                     <div class="card-accent" style="background: #fff3e0;"></div>
                 </div>
@@ -5863,7 +5949,7 @@ Soul Preschool is a joyful learning environment designed to nurture creativity, 
 
                 <div class="card-right">
                     <div class="card-image">
-                        <img src="https://images.unsplash.com/photo-1588072432836-e100327a50c2?w=600&auto=format&fit=crop" alt="Observation">
+                        <img src="img/IMG_9496.jpeg" alt="Observation">
                     </div>
                     <div class="card-accent" style="background: #f3e5f5;"></div>
                 </div>
@@ -5908,7 +5994,7 @@ Soul Preschool is a joyful learning environment designed to nurture creativity, 
 
 </section>
 
-<div class="programs-section-wrapper-unique">
+<div id="programs" class="programs-section-wrapper-unique">
     <section id="programs-unique" class="section-unique bg-white-unique">
         <div class="container-unique relative-unique z-10-unique">
             <div class="text-center-unique max-w-3xl-unique mx-auto-unique mb-16-unique reveal-on-scroll-unique">
@@ -5929,136 +6015,84 @@ Soul Preschool is a joyful learning environment designed to nurture creativity, 
                             <polyline points="15 18 9 12 15 6"></polyline>
                         </svg>
                     </button>
+<div class="programs-viewport-unique" id="programsViewportUnique">
+    <div class="programs-track-unique" id="programsTrackUnique">
+        
+        <!-- TODDLERS -->
+        <article class="program-card-unique compact-card-unique" id="cardToddlersUnique" data-age="1.8-2.5">
+            <div class="card-image-wrapper-unique" id="toddlersImgWrapperUnique">
+                <img src="https://kimi-web-img.moonshot.cn/img/littlescholarsnyc.com/45f2dbda1011b0b25c821687eb87b6418c9186e7.jpg" alt="Toddlers sensory play">
+                <div class="card-overlay-unique"></div>
+                <div class="age-badge-unique">1.8 - 2.5 Years</div>
+            </div>
+            <div class="card-content-unique">
+                <div class="card-header-unique">
+                    <h3>Toddlers</h3>
+                    <span class="subtitle-unique">A gentle, secure first step away from home.</span>
+                </div>
+                <p class="card-description-unique">
+                    Our toddler environment focuses on building trust and emotional safety above everything else. Through predictable routines, warm caregivers, sensory exploration, music, and movement, children slowly gain confidence to explore independently while feeling deeply supported.
+                </p>
+                <p class="card-description-unique" style="margin-top: 15px;">
+                    This stage lays the foundation for attachment, early language, body awareness, and the first sparks of independence.
+                </p>
+            </div>
+        </article>
 
-                    <div class="programs-viewport-unique" id="programsViewportUnique">
-                        <div class="programs-track-unique" id="programsTrackUnique">
-                            
-                            <article class="program-card-unique compact-card-unique" id="cardToddlersUnique" data-age="1.5-2.5">
-                                <div class="card-image-wrapper-unique" id="toddlersImgWrapperUnique">
-                                    <img src="https://kimi-web-img.moonshot.cn/img/littlescholarsnyc.com/45f2dbda1011b0b25c821687eb87b6418c9186e7.jpg" alt="Toddlers sensory play" id="toddlersImgUnique">
-                                    <div class="card-overlay-unique" id="toddlersOverlayUnique"></div>
-                                    <div class="age-badge-unique" id="toddlersBadgeUnique">1.5-2.5 Years</div>
-                                </div>
-                                <div class="card-content-unique" id="toddlersContentUnique">
-                                    <div class="card-header-unique" id="toddlersHeaderUnique">
-                                        <h3 id="toddlersTitleUnique">Toddlers</h3>
-                                        <span class="subtitle-unique" id="toddlersSubtitleUnique">A gentle, secure first step away from home.</span>
-                                    </div>
-                                    <p class="card-description-unique" id="toddlersDescUnique">Our toddler environment focuses on building trust and emotional safety above everything else. Through predictable routines, warm caregivers, sensory exploration, music, and movement, children slowly gain confidence to explore independently while feeling deeply supported.</p>
-                                    <p class="card-description-unique" id="toddlersDesc2Unique" style="margin-top: 15px;">This stage lays the foundation for attachment, early language, body awareness, and the first sparks of independence.</p>
-                                    
-                                    <div class="focus-areas-unique" id="toddlersFocusUnique">
-                                        <h4 id="toddlersFocusTitleUnique">Focus Areas:</h4>
-                                        <ul class="focus-list-unique" id="toddlersFocusListUnique">
-                                            <li id="toddlersItem1Unique"><span class="bullet-unique">•</span> Emotional security & attachment</li>
-                                            <li id="toddlersItem2Unique"><span class="bullet-unique">•</span> Sensory exploration</li>
-                                            <li id="toddlersItem3Unique"><span class="bullet-unique">•</span> Language exposure</li>
-                                            <li id="toddlersItem4Unique"><span class="bullet-unique">•</span> Routine & predictability</li>
-                                            <li id="toddlersItem5Unique"><span class="bullet-unique">•</span> Gentle independence</li>
-                                        </ul>
-                                    </div>
-                                    
-                                    <div class="card-footer-unique" id="toddlersFooterUnique">
+        <!-- PLAYGROUP -->
+        <article class="program-card-unique compact-card-unique" id="cardPlaygroupUnique" data-age="2.5-3.5">
+            <div class="card-image-wrapper-unique">
+                <img src="https://kimi-web-img.moonshot.cn/img/playtolearnpreschool.us/bcbddc5051472868d4e60ed631546a9a2cdda145.jpg" alt="Playgroup art activities">
+                <div class="card-overlay-unique"></div>
+                <div class="age-badge-unique">2.5 - 3.5 Years</div>
+            </div>
+            <div class="card-content-unique">
+                <div class="card-header-unique">
+                    <h3>Playgroup</h3>
+                    <span class="subtitle-unique">Where curiosity begins to bloom.</span>
+                </div>
+                <p class="card-description-unique">
+                    Playgroup children are naturally inquisitive and energetic. Our classrooms encourage exploration through play, stories, art, hands-on materials, and social interaction.
+                </p>
+            </div>
+        </article>
 
-                                    </div>
-                                </div>
-                            </article>
+        <!-- NURSERY -->
+        <article class="program-card-unique compact-card-unique" id="cardNurseryUnique" data-age="3.5-4.5">
+            <div class="card-image-wrapper-unique">
+                <img src="https://kimi-web-img.moonshot.cn/img/cdn.shopify.com/33ea69699617b73722e66efb44172ef59408603f.jpg" alt="Nursery reading time">
+                <div class="card-overlay-unique"></div>
+                <div class="age-badge-unique">3.5 - 4.5 Years</div>
+            </div>
+            <div class="card-content-unique">
+                <div class="card-header-unique">
+                    <h3>Nursery</h3>
+                    <span class="subtitle-unique">Confidence grows into meaningful learning.</span>
+                </div>
+                <p class="card-description-unique">
+                    In Nursery, children begin connecting experiences to early academic foundations through purposeful activities and collaborative play.
+                </p>
+            </div>
+        </article>
 
+        <!-- PREP -->
+        <article class="program-card-unique compact-card-unique" id="cardPrepUnique" data-age="4.5-6">
+            <div class="card-image-wrapper-unique">
+                <img src="https://kimi-web-img.moonshot.cn/img/theprimaryparade.com/0821acda409e5afc8b53d4fc9e024461f1e7b401.jpg" alt="Prep school readiness">
+                <div class="card-overlay-unique"></div>
+                <div class="age-badge-unique">4.5 - 6 Years</div>
+            </div>
+            <div class="card-content-unique">
+                <div class="card-header-unique">
+                    <h3>Prep</h3>
+                    <span class="subtitle-unique">Ready for school. Ready for life.</span>
+                </div>
+                <p class="card-description-unique">
+                    Prep builds the confidence and competence children need to transition smoothly into primary school.
+                </p>
+            </div>
+        </article>
 
-                            <article class="program-card-unique compact-card-unique" id="cardPlaygroupUnique" data-age="2.5-3.5">
-                                <div class="card-image-wrapper-unique" id="playgroupImgWrapperUnique">
-                                    <img src="https://kimi-web-img.moonshot.cn/img/playtolearnpreschool.us/bcbddc5051472868d4e60ed631546a9a2cdda145.jpg" alt="Playgroup art activities" id="playgroupImgUnique">
-                                    <div class="card-overlay-unique" id="playgroupOverlayUnique"></div>
-                                    <div class="age-badge-unique" id="playgroupBadgeUnique">2.5-3.5 Years</div>
-                                </div>
-                                <div class="card-content-unique" id="playgroupContentUnique">
-                                    <div class="card-header-unique" id="playgroupHeaderUnique">
-                                        <h3 id="playgroupTitleUnique">Playgroup</h3>
-                                        <span class="subtitle-unique" id="playgroupSubtitleUnique">Where curiosity begins to bloom.</span>
-                                    </div>
-                                    <p class="card-description-unique" id="playgroupDescUnique">Playgroup children are naturally inquisitive and energetic. Our classrooms encourage exploration through play, stories, art, hands-on materials, and social interaction. Children learn to express themselves, build friendships, and start doing simple tasks on their own.</p>
-                                    <p class="card-description-unique" id="playgroupDesc2Unique" style="margin-top: 15px;">Learning at this stage is joyful, active, and discovery-led.</p>
-                                    
-                                    <div class="focus-areas-unique" id="playgroupFocusUnique">
-                                        <h4 id="playgroupFocusTitleUnique">Focus Areas:</h4>
-                                        <ul class="focus-list-unique" id="playgroupFocusListUnique">
-                                            <li id="playgroupItem1Unique"><span class="bullet-unique">•</span> Social interaction</li>
-                                            <li id="playgroupItem2Unique"><span class="bullet-unique">•</span> Expressive language</li>
-                                            <li id="playgroupItem3Unique"><span class="bullet-unique">•</span> Fine & gross motor development</li>
-                                            <li id="playgroupItem4Unique"><span class="bullet-unique">•</span> Curiosity-led exploration</li>
-                                            <li id="playgroupItem5Unique"><span class="bullet-unique">•</span> Beginning self-help skills</li>
-                                        </ul>
-                                    </div>
-                                    
-                                    <div class="card-footer-unique" id="playgroupFooterUnique">
-
-                                    </div>
-                                </div>
-                            </article>
-
-
-                            <article class="program-card-unique compact-card-unique" id="cardNurseryUnique" data-age="3.5-4.5">
-                                <div class="card-image-wrapper-unique" id="nurseryImgWrapperUnique">
-                                    <img src="https://kimi-web-img.moonshot.cn/img/cdn.shopify.com/33ea69699617b73722e66efb44172ef59408603f.jpg" alt="Nursery reading time" id="nurseryImgUnique">
-                                    <div class="card-overlay-unique" id="nurseryOverlayUnique"></div>
-                                    <div class="age-badge-unique" id="nurseryBadgeUnique">3.5-4.5 Years</div>
-                                </div>
-                                <div class="card-content-unique" id="nurseryContentUnique">
-                                    <div class="card-header-unique" id="nurseryHeaderUnique">
-                                        <h3 id="nurseryTitleUnique">Nursery</h3>
-                                        <span class="subtitle-unique" id="nurserySubtitleUnique">Confidence grows into meaningful learning.</span>
-                                    </div>
-                                    <p class="card-description-unique" id="nurseryDescUnique">In Nursery, children begin connecting experiences to early academic foundations. Through purposeful activities, conversations, and collaborative play, they develop language, pre-literacy, numeracy, and problem-solving skills.</p>
-                                    <p class="card-description-unique" id="nurseryDesc2Unique" style="margin-top: 15px;">The emphasis remains on thinking, creating, and understanding rather than memorising.</p>
-                                    
-                                    <div class="focus-areas-unique" id="nurseryFocusUnique">
-                                        <h4 id="nurseryFocusTitleUnique">Focus Areas:</h4>
-                                        <ul class="focus-list-unique" id="nurseryFocusListUnique">
-                                            <li id="nurseryItem1Unique"><span class="bullet-unique">•</span> Pre-literacy & numeracy foundations</li>
-                                            <li id="nurseryItem2Unique"><span class="bullet-unique">•</span> Problem-solving</li>
-                                            <li id="nurseryItem3Unique"><span class="bullet-unique">•</span> Emotional regulation</li>
-                                            <li id="nurseryItem4Unique"><span class="bullet-unique">•</span> Collaborative play</li>
-                                            <li id="nurseryItem5Unique"><span class="bullet-unique">•</span> Thoughtful routines</li>
-                                        </ul>
-                                    </div>
-                                    
-                                    <div class="card-footer-unique" id="nurseryFooterUnique">
-
-                                    </div>
-                                </div>
-                            </article>
-
-
-                            <article class="program-card-unique compact-card-unique" id="cardPrepUnique" data-age="4.5-6">
-                                <div class="card-image-wrapper-unique" id="prepImgWrapperUnique">
-                                    <img src="https://kimi-web-img.moonshot.cn/img/theprimaryparade.com/0821acda409e5afc8b53d4fc9e024461f1e7b401.jpg" alt="Prep school readiness" id="prepImgUnique">
-                                    <div class="card-overlay-unique" id="prepOverlayUnique"></div>
-                                    <div class="age-badge-unique" id="prepBadgeUnique">4.5-6 Years</div>
-                                </div>
-                                <div class="card-content-unique" id="prepContentUnique">
-                                    <div class="card-header-unique" id="prepHeaderUnique">
-                                        <h3 id="prepTitleUnique">Prep</h3>
-                                        <span class="subtitle-unique" id="prepSubtitleUnique">Ready for school. Ready for life.</span>
-                                    </div>
-                                    <p class="card-description-unique" id="prepDescUnique">Prep builds the confidence and competence children need to transition smoothly into primary school. With deeper thinking tasks, structured learning experiences, and growing responsibility, children become independent learners and strong communicators.</p>
-                                    <p class="card-description-unique" id="prepDesc2Unique" style="margin-top: 15px;">By the end of this stage, they don't just know more. They feel capable, confident, and prepared.</p>
-                                    
-                                    <div class="focus-areas-unique" id="prepFocusUnique">
-                                        <h4 id="prepFocusTitleUnique">Focus Areas:</h4>
-                                        <ul class="focus-list-unique" id="prepFocusListUnique">
-                                            <li id="prepItem1Unique"><span class="bullet-unique">•</span> School readiness</li>
-                                            <li id="prepItem2Unique"><span class="bullet-unique">•</span> Confidence & independence</li>
-                                            <li id="prepItem3Unique"><span class="bullet-unique">•</span> Structured thinking</li>
-                                            <li id="prepItem4Unique"><span class="bullet-unique">•</span> Language expression</li>
-                                            <li id="prepItem5Unique"><span class="bullet-unique">•</span> Transition readiness</li>
-                                        </ul>
-                                    </div>
-                                    
-                                    <div class="card-footer-unique" id="prepFooterUnique">
-
-                                    </div>
-                                </div>
-                            </article>
                         </div>
                     </div>
 
@@ -6811,7 +6845,7 @@ Soul Preschool is a joyful learning environment designed to nurture creativity, 
 
                 <div class="soul-image-wrapper">
                     <div class="soul-image-inner">
-                        <img src="https://images.unsplash.com/photo-1588072432836-e10032774350?q=80&w=1974&auto=format&fit=crop"
+                        <img src="img/IMG_9491.jpeg"
                             alt="Preschool Campus"
                             class="soul-image"
                             loading="lazy">
@@ -6847,7 +6881,7 @@ Soul Preschool is a joyful learning environment designed to nurture creativity, 
 
                 <div class="soul-image-wrapper">
                     <div class="soul-image-inner">
-                        <img src="https://images.unsplash.com/photo-1588072432836-e10032774350?q=80&w=1974&auto=format&fit=crop"
+                        <img src="img/IMG_9493.jpeg"
                             alt="Safe Preschool Environment"
                             class="soul-image"
                             loading="lazy">
@@ -7367,36 +7401,33 @@ Soul Preschool is a joyful learning environment designed to nurture creativity, 
         }
     }
 </style>
+<section class="team-section" id="team">
+    <div class="team-header">
+        <span style="color: #9154A0; font-weight: 600; text-transform: uppercase; letter-spacing: 0.1em; font-size: 0.875rem; display: block; margin-bottom: 16px;">Our People</span>
+        <h2>Meet Our Team</h2>
+        <p>Passionate educators and caregivers dedicated to nurturing every child's potential with patience, expertise, and love.</p>
+    </div>
 
-    <section class="team-section" id="team">
-        <div class="team-header">
-            <span style="color: #9154A0; font-weight: 600; text-transform: uppercase; letter-spacing: 0.1em; font-size: 0.875rem; display: block; margin-bottom: 16px;">Our People</span>
-            <h2>Meet Our Team</h2>
-            <p>Passionate educators and caregivers dedicated to nurturing every child's potential with patience, expertise, and love.</p>
-        </div>
-
-        <div class="founders-grid">
-            <div class="founder-card">
-                <img src="img/Soul logo FNL 2-02.png" alt="Founder" class="founder-image" style="object-fit: contain; background: linear-gradient(135deg, #f5f0f7 0%, #ffffff 100%); padding: 40px;">
-                <div class="founder-info">
-                    <h3> Ramya Jayaram
-</h3>
-                    <div class="founder-role">Co-Founder</div>
-                    <p class="founder-bio">My childhood did not have the kind of environment or facilities that nurture curiosity and confidence from the beginning. That experience stayed with me. Soul was created from a desire to build the space I once wished existed, a place where children have access to thoughtful learning, strong guidance, and an environment that truly supports who they can become.</p>
-                </div>
-            </div>
-
-            <div class="founder-card">
-                <img src="img/Soul logo FNL 2-02.png" alt="Co-Founder" class="founder-image" style="object-fit: contain; background: linear-gradient(135deg, #f5f0f7 0%, #ffffff 100%); padding: 40px;">
-                <div class="founder-info">
-                    <h3>Meghana Reddy</h3>
-                    <div class="founder-role">Co-Founder</div>
-                    <p class="founder-bio">Children have a way of being completely whole and present in a way adults often forget. Their honesty, curiosity, and joy are untouched and powerful. Soul was created from my desire to protect that purity while giving it the right environment to grow. When children are nurtured with respect and intention, they do not need to be shaped into something else, they simply become more of who they already are.</p>
-                </div>
+    <div class="founders-grid">
+        <div class="founder-card">
+            <img src="img/MNS00015.jpeg" alt="Founder" class="founder-image">
+            <div class="founder-info">
+                <h3>Ramya Jayaram</h3>
+                <div class="founder-role">Co-Founder</div>
+                <p class="founder-bio">My childhood did not have the kind of environment or facilities that nurture curiosity and confidence from the beginning. That experience stayed with me. Soul was created from a desire to build the space I once wished existed, a place where children have access to thoughtful learning, strong guidance, and an environment that truly supports who they can become.</p>
             </div>
         </div>
-    </section>
 
+        <div class="founder-card">
+            <img src="img/MNS09984.jpeg" alt="Co-Founder" class="founder-image">
+            <div class="founder-info">
+                <h3>Meghana Reddy</h3>
+                <div class="founder-role">Co-Founder</div>
+                <p class="founder-bio">Children have a way of being completely whole and present in a way adults often forget. Their honesty, curiosity, and joy are untouched and powerful. Soul was created from my desire to protect that purity while giving it the right environment to grow. When children are nurtured with respect and intention, they do not need to be shaped into something else, they simply become more of who they already are.</p>
+            </div>
+        </div>
+    </div>
+</section>
     <section class="section faq-bg">
         <div class="container max-w-4xl">
             <div class="text-center mb-12 reveal-on-scroll">
@@ -7741,40 +7772,83 @@ We’re here to guide you through every step of your child’s early education j
                             <div><div class="font-semibold">Visiting Hours</div><div style="color: #0A1937; opacity: 0.8;">Monday - Saturday: 9:00 AM - 5:00 PM<br>Sunday: By Appointment</div></div>
                         </div>
                     </div>
-                    <div class="social-links">
-                        <a href="#" class="social-icon"><i class="fab fa-facebook-f"></i></a>
-                        <a href="#" class="social-icon"><i class="fab fa-instagram"></i></a>
-<a href="#" class="social-icon">
+                    <div class="social-links"><a href="https://facebook.com/soulpreschool" target="_blank" rel="noopener noreferrer" class="social-icon">
+    <i class="fab fa-facebook-f"></i>
+</a>
+
+<a href="https://instagram.com/soulpreschool" target="_blank" rel="noopener noreferrer" class="social-icon">
+    <i class="fab fa-instagram"></i>
+</a>
+
+<a href="https://www.linkedin.com/company/soul-preschool/" target="_blank" rel="noopener noreferrer" class="social-icon">
     <i class="fab fa-linkedin-in"></i>
 </a>
-                        <a href="https://wa.me/919901765571" class="social-icon"><i class="fab fa-whatsapp"></i></a>
+
+<a href="https://wa.me/919901765571" target="_blank" rel="noopener noreferrer" class="social-icon">
+    <i class="fab fa-whatsapp"></i>
+</a>
                     </div>
                 </div>
                 <div class="contact-form reveal-on-scroll">
                     <h3 class="form-title">Schedule a Visit</h3>
-                    <form id="contactForm" onsubmit="handleSubmit(event)">
-                        <div class="form-grid">
-                            <div><label class="block text-sm font-medium mb-2">Parent's Name *</label><input type="text" required class="form-input" placeholder="Full Name"></div>
-                            <div><label class="block text-sm font-medium mb-2">Child's Name</label><input type="text" class="form-input" placeholder="Child's Name"></div>
-                            <div><label class="block text-sm font-medium mb-2">Email Address *</label><input type="email" required class="form-input" placeholder="email@example.com"></div>
-                            <div><label class="block text-sm font-medium mb-2">Phone Number *</label><input type="tel" required class="form-input" placeholder="+91 98765 43210"></div>
-                        </div>
-                        <div class="mt-5"><label class="block text-sm font-medium mb-2">Child's Age / Program</label>
-                            <select class="form-select">
-                                <option>Select Program</option>
-                                <option>Toddlers (1.5-2.5 yrs)</option>
-                                <option>Playgroup (2.5-3.5 yrs)</option>
-                                <option>Nursery (3.5-4.5 yrs)</option>
-                                <option>Prep (4.5-6 yrs)</option>
-                                <option>Daycare</option>
-                            </select>
-                        </div>
-                        <div class="mt-5"><label class="block text-sm font-medium mb-2">Preferred Visit Date</label><input type="date" class="form-input"></div>
-                        <div class="mt-5"><label class="block text-sm font-medium mb-2">Message</label><textarea rows="4" class="form-textarea" placeholder="Tell us about your child..."></textarea></div>
-                        <button type="submit" class="submit-btn btn-shine mt-6">Submit Enquiry <i class="fas fa-paper-plane"></i></button>
-                        <div class="text-center text-sm mt-4" style="color: #0A1937; opacity: 0.6;"><i class="fas fa-lock mr-1"></i> Your information is secure</div>
-                    </form>
-                    <div id="successMessage" class="hidden text-center py-10">
+                   <form id="contactForm">
+
+    <div class="form-grid">
+        <div>
+            <label class="block text-sm font-medium mb-2">Parent's Name *</label>
+            <input type="text" name="parent_name" required class="form-input" placeholder="Full Name">
+        </div>
+
+        <div>
+            <label class="block text-sm font-medium mb-2">Child's Name</label>
+            <input type="text" name="child_name" class="form-input" placeholder="Child's Name">
+        </div>
+
+        <div>
+            <label class="block text-sm font-medium mb-2">Email Address *</label>
+            <input type="email" name="email" required class="form-input" placeholder="email@example.com">
+        </div>
+
+        <div>
+            <label class="block text-sm font-medium mb-2">Phone Number *</label>
+            <input type="tel" name="phone" required class="form-input" placeholder="+91 98765 43210">
+        </div>
+    </div>
+
+    <div class="mt-5">
+        <label class="block text-sm font-medium mb-2">Child's Age / Program</label>
+        <select name="program" class="form-select">
+            <option value="">Select Program</option>
+<option value="Toddlers (1.8-2.5 yrs)">Toddlers (1.8-2.5 yrs)</option>
+<option value="Playgroup (2.5-3.5 yrs)">Playgroup (2.5-3.5 yrs)</option>
+<option value="Nursery (3.5-4.5 yrs)">Nursery (3.5-4.5 yrs)</option>
+<option value="Prep (4.5-6 yrs)">Prep (4.5-6 yrs)</option>
+<option value="Daycare">Daycare</option>
+        </select>
+    </div>
+
+    <div class="mt-5">
+        <label class="block text-sm font-medium mb-2">Preferred Visit Date</label>
+        <input type="date" name="visit_date" class="form-input">
+    </div>
+
+    <div class="mt-5">
+        <label class="block text-sm font-medium mb-2">Message</label>
+        <textarea rows="4" name="message" class="form-textarea" placeholder="Tell us about your child..."></textarea>
+    </div>
+
+    <button type="submit" class="submit-btn btn-shine mt-6">
+        Submit Enquiry <i class="fas fa-paper-plane"></i>
+    </button>
+
+    <!-- Message Box -->
+    <div id="contactMessage" class="form-message"></div>
+
+    <div class="text-center text-sm mt-4" style="color: #0A1937; opacity: 0.6;">
+        <i class="fas fa-lock mr-1"></i> Your information is secure
+    </div>
+
+</form>                    <div id="successMessage" class="hidden text-center py-10">
                         <div class="w-20 h-20 rounded-full flex items-center justify-center mx-auto mb-4" style="background: rgba(145,84,160,0.1); color: #9154A0;"><i class="fas fa-check text-3xl"></i></div>
                         <h4 class="font-display text-2xl font-bold mb-2" style="color: #0A1937;">Thank You!</h4>
                         <p style="color: #0A1937; opacity: 0.8;" class="mb-6">We've received your enquiry. Our admissions team will contact you within 24 hours.</p>
@@ -7784,7 +7858,49 @@ We’re here to guide you through every step of your child’s early education j
             </div>
         </div>
     </section>
+<script>
+document.getElementById("contactForm").addEventListener("submit", function(e) {
 
+    e.preventDefault();
+
+    let form = this;
+    let formData = new FormData(form);
+    let messageBox = document.getElementById("contactMessage");
+
+    fetch("save_contact.php", {
+        method: "POST",
+        body: formData
+    })
+    .then(response => response.json())
+    .then(data => {
+
+        messageBox.style.display = "block";
+
+        if(data.status === "success") {
+
+            messageBox.className = "form-message success";
+            messageBox.innerHTML = "✅ Thank you! We will contact you shortly.";
+
+            form.reset();
+
+            setTimeout(() => {
+                messageBox.style.display = "none";
+            }, 4000);
+
+        } else {
+
+            messageBox.className = "form-message error";
+            messageBox.innerHTML = "❌ Something went wrong. Please try again.";
+        }
+    })
+    .catch(error => {
+        messageBox.style.display = "block";
+        messageBox.className = "form-message error";
+        messageBox.innerHTML = "⚠ Server error. Please try later.";
+    });
+
+});
+</script>
     <footer class="footer">
         <div class="container">
             <div class="footer-grid">
@@ -7796,8 +7912,8 @@ We’re here to guide you through every step of your child’s early education j
                     <p class="footer-description">Where childhood is protected, not rushed. A tranquil space for meaningful early learning in Bengaluru.</p>
                     <div class="footer-social">
                         <a href="#" class="footer-social-link"><i class="fab fa-facebook-f"></i></a>
-                        <a href="#" class="footer-social-link"><i class="fab fa-instagram"></i></a>
-<a href="#" class="footer-social-link">
+                        <a href="https://instagram.com/soulpreschool" class="footer-social-link"><i class="fab fa-instagram"></i></a>
+<a href="https://www.linkedin.com/company/soul-preschool/" class="footer-social-link">
     <i class="fab fa-linkedin-in"></i>
 </a>
                     </div>
@@ -7818,16 +7934,13 @@ We’re here to guide you through every step of your child’s early education j
             </div>
         </div>
     </footer>
-
-<a href="https://instagram.com/yourusername" target="_blank" class="floating-instagram">
+<a href="https://instagram.com/soulpreschool" target="_blank" class="floating-instagram">
     <i class="fab fa-instagram"></i>
 </a>
 
-<a href="https://wa.me/919999999999" target="_blank" class="floating-whatsapp">
+<a href="https://wa.me/919901765571" target="_blank" class="floating-whatsapp">
     <i class="fab fa-whatsapp"></i>
 </a>
-
-
 
 
     <script>
