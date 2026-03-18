@@ -34,7 +34,7 @@
       cursor: none;
     }
 
-    /* custom cursor */
+    /* custom cursor - hide on mobile */
     .cursor {
       position: fixed;
       width: 8px;
@@ -321,15 +321,17 @@
       transition-delay: 0s;
     }
 
-    /* hero */
+    /* hero - FIXED FOR MOBILE SCROLLING */
     .hero {
       position: relative;
       height: 100vh;
+      width: 100%;
       display: flex;
       flex-direction: column;
       align-items: center;
       justify-content: center;
       overflow: hidden;
+      touch-action: pan-y; /* Allow vertical scrolling on mobile */
     }
     .hero::before {
       content: '';
@@ -364,6 +366,7 @@
       gap: 40px;
       opacity: 0;
       animation: fade-up 1.4s cubic-bezier(0.16, 1, 0.3, 1) 0.3s forwards;
+      pointer-events: none; /* Allow touch to pass through to hero for scrolling */
     }
     @keyframes fade-up {
       from { opacity: 0; transform: translateY(32px); }
@@ -402,6 +405,7 @@
       gap: 8px;
       opacity: 0;
       animation: fade-up 1s ease 1.6s forwards;
+      pointer-events: none;
     }
     .scroll-hint span {
       font-family: 'Montserrat', sans-serif;
@@ -428,7 +432,7 @@
       position: absolute;
       inset: 0;
       z-index: 3;
-      pointer-events: none;
+      pointer-events: none; /* CRITICAL: Allow touch to pass through */
       background: #1a1208;
       display: flex;
       flex-direction: column;
@@ -531,7 +535,7 @@
       color: rgba(232, 213, 168, 0.45);
     }
 
-    /* liquid canvas */
+    /* liquid canvas - CRITICAL FIX: allow touch through */
     #liquidCanvas {
       position: absolute;
       top: 0;
@@ -539,7 +543,7 @@
       width: 100%;
       height: 100%;
       z-index: 4;
-      pointer-events: none;
+      pointer-events: none; /* Allow touch events to pass through to hero */
     }
 
     /* reveal animations */
@@ -1203,31 +1207,41 @@
       const cursor = document.getElementById('cursor');
       const ring = document.getElementById('cursorRing');
       let mx = 0, my = 0, rx = 0, ry = 0;
-      document.addEventListener('mousemove', e => {
-        mx = e.clientX;
-        my = e.clientY;
-      });
-      (function animCursor() {
-        rx += (mx - rx) * 0.12;
-        ry += (my - ry) * 0.12;
-        cursor.style.left = mx + 'px';
-        cursor.style.top = my + 'px';
-        ring.style.left = rx + 'px';
-        ring.style.top = ry + 'px';
-        requestAnimationFrame(animCursor);
-      })();
-      document.querySelectorAll('a, button').forEach(el => {
-        el.addEventListener('mouseenter', () => {
-          ring.style.width = '56px';
-          ring.style.height = '56px';
-          ring.style.borderColor = 'rgba(181,154,106,0.6)';
+      
+      // Only enable cursor on non-touch devices
+      if (window.matchMedia("(pointer: fine)").matches) {
+        document.addEventListener('mousemove', e => {
+          mx = e.clientX;
+          my = e.clientY;
         });
-        el.addEventListener('mouseleave', () => {
-          ring.style.width = '36px';
-          ring.style.height = '36px';
-          ring.style.borderColor = 'rgba(255,255,255,0.4)';
+        
+        (function animCursor() {
+          rx += (mx - rx) * 0.12;
+          ry += (my - ry) * 0.12;
+          cursor.style.left = mx + 'px';
+          cursor.style.top = my + 'px';
+          ring.style.left = rx + 'px';
+          ring.style.top = ry + 'px';
+          requestAnimationFrame(animCursor);
+        })();
+        
+        document.querySelectorAll('a, button').forEach(el => {
+          el.addEventListener('mouseenter', () => {
+            ring.style.width = '56px';
+            ring.style.height = '56px';
+            ring.style.borderColor = 'rgba(181,154,106,0.6)';
+          });
+          el.addEventListener('mouseleave', () => {
+            ring.style.width = '36px';
+            ring.style.height = '36px';
+            ring.style.borderColor = 'rgba(255,255,255,0.4)';
+          });
         });
-      });
+      } else {
+        // Hide cursor on touch devices
+        cursor.style.display = 'none';
+        ring.style.display = 'none';
+      }
 
       /* ========== HEADER SCROLL ========== */
       const header = document.getElementById('header');
@@ -1237,6 +1251,7 @@
       const mobileMenuBtn = document.getElementById('mobileMenuBtn');
       const mobileNav = document.getElementById('mobileNav');
       let isMenuOpen = false;
+      
       function openMenu() {
         isMenuOpen = true;
         mobileMenuBtn.classList.add('active');
@@ -1244,6 +1259,7 @@
         mobileNav.classList.add('active');
         document.body.style.overflow = 'hidden';
       }
+      
       function closeMenu() {
         isMenuOpen = false;
         mobileMenuBtn.classList.remove('active');
@@ -1254,21 +1270,24 @@
         }, 800);
         document.body.style.overflow = '';
       }
+      
       mobileMenuBtn.addEventListener('click', () => isMenuOpen ? closeMenu() : openMenu());
       document.querySelectorAll('.mobile-nav-link').forEach(l => l.addEventListener('click', closeMenu));
       document.addEventListener('keydown', e => { if (e.key === 'Escape' && isMenuOpen) closeMenu(); });
 
-      /* ========== LIQUID SCRATCH (WEBGL) ========== */
+      /* ========== LIQUID SCRATCH (WEBGL) - MODIFIED FOR MOBILE ========== */
       const hero = document.getElementById('hero');
       const heroRetro = document.getElementById('heroRetro');
       const canvas = document.getElementById('liquidCanvas');
       const gl = canvas.getContext('webgl', { premultipliedAlpha: false, alpha: true });
+      
       if (!gl) { console.warn('WebGL not supported'); return; }
 
       const VS = `
         attribute vec2 a_pos;
         void main(){ gl_Position = vec4(a_pos,0,1); }
       `;
+      
       const FS = `
         precision mediump float;
         uniform vec2  u_res;
@@ -1277,11 +1296,6 @@
         #define MAX_BLOBS 64
         uniform vec4  u_blobs[MAX_BLOBS];
         uniform int   u_blobCount;
-
-        float smin(float a,float b,float k){
-          float h=clamp(0.5+0.5*(b-a)/k,0.0,1.0);
-          return mix(b,a,h)-k*h*(1.0-h);
-        }
 
         void main(){
           vec2 uv = gl_FragCoord.xy / u_res;
@@ -1318,6 +1332,7 @@
         if (!gl.getShaderParameter(s, gl.COMPILE_STATUS)) console.error(gl.getShaderInfoLog(s));
         return s;
       }
+      
       const prog = gl.createProgram();
       gl.attachShader(prog, compile(gl.VERTEX_SHADER, VS));
       gl.attachShader(prog, compile(gl.FRAGMENT_SHADER, FS));
@@ -1341,6 +1356,7 @@
       gl.blendFunc(gl.SRC_ALPHA, gl.ONE_MINUS_SRC_ALPHA);
 
       let W = 0, H = 0;
+      
       function resize() {
         const r = hero.getBoundingClientRect();
         W = r.width;
@@ -1358,6 +1374,7 @@
       let activeAlpha = 0;
       let healTimer = null;
       let healing = false;
+      let isTouchDevice = window.matchMedia("(pointer: coarse)").matches;
 
       function addBlob(x, yInCanvas) {
         const r = 24 + Math.random() * 24;
@@ -1371,94 +1388,129 @@
         healTimer = setTimeout(() => { healing = true; }, 4000);
       }
 
-      hero.addEventListener('mouseenter', e => {
-        const rect = hero.getBoundingClientRect();
-        const y = e.clientY - rect.top;
-        if (y < 0) return;
-        isActive = true;
-        heroRetro.style.opacity = '1';
-        healing = false;
-        if (healTimer) clearTimeout(healTimer);
-        blobs.length = 0;
-        cursor.style.opacity = '0';
-        ring.style.opacity = '0';
-        startHeal();
-      });
+      // Mouse events - only on non-touch devices
+      if (!isTouchDevice) {
+        hero.addEventListener('mouseenter', e => {
+          const rect = hero.getBoundingClientRect();
+          const y = e.clientY - rect.top;
+          if (y < 0) return;
+          isActive = true;
+          heroRetro.style.opacity = '1';
+          healing = false;
+          if (healTimer) clearTimeout(healTimer);
+          blobs.length = 0;
+          if (cursor) cursor.style.opacity = '0';
+          if (ring) ring.style.opacity = '0';
+          startHeal();
+        });
 
-      hero.addEventListener('mouseleave', e => {
-        const rect = hero.getBoundingClientRect();
-        const y = e.clientY - rect.top;
-        if (y < 0) return;
-        isActive = false;
-        heroRetro.style.opacity = '0';
-        blobs.length = 0;
-        cursor.style.opacity = '1';
-        ring.style.opacity = '1';
-        if (healTimer) { clearTimeout(healTimer); healTimer = null; }
-        healing = false;
-      });
+        hero.addEventListener('mouseleave', e => {
+          const rect = hero.getBoundingClientRect();
+          const y = e.clientY - rect.top;
+          if (y < 0) return;
+          isActive = false;
+          heroRetro.style.opacity = '0';
+          blobs.length = 0;
+          if (cursor) cursor.style.opacity = '1';
+          if (ring) ring.style.opacity = '1';
+          if (healTimer) { clearTimeout(healTimer); healTimer = null; }
+          healing = false;
+        });
 
-      let lastMX = null, lastMY = null;
-      hero.addEventListener('mousemove', e => {
-        if (!isActive) return;
-        const rect = hero.getBoundingClientRect();
-        const x = e.clientX - rect.left;
-        const y = e.clientY - rect.top;
-        if (lastMX !== null) {
-          const dx = x - lastMX, dy = y - lastMY;
-          const dist = Math.sqrt(dx * dx + dy * dy);
-          const steps = Math.max(1, Math.floor(dist / 14));
-          for (let i = 0; i <= steps; i++) {
-            const t = i / steps;
-            addBlob(
-              lastMX + dx * t + (Math.random() - 0.5) * 8,
-              lastMY + dy * t + (Math.random() - 0.5) * 8
-            );
+        let lastMX = null, lastMY = null;
+        
+        hero.addEventListener('mousemove', e => {
+          if (!isActive) return;
+          const rect = hero.getBoundingClientRect();
+          const x = e.clientX - rect.left;
+          const y = e.clientY - rect.top;
+          
+          if (lastMX !== null) {
+            const dx = x - lastMX, dy = y - lastMY;
+            const dist = Math.sqrt(dx * dx + dy * dy);
+            const steps = Math.max(1, Math.floor(dist / 14));
+            for (let i = 0; i <= steps; i++) {
+              const t = i / steps;
+              addBlob(
+                lastMX + dx * t + (Math.random() - 0.5) * 8,
+                lastMY + dy * t + (Math.random() - 0.5) * 8
+              );
+            }
+          } else {
+            addBlob(x, y);
           }
-        } else {
-          addBlob(x, y);
-        }
-        lastMX = x;
-        lastMY = y;
-        healing = false;
-        startHeal();
-      });
+          lastMX = x;
+          lastMY = y;
+          healing = false;
+          startHeal();
+        });
 
-      hero.addEventListener('mouseleave', () => { lastMX = lastMY = null; });
+        hero.addEventListener('mouseleave', () => { lastMX = lastMY = null; });
+      }
 
+      // Touch events - simplified for mobile to allow scrolling
+      let touchTimer = null;
+      
       hero.addEventListener('touchstart', e => {
+        // Don't prevent default - allow scrolling
         isActive = true;
         heroRetro.style.opacity = '1';
         healing = false;
         blobs.length = 0;
+        
+        // Clear any existing timer
+        if (touchTimer) clearTimeout(touchTimer);
+        
+        // Add blob at touch position
+        const rect = hero.getBoundingClientRect();
+        const touch = e.touches[0];
+        if (touch) {
+          addBlob(touch.clientX - rect.left, touch.clientY - rect.top);
+        }
       }, { passive: true });
+
       hero.addEventListener('touchmove', e => {
         if (!isActive) return;
+        
+        // Add blob at touch position but don't prevent default
         const rect = hero.getBoundingClientRect();
-        const t = e.touches[0];
-        addBlob(t.clientX - rect.left, t.clientY - rect.top);
+        const touch = e.touches[0];
+        if (touch) {
+          addBlob(touch.clientX - rect.left, touch.clientY - rect.top);
+        }
+        
         healing = false;
-        startHeal();
-        e.preventDefault();
-      }, { passive: false });
+        
+        // Reset heal timer
+        if (touchTimer) clearTimeout(touchTimer);
+        touchTimer = setTimeout(() => { healing = true; }, 4000);
+        
+      }, { passive: true }); // Important: passive true allows scrolling
+
       hero.addEventListener('touchend', () => {
-        isActive = false;
-        heroRetro.style.opacity = '0';
-        blobs.length = 0;
+        // Don't immediately deactivate, let it fade out
+        touchTimer = setTimeout(() => {
+          isActive = false;
+          heroRetro.style.opacity = '0';
+          blobs.length = 0;
+        }, 1000);
       });
 
       let t0 = performance.now();
+      
       function render(now) {
         requestAnimationFrame(render);
         const t = (now - t0) / 1000;
         const targetAlpha = isActive ? 1 : 0;
         activeAlpha += (targetAlpha - activeAlpha) * 0.07;
+        
         if (healing) {
           for (let i = 0; i < blobs.length; i++) {
             blobs[i].age = Math.min(1, blobs[i].age + 0.008);
           }
           while (blobs.length && blobs[0].age >= 1) blobs.shift();
         }
+        
         const data = new Float32Array(MAX * 4);
         for (let i = 0; i < blobs.length && i < MAX; i++) {
           data[i * 4 + 0] = blobs[i].x;
@@ -1466,11 +1518,13 @@
           data[i * 4 + 2] = blobs[i].r;
           data[i * 4 + 3] = blobs[i].age;
         }
+        
         gl.uniform2f(uRes, W, H);
         gl.uniform1f(uTime, t);
         gl.uniform1f(uActive, activeAlpha);
         gl.uniform1i(uBlobCount, Math.min(blobs.length, MAX));
         gl.uniform4fv(uBlobs, data);
+        
         gl.clearColor(0, 0, 0, 0);
         gl.clear(gl.COLOR_BUFFER_BIT);
         gl.drawArrays(gl.TRIANGLE_STRIP, 0, 4);
